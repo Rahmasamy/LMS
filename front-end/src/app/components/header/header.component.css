@@ -1,0 +1,112 @@
+.header-fixed {
+  background-image: url("../../../assets/banner.png");
+  height: 100vh;
+  margin-bottom: auto;
+}
+.parent-nav {
+  display: flex;
+  padding: 10px 0;
+  width: 88%;
+  margin:0 auto ;
+}
+
+.parent-nav div {
+  width: calc(100% / 3);
+  /* border: solid; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-left {
+  width: 20% !important;
+}
+.center-links {
+  width: 50% !important;
+  /* border: solid; */
+}
+.parent-nav .center-links ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+  width: 90%;
+}
+
+
+.parent-nav .center-links ul a {
+  display: inline-block;
+  padding: 1rem;
+  /* border: solid; */
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: all .4s linear;
+}
+
+.parent-nav .center-links ul a::after{
+  position: absolute;
+  content: " ";
+  width: 100%;
+  height: 1%;
+  background-color: #000;
+  left: 0;
+  bottom: -10px;
+}
+
+.parent-nav .center-links ul a:hover::after{
+  position: absolute;
+  content: " ";
+  width: 100%;
+  height: 1%;
+  background-color: #000;
+  left: 0;
+  bottom: 10px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-around !important;
+}
+a {
+  display: inline-block;
+  padding: 1rem;
+  /* border: solid; */
+  text-decoration: none;
+}
+.nav-right a {
+  /* border: solid; */
+  width: 30%;
+  text-align: center;
+  border-radius: 30px;
+}
+.change-color {
+  width: 2em !important;
+  height: 2em !important;
+  border: solid 1px #000;
+  border-radius: 10px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+.Signin {
+  /* border: 3px solid #b4a7f5; */
+  background-color: #fff;
+  transition: background-color 0.4s linear;
+}
+.Signin:hover {
+  background-color: #f6697b;
+  color: #fff;
+  transition: background-color 0.4s linear;
+}
+
+.Signup {
+  border: 3px solid #b4a7f5;
+  /* transition: background-color .4s linear; */
+}
+.Signup:hover {
+  background-color: #f6697b;
+  color: #fff;
+  border: 3px solid #f6697b;
+  transition: background-color 0.4s linear;
+}
