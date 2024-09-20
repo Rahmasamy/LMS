@@ -113,17 +113,17 @@ a {
 }
 /* end navbar */
 
-<<<<<<< HEAD
+
 
 .home-slide{
-    
+
   height: 85%;
   width: 100%;
 
   margin-top: 6rem;
 }
 .home-container{
-  
+
 width: 88%;
 margin :0 auto;
 display: flex;
@@ -135,7 +135,7 @@ gap: 1rem;
 .home-container .home-slide-left{
 width: 60%;
 
-} 
+}
 
 .home-container .home-slide-right{
 width: 40%;
@@ -233,11 +233,11 @@ width: 40%;
   align-items: center;
   margin-bottom: 30px;
   width: 100%;
-    
+
 }
 .trust-rating .rating {
   margin-bottom: 0;
-    
+
   display: flex;
   justify-content: start;
   align-items: center;
@@ -312,7 +312,7 @@ width: 40%;
   transition: all 0.3s linear;
   transform: translatey(0px);
   border: 1px solid #f3f3f3;
-  
+
 }
 .items-home-two:hover{
   transform: translatey(-20px);
@@ -469,7 +469,7 @@ width: 40%;
 }
 
 .product:hover {
-  transform: translateY(-10px); 
+  transform: translateY(-10px);
   transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -580,5 +580,3 @@ width: 40%;
 
 
 
-=======
->>>>>>> a61aa9ddcfbd381510321f41b4e47f652858615d
