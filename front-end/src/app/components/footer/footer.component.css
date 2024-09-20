@@ -1,0 +1,28 @@
+footer{
+  padding: 3rem 1rem;
+}
+.footer-widget.footer-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+.footer-widget.footer-menu ul li {
+  margin-bottom: 20px;
+}
+.footer-widget.footer-menu ul li a {
+  text-decoration: none;
+  color: #333;
+}
+.footer-contact-info .footer-address {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.footer-about-content p {
+  width: 80%;
+}
+.footer-widget h2{
+font-size: 1.4rem !important;
+font-weight: bold;
+}
