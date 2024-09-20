@@ -1,14 +1,22 @@
-.header-fixed {
-  /* background-image: url("../../../assets/banner.png"); */
-  height: 115vh;
-  margin-bottom: auto;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
+nav{
+  position: fixed;
+  top: 0;
+  background-color: #b4a7f5;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
 .parent-nav {
   display: flex;
   padding: 10px 0;
   width: 92%;
   margin:0 auto ;
+
 }
 
 .parent-nav div {
