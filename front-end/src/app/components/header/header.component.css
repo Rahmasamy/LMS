@@ -1,8 +1,9 @@
 .header-fixed {
-  background-image: url("../../../assets/banner.png");
+  /* background-image: url("../../../assets/banner.png"); */
   height: 115vh;
   margin-bottom: auto;
 }
+
 .parent-nav {
   display: flex;
   padding: 10px 0;
@@ -112,6 +113,7 @@ a {
 }
 /* end navbar */
 
+<<<<<<< HEAD
 
 .home-slide{
     
@@ -578,3 +580,5 @@ width: 40%;
 
 
 
+=======
+>>>>>>> a61aa9ddcfbd381510321f41b4e47f652858615d
