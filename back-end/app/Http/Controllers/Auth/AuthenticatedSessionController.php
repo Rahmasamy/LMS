@@ -16,6 +16,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): JsonResponse
     {
+       
         $request->authenticate();
 
         $user=$request->user();
@@ -24,6 +25,8 @@ class AuthenticatedSessionController extends Controller
 
         return response()->json([
             'user'=> $user,
+            'roles'=>$user->getRoleNames(),
+            "permissions" => $user->getAllPermissions(),
             'token' => $token->plainTextToken
 
        ] );

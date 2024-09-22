@@ -19,3 +19,4 @@ yarn-error.log
 /.idea
 /.vscode
 /.zed
+back-end/node_modules/public-encrypt/test/test_rsa_privkey.pem

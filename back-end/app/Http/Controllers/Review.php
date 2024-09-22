@@ -10,12 +10,11 @@ use Illuminate\Http\Request;
 class Review extends Controller
 {
     //
-    use apiResponseTrait;
-    use checkApi;
-    public function index()
+    use apiResponseTrait,checkApi,AuthStudentInstAdmin;
+    public function index(Request $request)
     {
         //
-      
+            $this->authorizeRole($request);
             $Reviews=ModelsReview::all();
     
             return $this->checkRequest($Reviews,200); 

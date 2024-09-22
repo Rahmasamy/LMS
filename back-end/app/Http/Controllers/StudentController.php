@@ -7,12 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 class StudentController extends Controller
 {
-    use apiResponseTrait;
-    use checkApi;
-    public function index()
+    use apiResponseTrait,checkApi,AuthStudentInstAdmin;
+    public function index(Request $request)
     {
         //
-      
+            $this->authorizeRole($request);
             $Lessons=Student::all();
     
             return $this->checkRequest($Lessons,200); 
@@ -20,7 +19,8 @@ class StudentController extends Controller
         
        
     }
-    public function show($id){
+    public function show(Request $request,$id){
+        $this->authorizeRole($request);
         $lesson=Student::find($id);
 
         return $this->checkRequest($lesson,200); 

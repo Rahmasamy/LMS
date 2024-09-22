@@ -11,8 +11,7 @@ use App\Models\Course;
 class CourseControllerr extends Controller
 {
     //
-    use apiResponseTrait;
-    use checkApi;
+    use apiResponseTrait,checkApi,AuthStudentInstAdmin;
     public function index()
     {
         //
@@ -23,14 +22,19 @@ class CourseControllerr extends Controller
        
        
     }
-    public function all(){
-      
+    public function all(Request $request){
+        
+       
+        $this->authorizeRole($request);
         $courses=Course::all();
+
 
         return $this->checkRequest($courses,200); 
       
     }
-    public function show($id){
+   
+    public function show(Request $request,$id){
+        $this->authorizeRole($request);
         $course=Course::find($id);
 
         return $this->checkRequest($course,200); 
@@ -38,12 +42,13 @@ class CourseControllerr extends Controller
 
 
     public function Store(CourseRequest $request){
+        $this->authAdminInst($request);
        $validatedData = $request->validated();
        $course=Course::create($validatedData);
-       echo $course;
        return $this->checkRequest($course,201); 
     }
     public function update(CourseRequest $request,$id){
+        $this->authAdminInst($request);
         $validatedData = $request->validated();
         $course=Course::find($id);
         if($course){
@@ -54,7 +59,8 @@ class CourseControllerr extends Controller
         return $this->apiResponce(null, "No Course with this id ", statusCode: 400); 
 
     }
-    public function destroy($id){
+    public function destroy(Request $request,$id){
+        $this->authAdmin($request);
         $course=Course::find($id);
         if($course){
             Course::destroy($id);
@@ -63,30 +69,35 @@ class CourseControllerr extends Controller
         return $this->apiResponce(null,"No course with that Id",404);
       
     }
-    public function sections($id){
+    public function sections(Request $request,$id){
+        $this->authAdminInst($request);
         $section=Course::find($id);
       
         return response()->json($section->sections);
     }
-    public function Reviews($id){
+    public function Reviews(Request $request,$id){
+        $this->authAdminInst($request);
         $course = Course::find($id);
        
        
         return response()->json($course->Reviews);
     }
-    public function quizes($id){
+    public function quizes(Request $request,$id){
+        $this->authAdminInst($request);
         $course = Course::find($id);
        
        
         return response()->json($course->Quizes);
     }
-    public function Assigments($id){
+    public function Assigments(Request $request,$id){
+        $this->authAdminInst($request);
         $course = Course::find($id);
        
        
         return response()->json($course->Assigments);
     }
-    public function Certificate($id){
+    public function Certificate(Request $request,$id){
+        $this->authAdminInst($request);
         $course = Course::find($id);
        
         return response()->json($course->Certificats);

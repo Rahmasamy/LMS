@@ -19,7 +19,6 @@ public function checkRequest($data, $statusCode)
 {
     $statusMessages = $this->getStatusMessages();
     $msg = 'Unexpected status code.';
-    // $stat = $statusCode;
     if (array_key_exists($statusCode, $statusMessages)) {
         $msg = $statusMessages[$statusCode];
     }
@@ -30,21 +29,26 @@ public function checkRequest($data, $statusCode)
         $stat = 400;
     }
     $data = json_decode($data, true);
+   
     
-   if(is_object($data)){
-    $dataArray = get_object_vars($data);
-    if (count($dataArray )>0)  {
+    if (!is_null($data) ){
+      
+        if(is_object($data)){
+            $dataArray = get_object_vars($data);
+            if (count($dataArray )>0)  {
+                
+                return $this->apiResponce($data, [$msg], $statusCode);
+            }
         
-        return $this->apiResponce($data, [$msg], $statusCode);
+           }
+        
+          else {
+            if( count($data) > 0){
+                return $this->apiResponce($data, [$msg], $statusCode);
+            }
+          }
     }
-
-   }
-
-  else {
-    if( count($data) > 0){
-        return $this->apiResponce($data, [$msg], $statusCode);
-    }
-  }
+   
     return $this->apiResponce(null, "Not access", $stat);
 }
 
