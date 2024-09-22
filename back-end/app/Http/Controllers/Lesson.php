@@ -9,12 +9,11 @@ use Illuminate\Http\Request;
 class Lesson extends Controller
 {
     //
-    use apiResponseTrait;
-    use checkApi;
-    public function index()
+    use apiResponseTrait,checkApi,AuthStudentInstAdmin;
+    public function index(Request $request)
     {
         //
-      
+        $this->authorizeRole($request);
             $Lessons=ModelsLesson::all();
     
             return $this->checkRequest($Lessons,200); 
@@ -22,7 +21,8 @@ class Lesson extends Controller
         
        
     }
-    public function show($id){
+    public function show(Request $request,$id){
+        $this->authorizeRole($request);
         $lesson=ModelsLesson::find($id);
 
         return $this->checkRequest($lesson,200); 
@@ -30,12 +30,14 @@ class Lesson extends Controller
 
 
     public function Store(LessonRequest $request){
+        $this->authAdminInst($request);
        $validatedData = $request->validated();
        $lesson=ModelsLesson::create($validatedData);
       
        return $this->checkRequest($lesson,201); 
     }
     public function update(LessonRequest $request,$id){
+        $this->authAdminInst($request);
         $validatedData = $request->validated();
         $lesson=ModelsLesson::find($id);
         if($lesson){
@@ -46,7 +48,8 @@ class Lesson extends Controller
         return $this->apiResponce(null, "No lesson with this id ", statusCode: 400); 
 
     }
-    public function destroy($id){
+    public function destroy(Request $request,$id){
+        $this->authAdmin($request);
         $lesson=ModelsLesson::find($id);
         if($lesson){
             ModelsLesson::destroy($id);

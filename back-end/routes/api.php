@@ -10,6 +10,7 @@ use App\Http\Controllers\QuizControllerr;
 use App\Http\Controllers\Review;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +22,20 @@ use App\Http\Controllers\StudentController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 Route::middleware(['auth:sanctum'])->group(function(){
   Route::get('/user',function(Request $request){
     return $request->user();
   });
-  // course controller
-Route::get('courses',[CourseControllerr::class,'index']);
+  // update user 
+
+Route::put('/user/update',[UserController::class, 'update']);
+Route::delete('/user/delete/{id}', [UserController::class, 'deleteUser']);
+
 Route::get('courses/all',[CourseControllerr::class,'all']);
+
+Route::get('courses',[CourseControllerr::class,'index']);
+
 Route::get('courses/show/{id}',action: [CourseControllerr::class,'show']);
 Route::post('courses/add',action: [CourseControllerr::class,'Store']);
 Route::put('courses/update/{id}',action: [CourseControllerr::class,'update']);
@@ -39,7 +47,6 @@ Route::get('course/assig/{id}',  [CourseControllerr::class, 'Assigments']);
 Route::get('course/cert/{id}',  [CourseControllerr::class, 'Certificate']);
 
 //category controller 
-
 Route::get(uri: 'categories',action: [CategoryControllerr::class,'index']);
 Route::get('categories/courses/{id}',[CategoryControllerr::class,'getCoursesOfCategory']);
 Route::get( 'categories/show/{id}',action: [CategoryControllerr::class,'show']);
@@ -86,9 +93,38 @@ Route::get('reviews',[Review::class,'index']);
 
 
 
+           // course controller
+Route::get('courses',[CourseControllerr::class,'index']);
+Route::get('courses/all',[CourseControllerr::class,'all']);
+Route::get('courses/show/{id}',action: [CourseControllerr::class,'show']);
+Route::post('courses/add',action: [CourseControllerr::class,'Store']);
+Route::put('courses/update/{id}',action: [CourseControllerr::class,'update']);
+Route::get('courses/delete/{id}',action: [CourseControllerr::class,'destroy']);
+// category 
+Route::get(uri: 'categories',action: [CategoryControllerr::class,'index']);
+
+// certificate 
+Route::get('certificate',action: [CertificateControllerr::class,'index']);
+Route::get(  'certificate/show/{id}',action: [CertificateControllerr::class,'show']);
+Route::post( 'certificate/add',action: [CertificateControllerr::class,'Store']);
+Route::put('certificate/update/{id}',action: [CertificateControllerr::class,'update']);
+
+
+// Lessons 
+Route::get('lessons',[Lesson::class,'index']);
+Route::get(  'lessons/show/{id}',action: [Lesson::class,'show']);
+Route::post( 'lessons/add',action: [Lesson::class,'Store']);
+Route::put('lessons/update/{id}',action: [Lesson::class,'update']);
+Route::get( 'lessons/delete/{id}',action: [Lesson::class,'destroy']);
+
+// Quizes 
+Route::get('quizes',action: [QuizControllerr::class,'index']);
+Route::post( 'quizes/add',action: [QuizControllerr::class,'Store']);
+Route::put('quizes/update/{id}',action: [QuizControllerr::class,'update']);
+
+
+
 });
-
-
 
 
 

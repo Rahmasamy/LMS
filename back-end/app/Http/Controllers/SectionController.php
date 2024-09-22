@@ -10,9 +10,11 @@ class SectionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    use apiResponseTrait,checkApi,AuthStudentInstAdmin;
+    public function index(Request $request)
     {
         //
+        $this->authorizeRole($request);
         $student = Section::find(1);
        
         echo $student->Lessons()->get();

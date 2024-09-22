@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
+use App\Models\User;
+
+class UserController extends Controller
+{
+    public function update(Request $request)
+    {
+        $user = $request->user(); 
+
+        
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . $user->id, 
+            'password' => 'nullable|min:8|confirmed', 
+        ]);
+
+     
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+
+        
+        if ($request->filled('password')) {
+            $user->password = Hash::make($validated['password']);
+        }
+
+        $user->save(); 
+
+        
+        return response()->json([
+            'message' => 'User updated successfully.',
+            'user' => $user
+        ], 200);
+    }
+    public function deleteUser($id)
+{
+    
+    $user = User::find($id);
+
+    if ($user) {
+        $user->delete();
+
+        return response()->json(['message' => 'User deleted successfully'], 200);
+    } else {
+        return response()->json(['message' => 'User not found'], 404);
+    }
+}
+
+}
