@@ -1,0 +1,125 @@
+.wishlist-tab li a {
+  display: inline-block;
+  background: #e9ecef;
+  color: #685f78;
+  border-radius: 5px;
+  padding: 12px 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.settings-widget {
+  border: 1px solid #e9ecef;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  background: #fff;
+}
+.settings-menu {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+}
+.profile-heading {
+  padding: 24px 24px 19px;
+  border-bottom: 1px solid #e9ecef;
+}
+.profile-heading h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.settings-wrap h1, h2, h3, h4, h5, h6 {
+  color: #002058;
+}
+.checkout-form {
+  padding: 20px;
+}
+.wishlist-tab {
+  margin-bottom: 9px;
+}
+.wishlist-tab li {
+  display: inline-block;
+  margin: 0 15px 15px 0;
+}
+.wishlist-tab li a.active, .wishlist-tab li a:hover {
+  background: #ff4667;
+  color: #fff;
+}
+.tab-content>.active {
+  display: block;
+}
+.review-wrap {
+  border-bottom: 1px solid #e9ecef;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+}
+review-wrap .review-user-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+}
+.review-wrap .reviewer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.review-wrap .review-img {
+  margin-right: 11px;
+}
+.review-wrap .review-img img {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 3px solid #e9ecef;
+}
+.review-wrap .reviewer-info h6 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.review-wrap .reviewer-info h6 a {
+  color: #002058;
+}
+.settings-widget.card-details p {
+  color: #685f78;
+}
+.review-wrap .reviewer-info p {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+.reviewer-rating {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.reviewer-rating i.filled {
+  color: #ffb931;
+}
+.settings-widget.card-details p {
+  color: #685f78;
+}
+.review-action a {
+  color: #685f78;
+  font-weight: 500;
+  text-decoration: none;
+}
+.review-action a+a {
+  margin-left: 15px;
+}
