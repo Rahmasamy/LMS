@@ -1,0 +1,56 @@
+.features {
+  padding: 80px 0;
+}
+
+.boxes-img-container {
+  display: flex;
+}
+
+.boxes-img-container .img-container {
+  width: 950px;
+  max-width: 950px;
+}
+
+.boxes {
+  padding: 90px; /* Adjusted padding */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px; /* Set gap to 0 to remove space between boxes */
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  border: 1px solid rgb(209, 209, 209);
+  width: 45%;
+  border-radius: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 0; /* Ensure no margin */
+  padding: 20px;
+}
+
+.icon-title {
+  display: flex;
+  gap: 3px;
+}
+
+.icon-title img {
+  width: 60px;
+  max-width: 60px;
+}
+
+.icon-title p {
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  color: rgb(148, 146, 146);
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.img-container img {
+  max-width: 100%;
+}

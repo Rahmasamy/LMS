@@ -19,10 +19,16 @@ return new class extends Migration
             $table->string('end_date',25)->nullable();
             $table->string('status',1);
             $table->unsignedBigInteger('category_id')->default(1);
-     
+            $table->unsignedBigInteger('instructor_id');
+
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->string('instructor_id',10);
+             $table->foreign('instructor_id')->references('id')->on('instructors')->onDelete('cascade'); 
+            
+            $table->string('image_path')->default('https://media.licdn.com/dms/image/D4D12AQH5WGa2Z9Ieiw/article-cover_image-shrink_720_1280/0/1690880909231?e=2147483647&v=beta&t=N0FOuFcdoa21wLDsvF0-Ydx4gQXtZ4RqxcptVQRb9vI');
+            $table->decimal('rating', 8, 2)->nullable(); // Assuming rating is a decimal value, adjust precision and scale as needed
             $table->timestamps();
+
+
         });
     }
 
