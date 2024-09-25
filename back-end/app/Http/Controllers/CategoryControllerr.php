@@ -10,27 +10,29 @@ use Illuminate\Http\Request;
 class CategoryControllerr extends Controller
 {
     //
-    use apiResponseTrait;
-    use checkApi;
-    public function index(){
-      
+    use apiResponseTrait,checkApi,AuthStudentInstAdmin;
+    public function index(Request $request){
+        $this->authorizeRole($request);
         $categories=Category::all();
 
         return $this->checkRequest($categories,200); 
       
     }
   
-    public function show($id){
+    public function show(Request $request,$id){
+        $this->authorizeRole($request);
         $category=Category::find($id);
         return $this->checkRequest($category,200); 
     }
 
      public function Store(CategoryRequest $request){
+        $this->authAdminInst($request);
        $validatedData = $request->validated();
        $category=Category::create($validatedData);
        return $this->checkRequest($category,201); 
     }
     public function update(CategoryRequest $request,$id){
+        $this->authAdminInst($request);
         $validatedData = $request->validated();
         $category=Category::find($id);
         if($category){
@@ -41,7 +43,8 @@ class CategoryControllerr extends Controller
         return $this->apiResponce(null, "No Category with this id ", statusCode: 400); 
 
     }
-    public function destroy($id){
+    public function destroy(Request $request,$id){
+        $this->authAdmin($request);
         $category=Category::find($id);
         if($category){
             Category::destroy($id);
@@ -50,7 +53,8 @@ class CategoryControllerr extends Controller
         return $this->apiResponce(null,"No Category with that Id",404);
       
     }
-    public function getCoursesOfCategory($id){
+    public function getCoursesOfCategory(Request $request,$id){
+        $this->authorizeRole($request);
         $category = Category::find($id);
 
         return response()->json($category->Courses);

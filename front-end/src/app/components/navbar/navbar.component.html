@@ -1,4 +1,4 @@
-<nav>
+<!-- <nav>
   <div class="parent-nav">
     <div class="nav-left">
       <img src="../../assets/img/logo.svg" width="150px" alt="" />
@@ -21,6 +21,75 @@
           <a routerLink="">Blog</a>
         </li>
       </ul>
+    </div>
+    <div class="nav-right">
+      <div class="change-color">U</div>
+      <a routerLink="signin" class="Signin">Signin</a>
+      <a routerLink="signup" class="Signup">Signup</a>
+    </div>
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg min-parent-nav">
+  <div class="container-fluid parent-nav">
+    <div class="nav-left">
+      <img src="../../assets/img/logo.svg" width="150px" alt="" />
+    </div>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse center-links" id="navbarNavAltMarkup">
+      <div
+        class="navbar-nav w-75 d-flex align-items-center justify-content-between"
+      >
+        <a class="nav-link active" aria-current="page" routerLink="">Home</a>
+        <a class="nav-link instructor">
+          Instructor
+
+          <div class="list-instructors d-none">
+            <a class="nav-link instructor" routerLink="instructor"
+              ><span>instructor</span></a
+            >
+            <a routerLink="dashboard"><span>Dashboard</span></a>
+            <a href=""><span>instructor</span></a>
+            <a href=""><span>instructor</span></a>
+            <a href=""><span>instructor</span></a>
+            <a href=""><span>instructor</span></a>
+            <a href=""><span>instructor</span></a>
+            <a href=""><span>instructor</span></a>
+            <a href=""><span>instructor</span></a>
+            <a href=""><span>instructor</span></a>
+          </div>
+        </a>
+
+        <a class="nav-link instructor" routerLink="student"
+          >student
+
+          <div class="list-instructors d-none">
+            <a href=""><span>instructor</span></a>
+
+            <a href=""><span>ahmed hussein </span></a>
+            <a href=""><span>ahmed hussein </span></a>
+            <a href=""><span>ahmed hussein </span></a>
+            <a href=""><span>ahmed hussein </span></a>
+            <a href=""><span>ahmed hussein </span></a>
+            <a href=""><span>ahmed hussein </span></a>
+            <a href=""><span>ahmed hussein </span></a>
+            <a href=""><span>ahmed hussein </span></a>
+          </div>
+        </a>
+        <a class="nav-link" routerLink="student">Pages</a>
+        <a class="nav-link" routerLink="student">Blog</a>
+      </div>
     </div>
     <div class="nav-right">
       <div class="change-color">U</div>

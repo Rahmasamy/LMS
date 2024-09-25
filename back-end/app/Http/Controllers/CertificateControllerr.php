@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 class CertificateControllerr extends Controller
 {
     //
-    use apiResponseTrait;
-    use checkApi;
-    public function index()
+    use apiResponseTrait,checkApi,AuthStudentInstAdmin;
+    public function index(Request $request)
     {
         //
+        $this->authorizeRole($request);
         $certificates=Certificate::all();
 
         return $this->checkRequest($certificates,200); 
@@ -21,7 +21,8 @@ class CertificateControllerr extends Controller
        
        
     }
-    public function show($id){
+    public function show(Request $request,$id){
+        $this->authorizeRole($request);
         $certificates=Certificate::find($id);
 
         return $this->checkRequest($certificates,200); 
@@ -29,11 +30,13 @@ class CertificateControllerr extends Controller
 
 
     public function Store(CertificateRequest $request){
+        $this->authAdminInst($request);
        $validatedData = $request->validated();
        $certificate=Certificate::create($validatedData);
        return $this->checkRequest($certificate,201); 
     }
     public function update(CertificateRequest $request,$id){
+        $this->authAdminInst($request);
         $validatedData = $request->validated();
         $certificates=Certificate::find($id);
         if($certificates){
@@ -44,7 +47,8 @@ class CertificateControllerr extends Controller
         return $this->apiResponce(null, "No Certificate with this id ", statusCode: 400); 
 
     }
-    public function destroy($id){
+    public function destroy(Request $request,$id){
+        $this->authAdmin($request);
         $certificates=Certificate::find($id);
         if($certificates){
             Certificate::destroy($id);

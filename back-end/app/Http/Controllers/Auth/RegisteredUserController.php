@@ -26,25 +26,34 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'image_path' => ['mimes:png,jpg,jpeg','max:10048'],
         ]);
+    
+        
+        $newUserImage = time() . '-' . $request->name . '.' . $request->image_path->extension();
 
+        echo($newUserImage);
+        $request->image_path->move(public_path('images'), $newUserImage);
+    
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'image_path' => $newUserImage
         ]);
-
+    
+        
         event(new Registered($user));
-      
+    
+        
         Auth::login($user);
-        $token=$user->createToken(name: 'api-token');
-
+        $token = $user->createToken('api-token');
+    
+        
         return response()->json([
-            'user'=> $user,
+            'user' => $user,
             'token' => $token->plainTextToken
-
-       ] );
-       //    "token": "2|61eQbH8fJFyHZI0ZqqONzTx8L0ht0DqjtUoLgAWkfa3d08b0"
-
+        ]);
     }
+    
 }
