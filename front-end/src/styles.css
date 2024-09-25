@@ -11,3 +11,14 @@
   box-sizing: border-box;
   font-family: sans-serif ;
 }
+.all-category .btn-primary {
+  color: #392c7d;
+  border: 3px solid #b4a7f5;
+  backdrop-filter: blur(151.39px);
+  border-radius: 46.9159px;
+  background: 0 0;
+  border-radius: 46.9159px;
+  min-width: 150px;
+  padding: 10px 15px;
+  font-weight: 500;
+}

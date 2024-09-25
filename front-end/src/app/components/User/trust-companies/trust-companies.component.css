@@ -1,0 +1,30 @@
+.trusted-div {
+  display: flex;
+  flex-direction: column;
+  padding: 80px 0;
+  justify-content: center;
+  align-items: center;
+}
+.trusted-div span {
+  color: #f66962;
+  font-size: 18px;
+  font-weight: 700;
+  padding-bottom: 18px;
+  display: block;
+  letter-spacing: .9px;
+}
+.trusted-div h2 {
+  font-size: 36px;
+  margin-bottom: 0;
+  font-weight: 700;
+  color: #0b0b0b;
+  letter-spacing: .9px;
+}
+.trusted-img {
+  padding: 80px 0;
+  display: flex;
+  gap: 45px;
+  flex-wrap: wrap;
+
+}
+

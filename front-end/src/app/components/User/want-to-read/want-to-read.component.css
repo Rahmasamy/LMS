@@ -1,0 +1,42 @@
+.want-toread {
+  padding: 80px 0;
+  background-image: url('../../../../assets/img/banner.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+.img-content {
+  display: flex;
+  gap: 20px;
+}
+
+.img-container img {
+  max-width: 100%;
+}
+.share-us h2{
+  color: #1f1f1f;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.share-us p {
+  font-size: 18px;
+  color: #685f78;
+  margin: 30px 0;
+}
+
+.course-list li {
+  list-style: none;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.course-list li i {
+  color: #f66962;
+  margin-right: 15px;
+}
+.fa-solid, .fas {
+  font-weight: 900;
+}
