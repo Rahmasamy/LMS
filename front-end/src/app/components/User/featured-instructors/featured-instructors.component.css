@@ -1,0 +1,80 @@
+.featured-instructors {
+  text-align: center;
+  padding: 30px 0;
+}
+
+.instructor-heading h2 {
+  font-size: 36px;
+  margin-bottom: 0;
+  font-weight: 700;
+  color: #0b0b0b;
+  letter-spacing: .9px;
+  margin-bottom: 25px;
+}
+
+.instructor-heading p {
+  font-size: 1rem;
+  color: #888;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+}
+
+.slider {
+  display: flex;
+  justify-content: center;
+  gap: 13px;
+  margin-top: 50px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+.card-img {
+  background-color: #F45B69; /* Same background as in the image */
+  padding: 20px;
+}
+
+.card-img img {
+  border-radius: 50%; /* To make the image rounded */
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-body .heading h3 {
+  margin: 15px 0 5px 0;
+  font-size: 1.2rem;
+}
+
+.card-body .heading p {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.card-body .students {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #888;
+}
+
+.card-body .students i {
+  margin-right: 8px;
+  color: #f45b69;
+}
+.students p {
+  margin-top: 15px;
+}
