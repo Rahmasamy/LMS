@@ -20,39 +20,41 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): JsonResponse
+     public function store(Request $request): JsonResponse
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'image_path' => ['mimes:png,jpg,jpeg','max:10048'],
-        ]);
-    
-        
-        $newUserImage = time() . '-' . $request->name . '.' . $request->image_path->extension();
 
-        echo($newUserImage);
-        $request->image_path->move(public_path('images'), $newUserImage);
-    
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'image_path' => $newUserImage
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'image_path' => ['nullable', 'mimes:png,jpg,jpeg', 'max:10048'],  // Allow image to be nullable
         ]);
     
-        
+
+        if ($request->hasFile('image_path')) {
+            $newUserImage = time() . '-' . $request->name . '.' . $request->image_path->extension();
+            $request->image_path->move(public_path('images'), $newUserImage);
+        } else {
+            $newUserImage = 'default.jpg'; 
+        }
+    
+
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'image_path' => $newUserImage,
+        ]);
+    
         event(new Registered($user));
     
-        
         Auth::login($user);
-        $token = $user->createToken('api-token');
     
+        $token = $user->createToken('api-token');
         
         return response()->json([
             'user' => $user,
-            'token' => $token->plainTextToken
+            'token' => $token->plainTextToken,
         ]);
     }
     
