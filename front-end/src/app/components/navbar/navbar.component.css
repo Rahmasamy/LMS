@@ -1,9 +1,9 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-nav{
+.min-parent-nav {
   position: fixed;
   top: 0;
   background-color: #b4a7f5;
@@ -15,13 +15,11 @@ nav{
   display: flex;
   padding: 10px 0;
   width: 92%;
-  margin:0 auto ;
-
+  margin: 0 auto;
 }
 
 .parent-nav div {
   width: calc(100% / 3);
-  /*    */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,7 +29,6 @@ nav{
 }
 .center-links {
   width: 50% !important;
-  /*    */
 }
 .parent-nav .center-links ul {
   display: flex;
@@ -41,18 +38,16 @@ nav{
   width: 90%;
 }
 
-
 .parent-nav .center-links ul a {
   display: inline-block;
   padding: 1rem;
-  /*    */
   text-decoration: none;
   position: relative;
   overflow: hidden;
-  transition: all .4s linear;
+  transition: all 0.4s linear;
 }
 
-.parent-nav .center-links ul a::after{
+.parent-nav .center-links ul a::after {
   position: absolute;
   content: " ";
   width: 100%;
@@ -62,7 +57,7 @@ nav{
   bottom: -10px;
 }
 
-.parent-nav .center-links ul a:hover::after{
+.parent-nav .center-links ul a:hover::after {
   position: absolute;
   content: " ";
   width: 100%;
@@ -80,11 +75,9 @@ nav{
 a {
   display: inline-block;
   padding: 1rem;
-  /*    */
   text-decoration: none;
 }
 .nav-right a {
-  /*    */
   width: 30%;
   text-align: center;
   border-radius: 30px;
@@ -99,7 +92,6 @@ a {
   cursor: pointer;
 }
 .Signin {
-  /* border: 3px solid #b4a7f5; */
   background-color: #fff;
   transition: background-color 0.4s linear;
 }
@@ -111,7 +103,6 @@ a {
 
 .Signup {
   border: 3px solid #b4a7f5;
-  /* transition: background-color .4s linear; */
 }
 .Signup:hover {
   background-color: #f6697b;
@@ -119,5 +110,52 @@ a {
   border: 3px solid #f6697b;
   transition: background-color 0.4s linear;
 }
-/* end navbar */
+.instructor {
+  position: relative;
+}
 
+.list-instructors {
+  position: absolute;
+  width: 200px !important;
+  border: 1px solid #ccc;
+  top: 100%;
+  left: 0;
+
+  display: none;
+  background-color: #fff;
+  z-index: 1001;
+  border-radius: 0 0 10px 10px;
+}
+
+.instructor:hover .list-instructors {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.list-instructors a {
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  width: 100%;
+}
+.list-instructors a span {
+  display: inline-block;
+  height: 100%;
+  text-align: left;
+  width: 100%;
+
+  color: #000 ;
+}
+.list-instructors a:hover span {
+  padding-left: 10px;
+  color: #f66962;
+
+  transition: padding-left 0.2s linear;
+}
+
+.list-instructors a:last-child {
+  border-bottom: none;
+}
+
+.list-instructors a:hover {
+  background-color: #f0f0f0;
+}
