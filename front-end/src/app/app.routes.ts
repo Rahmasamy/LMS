@@ -11,22 +11,48 @@ import { InstructorDashbordComponent } from './components/component-Instructors/
 import { InstructoerWishlistComponent } from './components/component-Instructors/instructoer-wishlist/instructoer-wishlist.component';
 import { InstructorReviewsComponent } from './components/component-Instructors/instructor-reviews/instructor-reviews.component';
 import { InstructorQuizComponent } from './components/component-Instructors/instructor-quiz/instructor-quiz.component';
+import { InstrucorEnrolledComponent } from './components/component-Instructors/instrucor-enrolled/instrucor-enrolled.component';
+import { InstrutorQuestionAnswerComponent } from './components/component-Instructors/instrutor-question-answer/instrutor-question-answer.component';
+import { InstrutorReferralsComponent } from './components/component-Instructors/instrutor-referrals/instrutor-referrals.component';
+import { InstrutorCoursesComponent } from './components/component-Instructors/instrutor-courses/instrutor-courses.component';
+import { InstrutorAnnouncementComponent } from './components/component-Instructors/instrutor-announcement/instrutor-announcement.component';
+import { NotificationsComponent } from './components/pages/notifications/notifications.component';
+import { WichlistComponent } from './components/pages/wichlist/wichlist.component';
+import { CourseComponent } from './components/pages/course/course.component';
+import { CourseDetailsComponent } from './components/pages/course-details/course-details.component';
+import { ErrorsComponent } from './components/pages/errors/errors.component';
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'instructor', component: InstractorComponent },
   {
-    path: 'dashboard',
+    path: 'instructor-dashboard',
     component: DashbordMainInstructorComponent,
     children: [
       { path: '', component: InstructorDashbordComponent },
-      { path: 'dashboard', component: InstructorDashbordComponent },
-      { path: 'profileInstructor', component: ProfileInstructorComponent },
-      { path: 'wishlist', component: InstructoerWishlistComponent },
-      { path: 'reviews', component: InstructorReviewsComponent },
-      { path: 'quiz', component: InstructorQuizComponent },
+      { path: 'instructor-dashboard', component: InstructorDashbordComponent },
+      { path: 'instructor-profile', component: ProfileInstructorComponent },
+      { path: 'instructor-wishlist', component: InstructoerWishlistComponent },
+      {
+        path: 'instructor-enrolledcourse',
+        component: InstrucorEnrolledComponent,
+      },
+      {
+        path: 'instructor-qustions-answer',
+        component: InstrutorQuestionAnswerComponent,
+      },
+      { path: 'instructor-referral', component: InstrutorReferralsComponent },
+      { path: 'instructor-reviews', component: InstructorReviewsComponent },
+      { path: 'instructor-quiz', component: InstructorQuizComponent },
+      { path: 'instructor-course', component: InstrutorCoursesComponent },
+      { path: 'instructor-announcement', component: InstrutorAnnouncementComponent },
     ],
   },
   { path: 'student', component: StudentComponent },
+  { path: 'notification', component: NotificationsComponent },
+  { path: 'wishlist', component: WichlistComponent },
+  { path: 'courses', component: CourseComponent },
+  { path: 'courses/course-details', component: CourseDetailsComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
+  { path: '**', component: ErrorsComponent },
 ];
