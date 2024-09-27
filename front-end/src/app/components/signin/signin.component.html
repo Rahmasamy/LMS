@@ -10,23 +10,23 @@
             </div>
           </div>
           <h1>Sign up</h1>
-          <form action="login.html">
-            <div class="input-block">
+          <form [formGroup]="dataUser" (ngSubmit)="onSubmitLogin()">
+            <!-- <div class="input-block">
               <label class="form-control-label">Full Name</label>
               <input
                 type="text"
                 class="form-control"
                 placeholder="Enter your Full Name"
-                fdprocessedid="xhzll2"
+                formControlName="name"
               />
-            </div>
+            </div> -->
             <div class="input-block">
               <label class="form-control-label">Email</label>
               <input
                 type="email"
                 class="form-control"
                 placeholder="Enter your email address"
-                fdprocessedid="qdswp"
+                formControlName="email"
               />
             </div>
             <div class="input-block">
@@ -36,20 +36,20 @@
                   type="password"
                   class="form-control pass-input"
                   placeholder="Enter your password"
-                  fdprocessedid="gpiuad"
+                  formControlName="password"
                 />
-                <span class="toggle-password feather-eye"></span>
-                <span class="pass-checked"><i class="feather-check"></i></span>
+                <!-- <span class="toggle-password feather-eye"></span>
+                <span class="pass-checked"><i class="feather-check"></i></span> -->
               </div>
-              <div class="password-strength" id="passwordStrength">
+              <!-- <div class="password-strength" id="passwordStrength">
                 <span id="poor"></span>
                 <span id="weak"></span>
                 <span id="strong"></span>
                 <span id="heavy"></span>
-              </div>
-              <div id="passwordInfo"></div>
+              </div> -->
+              <!-- <div id="passwordInfo"></div> -->
             </div>
-            <div class="form-check remember-me">
+            <!-- <div class="form-check remember-me">
               <label class="form-check-label mb-0">
                 <input
                   class="form-check-input"
@@ -60,13 +60,9 @@
                 <a href="term-condition.html">Terms of Service</a> and
                 <a href="privacy-policy.html">Privacy Policy.</a>
               </label>
-            </div>
+            </div> -->
             <div class="d-grid">
-              <button
-                class="btn btn-primary btn-start"
-                type="submit"
-                fdprocessedid="chlgao"
-              >
+              <button class="btn btn-primary btn-start" type="submit">
                 login Account
               </button>
             </div>

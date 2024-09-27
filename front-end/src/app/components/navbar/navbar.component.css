@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 .min-parent-nav {
-  position: fixed;
+  position: sticky;
   top: 0;
   background-color: #b4a7f5;
   left: 0;
