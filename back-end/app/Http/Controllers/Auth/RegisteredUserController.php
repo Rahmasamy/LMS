@@ -24,7 +24,9 @@ class RegisteredUserController extends Controller
     {
 
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'phone_number'=> ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'image_path' => ['nullable', 'mimes:png,jpg,jpeg', 'max:10048'],  // Allow image to be nullable
@@ -40,7 +42,9 @@ class RegisteredUserController extends Controller
     
 
         $user = User::create([
-            'name' => $validated['name'],
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
+            'phone_number' => $validated['phone_number'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
             'image_path' => $newUserImage,
