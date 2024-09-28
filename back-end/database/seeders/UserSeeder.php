@@ -22,9 +22,9 @@ class UserSeeder extends Seeder
        
         // Create a user and assign a role
         $user = User::create([
-            'name' => 'Omar',
-            'email' => 'omar@eeeee.eeee',
-            'password' => bcrypt('123123123'), // Use a secure password
+            'name' => 'Rahma Samy',
+            'email' => 'rahmasamy949@gmail.com',
+            'password' => bcrypt('Rahmasamy123#$'), // Use a secure password
         ]);
 
         // Assign role to the user

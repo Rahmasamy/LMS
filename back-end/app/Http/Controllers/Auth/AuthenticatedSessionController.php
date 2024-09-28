@@ -8,7 +8,15 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
+
+use App\Mail\TestMail;
+use App\Mail\WelcomeMail;
+use Exception;
 use App\Models\User;
+
 
 class AuthenticatedSessionController extends Controller
 {
@@ -37,6 +45,8 @@ class AuthenticatedSessionController extends Controller
         $user->tokens()->delete();
         $token = $user->createToken('api-token');
 
+       
+
         // Create a new token for the user
         $token = $user->createToken('api-token');
 
@@ -47,6 +57,7 @@ class AuthenticatedSessionController extends Controller
             'permissions' => $user->getAllPermissions(),
             'token' => $token->plainTextToken,
         ], 200);
+
     }
 
 
