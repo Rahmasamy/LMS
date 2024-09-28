@@ -16,7 +16,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\NotificationController;
 use App\Models\User;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +29,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    if ($request->user()) {
-        return response()->json(['message' => 'User is authenticated.']);
-    }
-    return response()->json(['error' => 'User not authenticated.'], 403);
+  if ($request->user()) {
+    return response()->json(['message' => 'User is authenticated.']);
+  }
+  return response()->json(['error' => 'User not authenticated.'], 403);
 })->middleware(['auth:sanctum', 'signed']);
 
 Route::post('/email/verification-notification', function (Request $request) {
@@ -44,7 +44,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
- 
+
   Route::get('/user', function (Request $request) {
     return $request->user();
   });
@@ -55,27 +55,27 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::put('/user/update', [UserController::class, 'update']);
   Route::delete('/user/delete/{id}', [UserController::class, 'deleteUser']);
 
- 
 
 
-// Email Verification Handler
 
-//  Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+  // Email Verification Handler
+
+  //  Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
 //   $request->fulfill();
 
-//   return response()->json(['message' => 'Email verified successfully!']);
+  //   return response()->json(['message' => 'Email verified successfully!']);
 // })->middleware(['auth:sanctum', 'signed'])->name('verification.verify');
 
-// // Resend verification email
+  // // Resend verification email
 // Route::post('/email/verification-notification', function (Request $request) {
 //   $request->user()->sendEmailVerificationNotification();
 //   return response()->json(['message' => 'Verification link sent.']);
 // })->middleware(['throttle:6,1'])->name('verification.send');
 
-// Route::post('/email/verification-notification', function (Request $request) {
+  // Route::post('/email/verification-notification', function (Request $request) {
 //   $request->user()->sendEmailVerificationNotification();
 
-//   return response()->json(['message' => 'Verification link sent!']);
+  //   return response()->json(['message' => 'Verification link sent!']);
 // })->middleware(['auth:sanctum', 'throttle:6,1'])->name('verification.send');
 
 
@@ -176,20 +176,20 @@ Route::middleware(['auth:sanctum'])->group(function () {
   //Notifications 
 
 
-Route::get('/notifications', [NotificationController::class, 'getNotifications']);
-Route::get('/notifications/unread', [NotificationController::class, 'getUnreadNotifications']);
-Route::get('/notifications/{id}', [NotificationController::class, 'getNotificationDetails']);
-Route::post('/notifications/{id}/read', [NotificationController::class, 'markAsRead']);
+  Route::get('/notifications', [NotificationController::class, 'getNotifications']);
+  Route::get('/notifications/unread', [NotificationController::class, 'getUnreadNotifications']);
+  Route::get('/notifications/{id}', [NotificationController::class, 'getNotificationDetails']);
+  Route::post('/notifications/{id}/read', [NotificationController::class, 'markAsRead']);
 
 
-// Instructor use App\Http\Controllers\InstructorController;
-Route::get( 'instructors',[InstructorController::class, 'index'] );
-Route::get('instructors/show/{id}', action: [InstructorController::class, 'show']);
-Route::post('instructors/add', action: [InstructorController::class, 'Store']);
-Route::put('instructors/update/{id}', action: [InstructorController::class, 'update']);
-Route::get('instructors/delete/{id}', action: [InstructorController::class, 'destroy']);
-Route::get('instructors/{id}/categories', [InstructorController::class, 'categories']);
-Route::get('instructors/{id}/courses', [InstructorController::class, 'courses']);
+  // Instructor use App\Http\Controllers\InstructorController;
+  Route::get('instructors', [InstructorController::class, 'index']);
+  Route::get('instructors/show/{id}', action: [InstructorController::class, 'show']);
+  Route::post('instructors/add', action: [InstructorController::class, 'Store']);
+  Route::put('instructors/update/{id}', action: [InstructorController::class, 'update']);
+  Route::get('instructors/delete/{id}', action: [InstructorController::class, 'destroy']);
+  Route::get('instructors/{id}/categories', [InstructorController::class, 'categories']);
+  Route::get('instructors/{id}/courses', [InstructorController::class, 'courses']);
 
 
 });
