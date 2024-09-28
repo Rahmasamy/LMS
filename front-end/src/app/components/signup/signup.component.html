@@ -10,14 +10,15 @@
             </div>
           </div>
           <h1>Sign up</h1>
-          <form action="login.html">
+          <form [formGroup]="dataUser" (ngSubmit)="onSubmit()">
             <div class="input-block">
               <label class="form-control-label">Full Name</label>
               <input
                 type="text"
                 class="form-control"
                 placeholder="Enter your Full Name"
-                fdprocessedid="xhzll2"
+                formControlName="name"
+                required
               />
             </div>
             <div class="input-block">
@@ -26,28 +27,38 @@
                 type="email"
                 class="form-control"
                 placeholder="Enter your email address"
-                fdprocessedid="qdswp"
+                formControlName="email"
+                required
               />
             </div>
+
             <div class="input-block">
               <label class="form-control-label">Password</label>
-              <div class="pass-group" id="passwordInput">
+              <div class="pass-group">
                 <input
                   type="password"
                   class="form-control pass-input"
                   placeholder="Enter your password"
-                  fdprocessedid="gpiuad"
+                  formControlName="password"
+                  required
                 />
                 <span class="toggle-password feather-eye"></span>
                 <span class="pass-checked"><i class="feather-check"></i></span>
               </div>
-              <div class="password-strength" id="passwordStrength">
-                <span id="poor"></span>
-                <span id="weak"></span>
-                <span id="strong"></span>
-                <span id="heavy"></span>
+            </div>
+            <div class="input-block">
+              <label class="form-control-label">Confirm Password</label>
+              <div class="pass-group">
+                <input
+                  type="password"
+                  class="form-control pass-input"
+                  placeholder="Confirm your password"
+                  formControlName="password_confirmation"
+                  required
+                />
+                <span class="toggle-password feather-eye"></span>
+                <span class="pass-checked"><i class="feather-check"></i></span>
               </div>
-              <div id="passwordInfo"></div>
             </div>
             <div class="form-check remember-me">
               <label class="form-check-label mb-0">
@@ -55,18 +66,16 @@
                   class="form-check-input"
                   type="checkbox"
                   name="remember"
+                  required
                 />
                 I agree to the
                 <a href="term-condition.html">Terms of Service</a> and
                 <a href="privacy-policy.html">Privacy Policy.</a>
               </label>
             </div>
+
             <div class="d-grid">
-              <button
-                class="btn btn-primary btn-start"
-                type="submit"
-                fdprocessedid="chlgao"
-              >
+              <button class="btn btn-primary btn-start" type="submit">
                 Create Account
               </button>
             </div>
