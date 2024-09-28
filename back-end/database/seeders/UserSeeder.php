@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         $adminRole = Role::firstOrCreate(['name' => 'admin']);
         $instructorRole = Role::firstOrCreate(['name' => 'instructor']);
         $studentRole = Role::firstOrCreate(['name' => 'student']);
-       
+
 
 
         // Add 2 Admins
@@ -25,9 +25,9 @@ class UserSeeder extends Seeder
             'name' => 'Gehad',
             'email' => 'gehadgallo@gmail.com',
             'password' => bcrypt('123123123'), // Use a secure password
+        ]);
+        $admin1->assignRole($adminRole);
 
-        $admin1->assignRole($adminRole); 
-          
 
         $admin2 = User::create([
             'name' => 'Ahmed',
@@ -119,63 +119,63 @@ class UserSeeder extends Seeder
         ]);
 
         $instructor2Addition = Instructor::create([
-            'user_id' => $instructor2->id,  
+            'user_id' => $instructor2->id,
             'rating' => '4.0',
             'role_id' => 2
         ]);
 
 
         $instructor3Addition = Instructor::create([
-            'user_id' => $instructor3->id,  
+            'user_id' => $instructor3->id,
             'rating' => '1.0',
             'role_id' => 2
         ]);
 
 
         $instructor4Addition = Instructor::create([
-            'user_id' => $instructor4->id,  
+            'user_id' => $instructor4->id,
             'rating' => '4.0',
             'role_id' => 2
         ]);
 
 
         $instructor5Addition = Instructor::create([
-            'user_id' => $instructor5->id,  
+            'user_id' => $instructor5->id,
             'rating' => '3.0',
             'role_id' => 2
         ]);
 
 
         $instructor6Addition = Instructor::create([
-            'user_id' => $instructor6->id,  
+            'user_id' => $instructor6->id,
             'rating' => '4.0',
             'role_id' => 2
         ]);
 
 
         $instructor7Addition = Instructor::create([
-            'user_id' => $instructor7->id,  
+            'user_id' => $instructor7->id,
             'rating' => '1.5',
             'role_id' => 2
         ]);
 
 
         $instructor8Addition = Instructor::create([
-            'user_id' => $instructor8->id,  
+            'user_id' => $instructor8->id,
             'rating' => '5.0',
             'role_id' => 2
         ]);
 
 
         $instructor9Addition = Instructor::create([
-            'user_id' => $instructor9->id,  
+            'user_id' => $instructor9->id,
             'rating' => '3.0',
             'role_id' => 2
         ]);
 
 
         $instructor10Addition = Instructor::create([
-            'user_id' => $instructor10->id,  
+            'user_id' => $instructor10->id,
             'rating' => '2.0',
             'role_id' => 2
         ]);
