@@ -42,7 +42,7 @@ p {
 }
 .notify-item {
   background: #fff;
-  backdrop-filter: blur(17px);
+  /* backdrop-filter: blur(17px); */
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;

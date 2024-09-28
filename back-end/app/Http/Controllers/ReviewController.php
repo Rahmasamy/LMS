@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\Review as ModelsReview;
 use Illuminate\Http\Request;
 
-class Review extends Controller
+class ReviewController extends Controller
 {
     //
     use apiResponseTrait, checkApi, AuthStudentInstAdmin;

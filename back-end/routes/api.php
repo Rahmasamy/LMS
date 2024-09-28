@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseControllerr;
 use App\Http\Controllers\Lesson;
 use App\Http\Controllers\QuizControllerr;
-use App\Http\Controllers\Review;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
@@ -22,6 +22,7 @@ use App\Http\Controllers\UserController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 
 Route::middleware(['auth:sanctum'])->group(function () {
   Route::get('/user', function (Request $request) {
@@ -89,11 +90,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 
   //Review 
-  Route::get('reviews', [Review::class, 'index']);
-  Route::get('reviews/show/{id}', [Review::class, 'show']);
-  Route::post('reviews/add', [Review::class, 'store']);
-  Route::get('reviews/{id}', [Review::class, 'update']);
-  Route::get('reviews/delete/{id}', [Review::class, 'destroy']);
+  Route::get('reviews', [ReviewController::class, 'index']);
+  Route::get('reviews/show/{id}', [ReviewController::class, 'show']);
+  Route::post('reviews/add', [ReviewController::class, 'store']);
+  Route::get('reviews/{id}', [ReviewController::class, 'update']);
+  Route::get('reviews/delete/{id}', [ReviewController::class, 'destroy']);
 
 
 
@@ -129,6 +130,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 
 });
+
 
 
 
