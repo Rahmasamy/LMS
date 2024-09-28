@@ -43,6 +43,17 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 
 
+////////////////////////////////////////////////////////////////
+////////// Routes that will available for visitors /////////////
+
+Route::get('/all-categories', [CategoryControllerr::class, 'getAllCategories']);
+Route::get('/all-courses', [CourseControllerr::class, 'getAllCourses']);
+
+////////////////////////////////////////////////////////////////
+
+
+
+
 Route::middleware(['auth:sanctum'])->group(function () {
 
   Route::get('/user', function (Request $request) {
