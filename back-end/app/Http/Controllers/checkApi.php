@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+
 trait checkApi{
     use apiResponseTrait;
 
@@ -14,7 +15,7 @@ trait checkApi{
         // Add other status messages as needed
     ];
 }
-
+/*
 public function checkRequest($data, $statusCode)
 {
     $statusMessages = $this->getStatusMessages();
@@ -51,5 +52,26 @@ public function checkRequest($data, $statusCode)
    
     return $this->apiResponce(null, "Not access", $stat);
 }
+*/
 
+public function checkRequest($data, $statusCode)
+    {
+        // Get the appropriate status message
+        $statusMessages = $this->getStatusMessages();
+        $msg = 'Unexpected status code.';
+
+        if (array_key_exists($statusCode, $statusMessages)) {
+            $msg = $statusMessages[$statusCode];
+        }
+
+        // If the data is empty or null, return a 404 or appropriate error message
+        if (is_null($data) || (is_object($data) && $data->isEmpty())) {
+            return $this->apiResponce(null, 'No data found', 404);
+        }
+
+        // Return the response with the actual data and status code
+        return $this->apiResponce($data, [$msg], $statusCode);
+    }  
 }
+
+
