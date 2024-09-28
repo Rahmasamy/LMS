@@ -12,6 +12,17 @@ class CourseControllerr extends Controller
 {
     //
     use apiResponseTrait,checkApi,AuthStudentInstAdmin;
+
+
+    public function getAllCourses(Request $request)
+    {
+        $perPage = $request->input('per_page', 10);
+        $courses = Course::paginate($perPage);
+
+        return $this->checkRequest($courses,200); 
+    }
+
+
     public function index()
     {
         //
