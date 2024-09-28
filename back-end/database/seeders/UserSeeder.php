@@ -99,4 +99,3 @@ class UserSeeder extends Seeder
         $student2->assignRole($studentRole);
     }
 }
-

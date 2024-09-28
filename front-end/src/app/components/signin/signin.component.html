@@ -9,7 +9,7 @@
               <a routerLink="/">Back to Home</a>
             </div>
           </div>
-          <h1>Sign up</h1>
+          <h1>Sign In</h1>
           <form [formGroup]="dataUser" (ngSubmit)="onSubmitLogin()">
             <!-- <div class="input-block">
               <label class="form-control-label">Full Name</label>
@@ -20,7 +20,9 @@
                 formControlName="name"
               />
             </div> -->
+            <p style="color: red;">{{error}}</p>
             <div class="input-block">
+
               <label class="form-control-label">Email</label>
               <input
                 type="email"
@@ -65,6 +67,7 @@
               <button class="btn btn-primary btn-start" type="submit">
                 login Account
               </button>
+
             </div>
           </form>
         </div>

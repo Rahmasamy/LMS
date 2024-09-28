@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryControllerr;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
 
