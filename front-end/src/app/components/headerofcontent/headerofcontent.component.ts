@@ -10,6 +10,6 @@ import { Component ,input,Input} from '@angular/core';
 export class HeaderofcontentComponent {
   @Input() headingName: string = '';
   @Input() subHeading: string = '';
-  @Input() All: string = '';
+  @Input() all: string = '';
   @Input() paragraph:string=''
 }

@@ -26,7 +26,9 @@ class RegisteredUserController extends Controller
         $validated = $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'phone_number'=> ['required'],
+
+            'phone_number' => ['required', 'string', 'max:255'],
+
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'image_path' => ['nullable', 'mimes:png,jpg,jpeg', 'max:10048'],  // Allow image to be nullable

@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\CategoryControllerr;
 use App\Http\Controllers\CertificateControllerr;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseControllerr;
@@ -43,15 +42,23 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 
 
+
 ////////////////////////////////////////////////////////////////
 ////////// Routes that will available for visitors /////////////
 
 Route::get('/all-categories', [CategoryControllerr::class, 'getAllCategories']);
+
+Route::get('categories/courses/{id}', [CategoryControllerr::class, 'getCoursesOfCategory']);
 Route::get('/all-courses', [CourseControllerr::class, 'getAllCourses']);
+// Instructor use App\Http\Controllers\InstructorController;
+Route::get( 'instructors',[InstructorController::class, 'index'] );
+Route::get('instructors/show/{id}', action: [InstructorController::class, 'show']);
+Route::get('instructors/{id}/categories', [InstructorController::class, 'categories']);
+Route::get('instructors/{id}/courses', [InstructorController::class, 'courses']);
 
+Route::get('instructor/course/{id}', [InstructorController::class, 'InstructorByCourseID']);
+Route::get('/user/{id}', [UserController::class, 'getUser']);
 ////////////////////////////////////////////////////////////////
-
-
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -68,26 +75,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 
 
-
-  // Email Verification Handler
-
-  //  Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-//   $request->fulfill();
-
-  //   return response()->json(['message' => 'Email verified successfully!']);
-// })->middleware(['auth:sanctum', 'signed'])->name('verification.verify');
-
-  // // Resend verification email
-// Route::post('/email/verification-notification', function (Request $request) {
-//   $request->user()->sendEmailVerificationNotification();
-//   return response()->json(['message' => 'Verification link sent.']);
-// })->middleware(['throttle:6,1'])->name('verification.send');
-
-  // Route::post('/email/verification-notification', function (Request $request) {
-//   $request->user()->sendEmailVerificationNotification();
-
-  //   return response()->json(['message' => 'Verification link sent!']);
-// })->middleware(['auth:sanctum', 'throttle:6,1'])->name('verification.send');
 
 
   Route::get('courses/all', [CourseControllerr::class, 'all']);
@@ -202,7 +189,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::get('instructors/{id}/categories', [InstructorController::class, 'categories']);
   Route::get('instructors/{id}/courses', [InstructorController::class, 'courses']);
 
-
+  Route::post('instructors/add', action: [InstructorController::class, 'Store']);
+  Route::put('instructors/update/{id}', action: [InstructorController::class, 'update']);
+  Route::get('instructors/delete/{id}', action: [InstructorController::class, 'destroy']);
 });
 
 

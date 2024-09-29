@@ -6,12 +6,12 @@
   <div class="slider">
     <div class="card">
       <div class="card-img">
-     <img src="../../../../assets/img/user/user7.jpg" alt="">
+     <img [src]="User.image_path" alt="{{ User.first_name }} {{ User.last_name }}">
       </div>
       <div class="card-body">
         <div class="heading">
-          <h3>David Leey</h3>
-          <p>Web developer</p>
+          <h3>{{ User.first_name }} {{ User.last_name }}</h3>
+          <p>{{ User.email }}</p>
         </div>
         <div class="students">
           <i class="fa-solid fa-user-group"></i>
@@ -20,54 +20,7 @@
 
       </div>
     </div>
-    <div class="card">
-      <div class="card-img">
-     <img src="../../../../assets/img/user/user7.jpg" alt="">
-      </div>
-      <div class="card-body">
-        <div class="heading">
-          <h3>David Leey</h3>
-          <p>Web developer</p>
-        </div>
-        <div class="students">
-          <i class="fa-solid fa-user-group"></i>
-          <p> 30students</p>
-        </div>
 
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-img">
-     <img src="../../../../assets/img/user/user7.jpg" alt="">
-      </div>
-      <div class="card-body">
-        <div class="heading">
-          <h3>David Leey</h3>
-          <p>Web developer</p>
-        </div>
-        <div class="students">
-          <i class="fa-solid fa-user-group"></i>
-          <p> 30students</p>
-        </div>
-
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-img">
-     <img src="../../../../assets/img/user/user7.jpg" alt="">
-      </div>
-      <div class="card-body">
-        <div class="heading">
-          <h3>David Leey</h3>
-          <p>Web developer</p>
-        </div>
-        <div class="students">
-          <i class="fa-solid fa-user-group"></i>
-          <p> 30students</p>
-        </div>
-
-      </div>
-    </div>
   </div>
 </div>
 

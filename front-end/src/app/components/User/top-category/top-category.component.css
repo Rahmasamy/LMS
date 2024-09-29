@@ -25,7 +25,8 @@
 }
 .box img {
   border-radius: 50%;
-  width: 105px;
+  width: 180px;
+  height: 150px;
 }
 .box h3 {
   font-size: 29px;

@@ -13,14 +13,7 @@ class CategoryControllerr extends Controller
     use apiResponseTrait,checkApi,AuthStudentInstAdmin;
 
     
-    public function getAllCategories(Request $request)
-    {
-        $perPage = $request->input('per_page', 10);
-        $categories = Category::paginate($perPage);
-
-        return $this->checkRequest($categories,200); 
-    }
-
+    
 
 
     public function index(Request $request){
@@ -30,7 +23,15 @@ class CategoryControllerr extends Controller
         return $this->checkRequest($categories,200); 
       
     }
-    
+    public function getAllCategories(Request $request)
+    {
+        
+        $perPage = $request->input('per_page', 10);
+        $categories = Category::paginate($perPage);
+        
+        return $this->checkRequest($categories->toJson(),200); 
+    }
+
   
     public function show(Request $request,$id){
         $this->authorizeRole($request);
