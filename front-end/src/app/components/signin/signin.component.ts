@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { RegisterService } from '../../servises/auth/register.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -19,7 +20,8 @@ export class SigninComponent {
 
   constructor(
     private registerService: RegisterService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -34,10 +36,14 @@ export class SigninComponent {
     if (this.dataUser.valid) {
       this.registerService.loginUser(this.dataUser.value).subscribe(
         (response) => {
-          console.log('User registered successfully', response);
+          console.log('User login successfully', response);
+          alert("user login successfully");
+          this.router.navigate(['']);
         },
         (error) => {
-          console.error('Registration error', error);
+
+          console.error('login error', error);
+          alert("error in Login");
         }
       );
     }

@@ -23,14 +23,16 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.dataUser = this.fb.group({
-      name: ['', Validators.required],
+      first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
+      phone_number:['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       password_confirmation: ['', Validators.required],
     });
   }
 
-  onSubmit() {  
+  onSubmit() {
     if (this.dataUser.valid) {
       this.registerService.addUser(this.dataUser.value).subscribe(
         (response) => {

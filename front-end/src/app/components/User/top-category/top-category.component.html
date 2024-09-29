@@ -3,48 +3,22 @@
   <app-headerofcontent
   [headingName]="headingName"
   [subHeading]="subHeading"
-  [All]="All"
+  [all]="all"
   [paragraph]="paragraph"
   >
   </app-headerofcontent>
   <div class="section-categories">
     <div class="boxes">
-      <div class="box">
-        <img src="https://dreamslms.dreamstechnologies.com/html/assets/img/categories-icon.png" alt="">
+      <div class="box" *ngFor="let category of categories">
+        <img [src]="category.image_path" [alt]="category.category_name">
         <div class="section-categories-body">
-          <h3> Angular js</h3>
+          <h3>{{ category.category_name }}</h3>
           <p>
-            40 instructors
+            40 instructors <!-- You can replace this with dynamic data if available -->
           </p>
         </div>
       </div>
-      <div class="box">
-        <img src="https://dreamslms.dreamstechnologies.com/html/assets/img/categories-icon.png" alt="">
-        <div class="section-categories-body">
-          <h3> Angular js</h3>
-          <p>
-            40 instructors
-          </p>
-        </div>
-      </div>
-      <div class="box">
-        <img src="https://dreamslms.dreamstechnologies.com/html/assets/img/categories-icon.png" alt="">
-        <div class="section-categories-body">
-          <h3> Angular js</h3>
-          <p>
-            40 instructors
-          </p>
-        </div>
-      </div>
-      <div class="box">
-        <img src="https://dreamslms.dreamstechnologies.com/html/assets/img/categories-icon.png" alt="">
-        <div class="section-categories-body">
-          <h3> Angular js</h3>
-          <p>
-            40 instructors
-          </p>
-        </div>
-      </div>
+
     </div>
   </div>
 </div>
