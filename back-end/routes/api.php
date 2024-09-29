@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryControllerr;
 use App\Http\Controllers\CertificateControllerr;
+use App\Http\Controllers\InstructorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseControllerr;
@@ -22,6 +23,23 @@ use App\Http\Controllers\UserController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+////////////////////////////////////////////////////////////////
+////////// Routes that will available for visitors /////////////
+
+Route::get('/all-categories', [CategoryControllerr::class, 'getAllCategories']);
+Route::get('categories/courses/{id}', [CategoryControllerr::class, 'getCoursesOfCategory']);
+Route::get('/all-courses', [CourseControllerr::class, 'getAllCourses']);
+// Instructor use App\Http\Controllers\InstructorController;
+Route::get( 'instructors',[InstructorController::class, 'index'] );
+Route::get('instructors/show/{id}', action: [InstructorController::class, 'show']);
+Route::get('instructors/{id}/categories', [InstructorController::class, 'categories']);
+Route::get('instructors/{id}/courses', [InstructorController::class, 'courses']);
+
+Route::get('instructor/course/{id}', [InstructorController::class, 'InstructorByCourseID']);
+Route::get('/user/{id}', [UserController::class, 'getUser']);
+////////////////////////////////////////////////////////////////
+
+
 
 Route::middleware(['auth:sanctum'])->group(function () {
   Route::get('/user', function (Request $request) {
@@ -127,7 +145,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::put('quizes/update/{id}', action: [QuizControllerr::class, 'update']);
 
 
-
+  Route::post('instructors/add', action: [InstructorController::class, 'Store']);
+  Route::put('instructors/update/{id}', action: [InstructorController::class, 'update']);
+  Route::get('instructors/delete/{id}', action: [InstructorController::class, 'destroy']);
 });
 
 

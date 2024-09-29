@@ -33,6 +33,14 @@ class CourseControllerr extends Controller
       
     }
    
+    public function getAllCourses(Request $request)
+    {
+        $perPage = $request->input('per_page', 10);
+        $courses = Course::paginate($perPage);
+
+        return $this->checkRequest($courses->toJson(),200); 
+    }
+
     public function show(Request $request,$id){
         $this->authorizeRole($request);
         $course=Course::find($id);
