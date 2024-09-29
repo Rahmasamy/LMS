@@ -11,6 +11,11 @@ class CategoryControllerr extends Controller
 {
     //
     use apiResponseTrait,checkApi,AuthStudentInstAdmin;
+
+    
+    
+
+
     public function index(Request $request){
         $this->authorizeRole($request);
         $categories=Category::all();
@@ -26,6 +31,7 @@ class CategoryControllerr extends Controller
         
         return $this->checkRequest($categories->toJson(),200); 
     }
+
   
     public function show(Request $request,$id){
         $this->authorizeRole($request);

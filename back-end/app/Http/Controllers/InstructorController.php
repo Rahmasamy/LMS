@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CourseRequest;
 use App\Http\Requests\InstructorRequest;
 use App\Models\Category;
+
 use App\Models\Course;
+
 use App\Models\Instructor;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
@@ -19,7 +21,11 @@ class InstructorController extends Controller
     public function index(Request $request){
         
        
+
         // $this->authorizeRole($request);
+
+        $this->authorizeRole($request);
+
         $courses=Instructor::all();
 
 
@@ -28,7 +34,10 @@ class InstructorController extends Controller
     }
    
     public function show(Request $request,$id){
+
         // $this->authorizeRole($request);
+
+        $this->authorizeRole($request);
         $course=Instructor::find($id);
 
         return $this->checkRequest($course,200); 
@@ -95,6 +104,7 @@ class InstructorController extends Controller
         return response()->json($Instructor);
     
     }
+
     // public function sections(Request $request,$id){
     //     $this->authAdminInst($request);
     //     $section=Course::find($id);
@@ -128,4 +138,8 @@ class InstructorController extends Controller
        
     //     return response()->json($course->Certificats);
     // }
+
 }
+
+}
+
