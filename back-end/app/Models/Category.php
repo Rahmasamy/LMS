@@ -12,5 +12,4 @@ class Category extends Model
     public function Courses(){
         return $this->hasMany(Course::class);
     }
-   
 }
