@@ -8,35 +8,44 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
+
+use App\Mail\TestMail;
+use App\Mail\WelcomeMail;
+use Exception;
 use App\Models\User;
+
 
 class AuthenticatedSessionController extends Controller
 {
+    /**
+     * Handle an incoming authentication request.
+     */
 
-    public function store(LoginRequest $request): JsonResponse{
 
-
+    public function store(LoginRequest $request): JsonResponse
+    {
         // Check if the user exists
         $user = User::where('email', $request->email)->first();
 
         if (!$user) {
             return response()->json([
-                'error' => "This email doesn't exist."
+                'msg' => "This email or password doesn't exist."
             ], 404);
         }
-
-
-
         // Check if the password is correct
         if (!Auth::attempt($request->only('email', 'password'))) {
             return response()->json([
                 'error' => "Wrong password."
-            ], 401); 
+            ], 401);
         }
 
-
-
         $user->tokens()->delete();
+        $token = $user->createToken('api-token');
+
+       
 
         // Create a new token for the user
         $token = $user->createToken('api-token');
@@ -48,6 +57,7 @@ class AuthenticatedSessionController extends Controller
             'permissions' => $user->getAllPermissions(),
             'token' => $token->plainTextToken,
         ], 200);
+
     }
 
 

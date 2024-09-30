@@ -12,15 +12,34 @@
           <h1>Sign up</h1>
           <form [formGroup]="dataUser" (ngSubmit)="onSubmit()">
             <div class="input-block">
-              <label class="form-control-label">Full Name</label>
+              <label class="form-control-label">First Name</label>
               <input
                 type="text"
                 class="form-control"
-                placeholder="Enter your Full Name"
+                placeholder="Enter your Fisrt Name"
+
                 formControlName="first_name"
                 required
               />
             </div>
+            <div class="input-block">
+              <label class="form-control-label">last Name</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter your last Name"
+                formControlName="last_name"
+                required
+              />
+            </div>
+            <div class="input-block">
+              <label class="form-control-label">Phone Number</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter your phone number"
+                formControlName="phone_number"
+
                   <div class="input-block">
               <label class="form-control-label">Full Name</label>
               <input

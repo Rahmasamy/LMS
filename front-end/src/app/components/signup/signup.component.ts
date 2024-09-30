@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  onSubmit() {  
+  onSubmit() {
     if (this.dataUser.valid) {
       this.registerService.addUser(this.dataUser.value).subscribe(
         (response) => {

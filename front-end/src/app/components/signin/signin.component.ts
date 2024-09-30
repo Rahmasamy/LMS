@@ -1,6 +1,11 @@
-import { RegisterService } from './../../servises/auth/register.service';
+
+
+import { RegisterService } from '../../servises/auth/register.service';
+import { Router } from '@angular/router';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-signin',
@@ -14,8 +19,11 @@ export class SigninComponent implements OnInit {
   error: string = '';   // Default error message is empty
 
   constructor(
-    private registerService: RegisterService, // Corrected the service injection
-    private fb: FormBuilder
+
+    private registerService: RegisterService,
+    private fb: FormBuilder,
+    private router: Router
+
   ) {}
 
   ngOnInit() {
@@ -29,14 +37,18 @@ export class SigninComponent implements OnInit {
   onSubmitLogin() {
     if (this.dataUser.valid) {
       this.registerService.loginUser(this.dataUser.value).subscribe(
-        (response: any) => {
-          console.log('User login successful', response);
-          // Store token in localStorage
-          localStorage.setItem('dataUser', JSON.stringify(response.token));
+        (response) => {
+          console.log('User login successfully', response);
+            localStorage.setItem('dataUser', JSON.stringify(response.token));
+          alert("user login successfully");
+          this.router.navigate(['']);
         },
-        (error: any) => {
-          console.error('Login error', error);
-          this.error = error.error.msg || 'An error occurred during login'; // Set error message
+        (error) => {
+
+          console.error('login error', error);
+           this.error = error.error.msg || 'An error occurred during login'; // Set error message
+          alert("error in Login",this.error);
+
         }
       );
     } else {

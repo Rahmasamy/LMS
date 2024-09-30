@@ -3,23 +3,23 @@
     <app-headerofcontent
     [headingName]="headingName"
     [subHeading]="subHeading"
-    [All]="All"
+    [all]="all"
     [paragraph]="paragraph"
     >
     </app-headerofcontent>
     <div class="card-section">
       <div class="cards">
-        <div class="card">
+        <div class="card" *ngFor="let course of courses"  (mouseenter)="getInstructorOfCourse(course.id)">
           <div class="card-img">
-            <img src="../../../../assets/img/course-01.jpg" alt="">
+            <img [src]="course.image_path" [alt]="course.id" alt="">
           </div>
           <div class="card-body">
             <div class="instructor-details">
               <div class="img-title">
                 <img src="../../../../assets/img/user1.jpg" alt="">
-                <div class="inst-name-job">
+                <div class="inst-name-job" *ngIf="instructors[course.id]">
                   <h3>  Nicole Brown</h3>
-                  <p>instructor</p>
+                  <p>Instructor ID: {{ instructors[course.id]?.id }}</p>
                 </div>
 
               </div>
@@ -28,7 +28,7 @@
               </div>
             </div>
               <div class="course-title">
-                <h3> Information About UI/UX Design Degree</h3>
+                <h3>  {{course.title}}</h3>
               </div>
               <div class="lessons-time">
                 <div class="img-lesson">
@@ -46,12 +46,13 @@
           <div class="cardfooter">
             <div class="footer d-flex align-items-center justify-content-between">
               <div class="rating m-0">
-              <i class="fas fa-star filled"></i>
-              <i class="fas fa-star filled"></i>
-              <i class="fas fa-star filled"></i>
-              <i class="fas fa-star filled"></i>
-              <i class="fas fa-star"></i>
-              <span class="d-inline-block average-rating"><span>4.0</span> (15)</span>
+
+                <div class="course-rating">
+                  <i *ngFor="let star of [0, 1, 2, 3, 4]; let i = index"
+                     [class.filled]="i < getRating(course.rating)"
+                     class="fas fa-star"></i>
+                </div>
+              <span class="d-inline-block average-rating"><span>{{course.rating}}</span> </span>
               </div>
               <div class="all-btn all-category d-flex align-items-center">
                 <a href="checkout.html" class="btn btn-primary">BUY NOW</a>
@@ -59,113 +60,14 @@
             </div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-img">
-            <img src="../../../../assets/img/course-01.jpg" alt="">
-          </div>
-          <div class="card-body">
-            <div class="instructor-details">
-              <div class="img-title">
-                <img src="../../../../assets/img/user1.jpg" alt="">
-                <div class="inst-name-job">
-                  <h3>  Nicole Brown</h3>
-                  <p>instructor</p>
-                </div>
 
-              </div>
-              <div class="icon">
-                <i class="fa-regular fa-heart"></i>
-              </div>
-            </div>
-              <div class="course-title">
-                <h3> Information About UI/UX Design Degree</h3>
-              </div>
-              <div class="lessons-time">
-                <div class="img-lesson">
-                   <img src="../../../../assets/img/icon/icon-01.svg" alt="">
-                   <p>12+ Lesson
-                   </p>
-                </div>
-                <div class="time">
-                  <img src="../../../../assets/img/icon/icon-02.svg" alt="">
-                  <p>9hr 30min</p>
-                </div>
-              </div>
-
-          </div>
-          <div class="cardfooter">
-            <div class="footer d-flex align-items-center justify-content-between">
-              <div class="rating m-0">
-              <i class="fas fa-star filled"></i>
-              <i class="fas fa-star filled"></i>
-              <i class="fas fa-star filled"></i>
-              <i class="fas fa-star filled"></i>
-              <i class="fas fa-star"></i>
-              <span class="d-inline-block average-rating"><span>4.0</span> (15)</span>
-              </div>
-              <div class="all-btn all-category d-flex align-items-center">
-                <a href="checkout.html" class="btn btn-primary">BUY NOW</a>
-                </div>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-img">
-            <img src="../../../../assets/img/course-01.jpg" alt="">
-          </div>
-          <div class="card-body">
-            <div class="instructor-details">
-              <div class="img-title">
-                <img src="../../../../assets/img/user1.jpg" alt="">
-                <div class="inst-name-job">
-                  <h3>  Nicole Brown</h3>
-                  <p>instructor</p>
-                </div>
-
-              </div>
-              <div class="icon">
-                <i class="fa-regular fa-heart"></i>
-              </div>
-            </div>
-              <div class="course-title">
-                <h3> Information About UI/UX Design Degree</h3>
-              </div>
-              <div class="lessons-time">
-                <div class="img-lesson">
-                   <img src="../../../../assets/img/icon/icon-01.svg" alt="">
-                   <p>12+ Lesson
-                   </p>
-                </div>
-                <div class="time">
-                  <img src="../../../../assets/img/icon/icon-02.svg" alt="">
-                  <p>9hr 30min</p>
-                </div>
-              </div>
-
-          </div>
-          <div class="cardfooter">
-            <div class="footer d-flex align-items-center justify-content-between">
-              <div class="rating m-0">
-              <i class="fas fa-star filled"></i>
-              <i class="fas fa-star filled"></i>
-              <i class="fas fa-star filled"></i>
-              <i class="fas fa-star filled"></i>
-              <i class="fas fa-star"></i>
-              <span class="d-inline-block average-rating"><span>4.0</span> (15)</span>
-              </div>
-              <div class="all-btn all-category d-flex align-items-center">
-                <a href="checkout.html" class="btn btn-primary">BUY NOW</a>
-                </div>
-            </div>
-          </div>
-        </div>
       </div>
 
     </div>
     <app-featured-instructors>
 
     </app-featured-instructors>
-   
+
 
   </div>
 
