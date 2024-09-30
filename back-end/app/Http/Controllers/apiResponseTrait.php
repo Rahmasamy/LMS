@@ -13,6 +13,4 @@ trait apiResponseTrait{
        
         return response($array,$statusCode,[$msg]);
      }
-
-     
 }

@@ -3,29 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CourseRequest;
-use App\Notifications\CourseNotification;
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Course;
-use App\Models\User;
 
 class CourseControllerr extends Controller
 {
     //
     use apiResponseTrait,checkApi,AuthStudentInstAdmin;
-
-
-    public function getAllCourses(Request $request)
-    {
-        $perPage = $request->input('per_page', 10);
-        $courses = Course::paginate($perPage);
-
-        return $this->checkRequest($courses,200); 
-    }
-
-
     public function index()
     {
         //
@@ -47,6 +33,14 @@ class CourseControllerr extends Controller
       
     }
    
+    public function getAllCourses(Request $request)
+    {
+        $perPage = $request->input('per_page', 10);
+        $courses = Course::paginate($perPage);
+
+        return $this->checkRequest($courses->toJson(),200); 
+    }
+
     public function show(Request $request,$id){
         $this->authorizeRole($request);
         $course=Course::find($id);
@@ -59,10 +53,6 @@ class CourseControllerr extends Controller
         $this->authAdminInst($request);
        $validatedData = $request->validated();
        $course=Course::create($validatedData);
-       $users=User::where('id','!=',auth()->user()->id)->get();
-       $Createdby=auth()->user()->name;
-      
-       Notification::send($users,new CourseNotification($course->id,$Createdby));
        return $this->checkRequest($course,201); 
     }
     public function update(CourseRequest $request,$id){
@@ -115,12 +105,6 @@ class CourseControllerr extends Controller
         return response()->json($course->Assigments);
     }
     public function Certificate(Request $request,$id){
-        $this->authAdminInst($request);
-        $course = Course::find($id);
-       
-        return response()->json($course->Certificats);
-    }
-    public function categories(Request $request,$id){
         $this->authAdminInst($request);
         $course = Course::find($id);
        
