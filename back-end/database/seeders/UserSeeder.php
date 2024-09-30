@@ -17,10 +17,10 @@ class UserSeeder extends Seeder
     {
         //
         // $adminRole = Role::firstOrCreate(['name' => 'admin']);
-      
+
         // $instructorRole = Role::firstOrCreate(['name' => 'instructor']);
         // $studentRole = Role::firstOrCreate(['name' => 'student']);
-       
+
         // // Create a user and assign a role
         // $user = User::create([
         //     'name' => 'Omar',
@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
         // // echo $userrole;
         //  $user->assignRole($instructorRole); 
         // $userrole=$user->assignRole($studentRole->name); 
-       
+
         $adminRole = Role::firstOrCreate(['name' => 'admin']);
         $instructorRole = Role::firstOrCreate(['name' => 'instructor']);
         $studentRole = Role::firstOrCreate(['name' => 'student']);
@@ -44,22 +44,21 @@ class UserSeeder extends Seeder
         $admin1 = User::create([
             'first_name' => 'Gehad',
             'last_name' => 'Gallo',
-            'phone_number'=>'0021232412',
+            'phone_number' => '0021232412',
             'email' => 'gehadgallo@gmail.com',
             'password' => bcrypt('123123123'), // Use a secure password
         ]);
         $admin1->assignRole($adminRole);
 
 
-        $admin2 = User::create([
-            'first_name' => 'Rahma',
-            'last_name' => 'Samy',
-            'phone_number'=>'0021232412',
-           
-            'email' => 'rahmasamy949@gmail.com',
-            'password' => bcrypt('123123123'),
-        ]);
-        $admin2->assignRole($adminRole);
+        // $admin2 = User::create([
+        //     'first_name' => 'Rahma',
+        //     'last_name' => 'Samy',
+        //     'phone_number' => '0021232412',
+        //     'email' => 'rahmasamy949@gmail.com',
+        //     'password' => bcrypt('123123123'),
+        // ]);
+        // $admin2->assignRole($adminRole);
 
 
 
@@ -67,13 +66,21 @@ class UserSeeder extends Seeder
         $instructor1 = User::create([
             'first_name' => 'Ahmed',
             'last_name' => 'Hussien',
-            'phone_number'=>'0021232412',
+            'phone_number' => '0021232412',
             'email' => 'ahhussein000@gmail.com',
             'password' => bcrypt('123123123'),
         ]);
         $instructor1->assignRole($instructorRole);
 
-      
+        $instructor2 = User::create([
+            'first_name' => 'Rahma',
+            'last_name' => 'Samy',
+            'phone_number' => '0021232412',
+            'email' => 'rahmasamy949@gmail.com',
+            'password' => bcrypt('123123123'),
+        ]);
+        $instructor2->assignRole($instructorRole);
+
 
         // Add instructors in the separated table
         $instructor1Addition = Instructor::create([
@@ -82,13 +89,19 @@ class UserSeeder extends Seeder
             'role_id' => 2
         ]);
 
-      
+        $instructor1Addition = Instructor::create([
+            'user_id' => $instructor2->id,  // Assigning the user_id of the newly created User
+            'rating' => '3.3',
+            'role_id' => 2
+        ]);
+
+
 
         // Add 2 Students
         $student1 = User::create([
             'first_name' => 'Ali',
             'last_name' => 'Hussien',
-            'phone_number'=>'0021232412',
+            'phone_number' => '0021232412',
             'email' => 'ahmed.hussein201150@gmail.com',
             'password' => bcrypt('123123123'),
         ]);
@@ -97,8 +110,8 @@ class UserSeeder extends Seeder
         $student2 = User::create([
             'first_name' => 'Rawan',
             'last_name' => 'Samy',
-            'phone_number'=>'0021232412',
-           
+            'phone_number' => '0021232412',
+
             'email' => 'rahmasamy20011@gmail.com',
             'password' => bcrypt('123123123'),
         ]);
