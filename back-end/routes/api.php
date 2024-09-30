@@ -12,6 +12,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\NotificationController;
 use App\Models\User;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -195,7 +196,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 
 
-
-
-
-
+  // Payment integration
+  Route::controller(StripePaymentController::class)->group(function() {
+      Route::get('stripe', 'stripe');
+      Route::post('stripe', 'stripePost');
+  });
