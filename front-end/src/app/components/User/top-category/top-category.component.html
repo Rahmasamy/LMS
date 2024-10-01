@@ -1,24 +1,27 @@
-<div class="container">
+<div *ngIf="!data">
+  <app-loading></app-loading>
+</div>
 
+<div class="container" *ngIf="data">
   <app-headerofcontent
-  [headingName]="headingName"
-  [subHeading]="subHeading"
-  [all]="all"
-  [paragraph]="paragraph"
+    [headingName]="headingName"
+    [subHeading]="subHeading"
+    [all]="all"
+    [paragraph]="paragraph"
   >
   </app-headerofcontent>
   <div class="section-categories">
     <div class="boxes">
       <div class="box" *ngFor="let category of categories">
-        <img [src]="category.image_path" [alt]="category.category_name">
+        <img [src]="category.image_path" [alt]="category.category_name" />
         <div class="section-categories-body">
           <h3>{{ category.category_name }}</h3>
           <p>
-            40 instructors <!-- You can replace this with dynamic data if available -->
+            40 instructors
+            <!-- You can replace this with dynamic data if available -->
           </p>
         </div>
       </div>
-
     </div>
   </div>
 </div>

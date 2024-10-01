@@ -1,0 +1,252 @@
+.course-content {
+  background: #fafafa;
+  padding: 80px 0px;
+}
+.student-widget {
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+}
+.checkout-widget .student-widget-group {
+  padding: 0;
+}
+
+.student-widget-group {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  padding-bottom: 0;
+}
+.cart-head {
+  padding: 20px;
+  border-bottom: 1px solid #e9ecef;
+}
+.cart-head h4 {
+  margin-bottom: 0;
+  font-size: 20px;
+}
+.checkout-form {
+  padding: 20px;
+}
+.add-course-info .input-block {
+  margin-bottom: 20px;
+}
+.checkout-form label {
+  color: #685f78;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+.add-course-info .form-control {
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 5px;
+  min-height: 44px;
+}
+.ship-check .form-check-input {
+  border-radius: 0;
+  border-color: #ffdeda;
+  margin-right: 10px;
+  font-size: 20px;
+  margin-top: 0;
+}
+.pay-method {
+  margin-top: 40px;
+}
+
+.student-widget {
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+}
+.checkout-widget .student-widget-group {
+  padding: 0;
+}
+
+.student-widget-group {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  padding-bottom: 0;
+}
+.cart-head h4 {
+  margin-bottom: 0;
+  font-size: 20px;
+}
+.wallet-method {
+  margin: 10px 0px;
+}
+.add-course-info .input-block {
+  margin-bottom: 20px;
+}
+.wallet-method .custom_radio input {
+  position: absolute;
+  opacity: 0;
+}
+.wallet-method .custom_radio .checkmark {
+  position: absolute;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+  border: 1px solid #ffe6e1;
+  border-radius: 50%;
+}
+.wallet-method .custom_radio {
+  color: #555;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  font-size: 14px;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.wallet-method .custom_radio .checkmark {
+  position: absolute;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+  border: 1px solid #ffe6e1;
+  border-radius: 50%;
+}
+.checkout-form label {
+  color: #685f78;
+  font-weight: 600;
+  font-size: 16px;
+}
+.add-course-info .input-block {
+  margin-bottom: 20px;
+}
+label.form-label {
+  font-size: 14px;
+  color: #002058;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+.checkout-form .form-control,
+.checkout-form .form-select {
+  border-radius: 5px;
+  min-height: 44px;
+}
+
+.select2-hidden-accessible {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+.select2-container {
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 0;
+  position: relative;
+  vertical-align: middle;
+  width: 100% !important;
+}
+.add-course-info .select2-container .select2-selection--single {
+  height: 44px;
+}
+
+.add-course-info .select2-container--default .select2-selection--single {
+  border: 1px solid #e9ecef;
+}
+.payment-btn .btn-primary {
+  background: #ff5364;
+  border: 1px solid #ff5364;
+  color: #fff;
+  padding: 12px 15px;
+  font-size: 16px;
+  font-weight: 700;
+  min-width: 600px;
+}
+.select-plan-group .student-widget-group {
+  padding: 20px;
+}
+.plan-header {
+  margin-bottom: 20px;
+}
+
+.plan-header {
+  background: #392c7d;
+}
+.plan-header h4 {
+  font-size: 24px;
+  color: #fff;
+  text-align: center;
+  padding: 15px 15px;
+  margin-bottom: 0;
+}
+.basic-plan h3 {
+  font-size: 24px;
+  color: #ff5364;
+  margin-bottom: 15px;
+}
+.basic-plan p {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+.basic-plan h2 {
+  font-size: 36px;
+  color: #392c7d;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+.benifits-feature {
+  margin: 30px 0px;
+}
+.benifits-feature h3 {
+  font-size: 18px;
+  color: #000;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+.benifits-feature ul {
+  padding: 0;
+  margin: 0;
+}
+.benifits-feature ul li {
+  font-size: 14px;
+  color: #685f78;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.benifits-feature ul li {
+  list-style: none;
+}
+.benifits-feature ul li i {
+  font-size: 7px;
+  margin-right: 10px;
+}
+.benifits-feature {
+  margin: 30px 0px;
+}
+.plan-change .btn-primary {
+  font-size: 16px;
+  font-weight: 700;
+  color: #392c7d;
+  background: #fff;
+  border: 1px solid #392c7d;
+  border-radius: 0px;
+  width: 100%;
+  padding: 12px 15px;
+}

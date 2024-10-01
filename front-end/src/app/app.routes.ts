@@ -21,6 +21,9 @@ import { WichlistComponent } from './components/pages/wichlist/wichlist.componen
 import { CourseComponent } from './components/pages/course/course.component';
 import { CourseDetailsComponent } from './components/pages/course-details/course-details.component';
 import { ErrorsComponent } from './components/pages/errors/errors.component';
+import { CourseAfterEnrollmentComponent } from './components/pages/course-after-enrollment/course-after-enrollment.component';
+import { PaymentCourseComponent } from './components/pages/payment-course/payment-course.component';
+
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'instructor', component: InstractorComponent },
@@ -51,7 +54,9 @@ export const routes: Routes = [
   { path: 'notification', component: NotificationsComponent },
   { path: 'wishlist', component: WichlistComponent },
   { path: 'courses', component: CourseComponent },
-  { path: 'courses/course-details', component: CourseDetailsComponent },
+  { path: 'courses/course-details/:id', component: CourseDetailsComponent },
+  { path: 'courses/course-details/:id/free', component: CourseAfterEnrollmentComponent },
+  { path: 'courses/course-details/:id/payment', component: PaymentCourseComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   { path: '**', component: ErrorsComponent },
