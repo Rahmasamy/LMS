@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
-import { CourseServiceService } from '../../../servises/User/Course/course-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
 import { SectionInterface } from '../../interface/section-interface';
 import { RouterLink } from '@angular/router';
+import { CourseServiceService } from '../../../servises/User/Course/course-service.service';
 import { LoadingComponent } from '../loading/loading.component';
-
 @Component({
-  selector: 'app-course-details',
+  selector: 'app-course-after-enrollment',
   standalone: true,
-  imports: [NgFor,NgIf, RouterLink, LoadingComponent],
-  templateUrl: './course-details.component.html',
-  styleUrl: './course-details.component.css',
+  imports: [NgFor, RouterLink, NgIf, LoadingComponent],
+  templateUrl: './course-after-enrollment.component.html',
+  styleUrl: './course-after-enrollment.component.css',
 })
-export class CourseDetailsComponent {
+export class CourseAfterEnrollmentComponent {
   courseId: string | null = '';
   course: any = {};
   Sections: SectionInterface[] = [];
@@ -31,6 +30,7 @@ export class CourseDetailsComponent {
     this.showSingleCourse(this.courseId);
     this.showSectionsCourse(this.courseId);
   }
+
   getRating(rating: string): number {
     return Math.floor(parseFloat(rating));
   }

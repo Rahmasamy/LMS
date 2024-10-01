@@ -37,13 +37,13 @@ export class SigninComponent {
       this.registerService.loginUser(this.dataUser.value).subscribe(
         (response) => {
           console.log('User login successfully', response);
-          alert("user login successfully");
+          localStorage.setItem('authToken', response.token);
+          // alert('user login successfully');
           this.router.navigate(['']);
         },
         (error) => {
-
           console.error('login error', error);
-          alert("error in Login");
+          alert('error in Login');
         }
       );
     }

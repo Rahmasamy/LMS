@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CourseServiceService } from '../../../servises/User/Course/course-service.service';
 import { InstructorSerService } from '../../../servises/User/InstructorFolder/instructor-ser.service';
-import { Instructor,User } from './UserInterface';
+import { Instructor,User } from '../../interface/UserInterface';
 
 @Component({
   selector: 'app-featured-instructors',
