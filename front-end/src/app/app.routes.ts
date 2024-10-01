@@ -16,7 +16,7 @@ import { InstrutorQuestionAnswerComponent } from './components/component-Instruc
 import { InstrutorReferralsComponent } from './components/component-Instructors/instrutor-referrals/instrutor-referrals.component';
 import { InstrutorCoursesComponent } from './components/component-Instructors/instrutor-courses/instrutor-courses.component';
 import { InstrutorAnnouncementComponent } from './components/component-Instructors/instrutor-announcement/instrutor-announcement.component';
-import { NotificationsComponent } from './components/pages/notifications/notifications.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 import { WichlistComponent } from './components/pages/wichlist/wichlist.component';
 import { CourseComponent } from './components/pages/course/course.component';
 import { CourseDetailsComponent } from './components/pages/course-details/course-details.component';

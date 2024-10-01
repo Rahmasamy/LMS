@@ -7,7 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
-
+use App\Models\Student;
 class UserSeeder extends Seeder
 {
     /**
@@ -89,11 +89,12 @@ class UserSeeder extends Seeder
             'role_id' => 2
         ]);
 
-        $instructor1Addition = Instructor::create([
+        $instructor2Addition = Instructor::create([
             'user_id' => $instructor2->id,  // Assigning the user_id of the newly created User
             'rating' => '3.3',
             'role_id' => 2
         ]);
+
 
 
 
@@ -111,10 +112,24 @@ class UserSeeder extends Seeder
             'first_name' => 'Rawan',
             'last_name' => 'Samy',
             'phone_number' => '0021232412',
-
             'email' => 'rahmasamy20011@gmail.com',
             'password' => bcrypt('123123123'),
         ]);
         $student2->assignRole($studentRole);
+
+         // Add students in the separated table
+        $student1Addition = Student::create([
+            'bio' => "Engineering student",
+            'user_id' => $student1->id,  
+            'role_id' => 3
+        ]);
+
+        $student2Addition = Student::create([
+            'bio' => "computer science student",
+            'user_id' => $student2->id, 
+            'role_id' => 3
+        ]);
+
+
     }
 }
