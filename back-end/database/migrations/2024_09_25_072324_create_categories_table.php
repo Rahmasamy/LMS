@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('category_name');
-            $table->foreignId('inst_id')->constrained('instructors')->onDelete('cascade');
+            //$table->foreignId('inst_id')->constrained('instructors')->onDelete('cascade');
             $table->string('image_path')->default('https://previews.123rf.com/images/ionutparvu/ionutparvu1612/ionutparvu161201044/67602567-category-stamp-sign-text-word-logo-red.jpg');
             $table->timestamps();
         });
