@@ -88,13 +88,12 @@ class InstructorController extends Controller
     public function InstructorByCourseID($course_id){
          
         $course = Course::findOrFail($course_id);
-
-    
         $Instructor = $course->Instructor;
-
         return response()->json($Instructor);
     
     }
+   
+  
     // public function sections(Request $request,$id){
     //     $this->authAdminInst($request);
     //     $section=Course::find($id);

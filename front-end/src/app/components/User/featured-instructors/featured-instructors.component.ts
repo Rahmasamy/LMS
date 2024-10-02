@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CourseServiceService } from '../../../servises/User/Course/course-service.service';
 import { InstructorSerService } from '../../../servises/User/InstructorFolder/instructor-ser.service';
-import { Instructor,User } from './UserInterface';
+import { Instructor,User } from '../../interface/UserInterface';
 
 @Component({
   selector: 'app-featured-instructors',
@@ -13,7 +13,7 @@ import { Instructor,User } from './UserInterface';
 export class FeaturedInstructorsComponent {
   constructor(private instructorService: InstructorSerService) {}
   Instructor:Instructor[]=[];
-  User!: User;
+  User: User|any;
   instructors: { [key: string]: any } = {}
   ngOnInit(): void {
     this.instructorService.instructorOfCourse().subscribe(
@@ -42,7 +42,7 @@ export class FeaturedInstructorsComponent {
     this.instructorService.getDataOFSpecificUser(id.toString()).subscribe(
       (response:any) => {
          this.User=response.data;
-         console.log(this.User)
+         console.log("instructor",this.User)
 
 
       },

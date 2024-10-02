@@ -27,7 +27,8 @@ class CourseSeeder extends Seeder
       'category_id' => 1,
       'instructor_id' => 2,
       'image_path' => 'https://www.freecodecamp.org/news/content/images/2022/09/angular.png',
-      'rating' => 3.5
+      'rating' => 3.5,
+      "student_id"=> 1,
     ]);
 
     // Course 2
@@ -44,7 +45,8 @@ class CourseSeeder extends Seeder
       'category_id' => 2,
       'instructor_id' => 1,
       'image_path' => 'https://i.ytimg.com/vi/I6tbhNUU96Y/maxresdefault.jpg',
-      'rating' => 3.5
+      'rating' => 3.5,
+      "student_id"=> 1,
     ]);
 
     // Course 3
@@ -61,7 +63,8 @@ class CourseSeeder extends Seeder
       'category_id' => 2,
       'instructor_id' => 2,
       'image_path' => 'https://hackr.io/blog/react-courses/thumbnail/large',
-      'rating' => 3.5
+      'rating' => 3.5,
+      "student_id"=> 2,
     ]);
 
     // Course 4
@@ -78,7 +81,8 @@ class CourseSeeder extends Seeder
       'category_id' => 5,
       'instructor_id' => 1,
       'image_path' => 'https://i.ytimg.com/vi/m0LdKZ-prto/maxresdefault.jpg',
-      'rating' => 3.5
+      'rating' => 3.5,
+      "student_id"=> 2,
     ]);
 
     // Course 5
@@ -95,7 +99,8 @@ class CourseSeeder extends Seeder
       'category_id' => 5,
       'instructor_id' => 2,
       'image_path' => 'https://tse4.mm.bing.net/th?id=OIP.RhDrd7hb5KcpK-f9FgKbtgHaE7&pid=Api&P=0&h=220',
-      'rating' => 3.5
+      'rating' => 3.5,
+      "student_id"=> 1,
     ]);
 
     // Course 6
@@ -112,7 +117,8 @@ class CourseSeeder extends Seeder
       'category_id' => 4,
       'instructor_id' => 1,
       'image_path' => 'https://cdn-media-1.freecodecamp.org/ghost/2019/03/vueart.png',
-      'rating' => 3.5
+      'rating' => 3.5,
+      "student_id"=> 2,
     ]);
 
     // Course 7
@@ -129,7 +135,8 @@ class CourseSeeder extends Seeder
       'category_id' => 4,
       'instructor_id' => 2,
       'image_path' => 'https://jacklyons.me/images/vue-mastery-screenshot.png',
-      'rating' => 3.5
+      'rating' => 3.5,
+      "student_id"=> 1,
     ]);
 
     // Course 8
@@ -146,7 +153,8 @@ class CourseSeeder extends Seeder
       'category_id' => 3,
       'instructor_id' => 1,
       'image_path' => 'https://i.ytimg.com/vi/EcYXsp78Xy8/maxresdefault.jpg',
-      'rating' => 3.5
+      'rating' => 3.5,
+      "student_id"=> 2,
     ]);
 
     // Course 9
@@ -163,7 +171,8 @@ class CourseSeeder extends Seeder
       'category_id' => 3,
       'instructor_id' => 2,
       'image_path' => 'https://www.sipexe.com/assets/courses/Laravel.png',
-      'rating' => 3.5
+      'rating' => 3.5,
+      "student_id"=> 1,
     ]);
 
     // Course 10
@@ -180,7 +189,8 @@ class CourseSeeder extends Seeder
       'category_id' => 3,
       'instructor_id' => 1,
       'image_path' => 'https://coursesfree.org/wp-content/uploads/2019/11/maxresdefault-33.jpg',
-      'rating' => 3.5
+      'rating' => 3.5,
+      "student_id"=> 2,
     ]);
   }
 }

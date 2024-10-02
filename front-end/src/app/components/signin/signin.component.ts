@@ -39,16 +39,14 @@ export class SigninComponent implements OnInit {
       this.registerService.loginUser(this.dataUser.value).subscribe(
         (response) => {
           console.log('User login successfully', response);
-            localStorage.setItem('dataUser', JSON.stringify(response.token));
+          localStorage.setItem('authToken', response.token);
           alert("user login successfully");
           this.router.navigate(['']);
         },
         (error) => {
-
           console.error('login error', error);
            this.error = error.error.msg || 'An error occurred during login'; // Set error message
-          alert("error in Login",this.error);
-
+          alert("error in Login");
         }
       );
     } else {

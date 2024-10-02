@@ -1,0 +1,27 @@
+.parentSpanner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.spinner {
+  border: 16px solid #b582d1;
+  border-top: 10px solid #dc3545;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  animation: spin 1.3s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LessonRequest;
+use App\Models\Course;
 use App\Models\Lesson as ModelsLesson;
+use App\Models\Section;
 use Illuminate\Http\Request;
 
 class Lesson extends Controller
 {
     //
     use apiResponseTrait, checkApi, AuthStudentInstAdmin;
+    
+ 
     public function index(Request $request)
     {
         //
@@ -62,4 +66,6 @@ class Lesson extends Controller
         return $this->apiResponce(null, "No lesson with that Id", 404);
 
     }
+   
+  
 }
