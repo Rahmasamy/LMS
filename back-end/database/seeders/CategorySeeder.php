@@ -16,23 +16,28 @@ class CategorySeeder extends Seeder
         //
              $category1=Category::create([
             'category_name'=>'Angular Development',
-            'image_path'=>'https://i.ytimg.com/vi/2OHbjep_WjQ/maxresdefault.jpg'
+            'image_path'=>'https://i.ytimg.com/vi/2OHbjep_WjQ/maxresdefault.jpg',
+            'inst_id'=>1
            ]);
            $category2=Category::create([
             'category_name'=>'React Development',
-            'image_path'=>'https://i.ytimg.com/vi/l4G2MVgXFkw/maxresdefault.jpg'
+            'image_path'=>'https://i.ytimg.com/vi/l4G2MVgXFkw/maxresdefault.jpg',
+            'inst_id'=>2
            ]);
            $category3=Category::create([
             'category_name'=>'Laravel Development',
-            'image_path'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png'
+            'image_path'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png',
+            'inst_id'=>2
            ]);
            $category4=Category::create([
             'category_name'=>'Vue Development',
-            'image_path'=>'https://tse3.mm.bing.net/th?id=OIP.GxExK88wgr_8hbuqu4JfAAHaEK&pid=Api&P=0&h=220'
+            'image_path'=>'https://tse3.mm.bing.net/th?id=OIP.GxExK88wgr_8hbuqu4JfAAHaEK&pid=Api&P=0&h=220',
+            'inst_id'=>1
            ]);
            $category5=Category::create([
             'category_name'=>'Python Development',
-            'image_path'=>'https://tse3.mm.bing.net/th?id=OIP.GxExK88wgr_8hbuqu4JfAAHaEK&pid=Api&P=0&h=220'
+            'image_path'=>'https://tse3.mm.bing.net/th?id=OIP.GxExK88wgr_8hbuqu4JfAAHaEK&pid=Api&P=0&h=220',
+            'inst_id'=>2
            ]);
     }
 }

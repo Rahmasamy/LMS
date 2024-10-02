@@ -14,9 +14,10 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('student_id')->constrained('students')->cascadeOnDelete();
             $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
-            $table->date('date_enrolled');
-            $table->bigInteger('progress');
-            $table->string('grade');
+           
+            $table->timestamp('date_enrolled')->useCurrent(); // Set to current date by default
+            $table->float('progress')->default(0); // Default progress can be set to 0
+            $table->float('grade')->nullable(); // Nullable grade
             $table->timestamps();
         });
     }

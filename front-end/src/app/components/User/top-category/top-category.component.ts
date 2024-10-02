@@ -51,28 +51,4 @@ export class TopCategoryComponent implements OnInit {
   //     }
   //   );
   // }
-export class TopCategoryComponent {
-  headingName: string = 'Favourite Course';
-  subHeading: string = 'Top Category';
-  All: string = 'All Categories';
-  paragraph: string =
-    'Lorem ipsum dolor sit amet,consectetur adipiscing elit. Eget aenean accumsan bibendum gravida maecenas augue elementum et neque. Suspendisse imperdiet.';
-  datacategories: any = [];
-
-  constructor(private HomeService: HomePageService) {
-    console.log(this.datacategories);
-    this.getcategories();
-  }
-
-  getcategories() {
-    this.HomeService.getAllCategories().subscribe(
-      (response) => {
-        console.log('data get successfully', response);
-        this.datacategories = response.data;
-      },
-      (error) => {
-        console.error('data error', error);
-      }
-    );
-  }
 }

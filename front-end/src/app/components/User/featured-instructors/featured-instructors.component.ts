@@ -13,7 +13,7 @@ import { Instructor,User } from '../../interface/UserInterface';
 export class FeaturedInstructorsComponent {
   constructor(private instructorService: InstructorSerService) {}
   Instructor:Instructor[]=[];
-  User!: User;
+  User: User|any;
   instructors: { [key: string]: any } = {}
   ngOnInit(): void {
     this.instructorService.instructorOfCourse().subscribe(
@@ -42,7 +42,7 @@ export class FeaturedInstructorsComponent {
     this.instructorService.getDataOFSpecificUser(id.toString()).subscribe(
       (response:any) => {
          this.User=response.data;
-         console.log(this.User)
+         console.log("instructor",this.User)
 
 
       },

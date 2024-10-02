@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { CourseServiceService } from '../../../servises/User/Course/course-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
 import { SectionInterface } from '../../interface/section-interface';
 import { RouterLink } from '@angular/router';
 import { LoadingComponent } from '../loading/loading.component';
+import { InstructorSerService } from '../../../servises/User/InstructorFolder/instructor-ser.service';
+import { User } from '../../interface/UserInterface';
+import { Review } from '../../interface/review-interface';
 
 @Component({
   selector: 'app-course-details',
@@ -18,18 +21,40 @@ export class CourseDetailsComponent {
   course: any = {};
   Sections: SectionInterface[] = [];
   data: boolean = false;
+  userId: string|null='';
+  instructors: any;
+  User: User|any;
+  courseBenefits: string[] = [];
+  reguiremnets: string[] = [];
+  reviews: Review[] = [];
+  courseLessons: any;
+  EnrollmentMessage:string=''
   constructor(
     private servesCourse: CourseServiceService,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    private instructorService: InstructorSerService,
+    private router: Router
+  ) {
+
+  }
 
   ngOnInit() {
+
     this.route.paramMap.subscribe((params) => {
       this.courseId = params.get('id');
-      console.log(this.courseId);
     });
     this.showSingleCourse(this.courseId);
     this.showSectionsCourse(this.courseId);
+    this.getInstructorOfCourse(this.courseId);
+    this.initData();
+    this.getReviews(this.courseId);
+    this.getLessonsByCourse(this.courseId);
+
+
+  }
+  async initData() {
+    await this.getInstructorOfCourse(this.courseId);
+    this.getUserData();  // Called after userId is fetched
   }
   getRating(rating: string): number {
     return Math.floor(parseFloat(rating));
@@ -38,8 +63,14 @@ export class CourseDetailsComponent {
     this.servesCourse.showSingleCourse(id).subscribe(
       (response: any) => {
         this.course = response.data;
+        console.log("courses")
+        console.log(this.course);
         this.course ? (this.data = true) : (this.data = false);
-        console.log(response.data);
+        this.courseBenefits = this.course.benefits.split(',');
+        this.reguiremnets= this.course.requirements.split(',');
+
+        // this. getLessons(this.courseId)
+
       },
       (error) => {
         console.error('courses error', error);
@@ -51,10 +82,90 @@ export class CourseDetailsComponent {
     this.servesCourse.showSectionsCourse(id).subscribe(
       (response: { data: SectionInterface[] } | any) => {
         this.Sections = response;
-        console.log(response, 'ahmed');
+
       },
       (error) => {
         console.error('courses error', error);
+      }
+    );
+  }
+
+  async getInstructorOfCourse(id: number | any): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.servesCourse.instructorOfCourse(id.toString()).subscribe(
+        (response: any) => {
+
+          this.userId = response.user_id;
+
+          resolve();
+        },
+        (error: any) => {
+          console.error('Instructor Data error', error);
+          reject(error);
+        }
+      );
+    });
+  }
+
+  async getUserData(){
+
+   this.getDataOfInstructor(this.userId);
+  }
+  getDataOfInstructor(id:string|null){
+    this.instructorService.getDataOFSpecificUser(id).subscribe(
+      (response:any) => {
+         this.User=response.data;
+         console.log("instructor",this.User)
+
+
+      },
+      (error) => {
+        console.error('courses error', error);
+      }
+    )
+  }
+  getReviews(courseId: string|null) {
+    this.servesCourse.getCourseReviews(courseId).subscribe(
+      (response: any) => {
+
+
+        this.reviews = response;
+        console.log(this.reviews)
+      },
+      (error) => {
+        console.error('Error fetching reviews:', error);
+      }
+    );
+  }
+   getLessonsByCourse(courseId: string|null) {
+     this.servesCourse.getCourseWithLessons(courseId).subscribe(
+       (response: any) => {
+
+         this.courseLessons=response
+        //  console.log(response);
+        // console.log("xxxxxxx")
+         this.EnrollmentMessage=response.message
+         console.log(this.EnrollmentMessage);
+
+       },
+       (error) => {
+         console.error('Error fetching lessons:', error);
+       }
+     );
+   }
+
+
+  enroll(studentId:any, courseId:any, paymentStatus:any) {
+    this.servesCourse.enroll( courseId,studentId, paymentStatus).subscribe(
+      (response) => {
+        console.log('Enrollment successful:', response);
+        console.log('enrollment mess',response.enrollment.payment_status)
+        this.router.navigate([`/courses/course-details/${this.course.id}/${response.enrollment.payment_status}`]);
+
+      },
+      (error) => {
+        console.error('Enrollment failed:', error);
+
       }
     );
   }

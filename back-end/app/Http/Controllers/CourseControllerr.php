@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Course;
+use Illuminate\Http\JsonResponse;
 
 class CourseControllerr extends Controller
 {
@@ -109,5 +110,36 @@ class CourseControllerr extends Controller
         $course = Course::find($id);
        
         return response()->json($course->Certificats);
+    }
+    // public function getStudentsByCourse($courseId)
+    // {
+       
+    //     $course = Course::find($courseId);
+    //     echo $course;
+    //     if (!$course) {
+    //         return response()->json(['message' => 'Course not found'], 404);
+    //     }
+    //     return response()->json($course->students, 200);
+    // }
+    // public function getStudentsByCourse($courseId)
+    // {
+    //     $course = Course::with('students')->find($courseId); // Use with to eager load students
+    
+    //     if (!$course) {
+    //         return response()->json(['message' => 'Course not found'], 404);
+    //     }
+    
+    //     return response()->json($course->students, 200);
+    // }
+    public function getCourseWithLessons($courseId): JsonResponse
+    {
+      
+    
+    $course = Course::with('sections.lessons')->find($courseId);
+    if (!$course) {
+        return response()->json(['message' => 'Course not found'], 404);
+    }
+
+    return response()->json($course, 200);   
     }
 }

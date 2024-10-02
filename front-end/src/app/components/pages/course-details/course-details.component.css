@@ -615,3 +615,73 @@ ul li {
   background-image: linear-gradient(white, white),
     linear-gradient(to right, rgba(180, 167, 245, 1), rgba(57, 44, 125, 1));
 }
+.lessons {
+  margin-top: 20px;
+}
+
+.lesson-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.lesson-item {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.lesson-item:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.lesson-icon {
+  color: #007bff;
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.lesson-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.lesson-description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.lesson-link {
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.lesson-link:hover {
+  text-decoration: underline;
+}
+
+.no-lessons {
+  padding: 15px;
+  color: #888;
+  font-size: 16px;
+  text-align: center;
+  border: 1px dashed #ccc;
+}
+
+.no-lessons i {
+  color: #ff8800;
+  margin-right: 8px;
+}

@@ -6,6 +6,7 @@ use App\Http\Controllers\InstructorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseControllerr;
+use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\Lesson;
 use App\Http\Controllers\QuizControllerr;
 use App\Http\Controllers\Review;
@@ -42,6 +43,7 @@ Route::get('instructors/{id}/courses', [InstructorController::class, 'courses'])
 
 Route::get('instructor/course/{id}', [InstructorController::class, 'InstructorByCourseID']);
 Route::get('/user/{id}', [UserController::class, 'getUser']);
+
 ////////////////////////////////////////////////////////////////
 
 
@@ -54,11 +56,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
   Route::put('/user/update', [UserController::class, 'update']);
   Route::delete('/user/delete/{id}', [UserController::class, 'deleteUser']);
+  Route::get('/user/{id}/student', [UserController::class, 'getUserWithStudent']);
+  Route::get('/user/{id}/instructor', [UserController::class, 'getUserWithInstructor']);
 
   Route::get('courses/all', [CourseControllerr::class, 'all']);
 
   Route::get('courses', [CourseControllerr::class, 'index']);
-
+ ///instructor/course/
   Route::get('courses/show/{id}', action: [CourseControllerr::class, 'show']);
   Route::post('courses/add', action: [CourseControllerr::class, 'Store']);
   Route::put('courses/update/{id}', action: [CourseControllerr::class, 'update']);
@@ -109,16 +113,15 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
   //section controller
   Route::get('section/lessons', [SectionController::class, 'index']);
-
+  Route::get('section/{id}/lessons', [SectionController::class, 'lessons']);
 
   //Review 
   Route::get('reviews', [Review::class, 'index']);
   Route::get('reviews/show/{id}', [Review::class, 'show']);
   Route::post('reviews/add', [Review::class, 'store']);
-  Route::get('reviews/{id}', [Review::class, 'update']);
-  Route::get('reviews/delete/{id}', [Review::class, 'destroy']);
-
-
+  Route::put('reviews/{id}', [Review::class, 'update']);
+  Route::delete('reviews/delete/{id}', [Review::class, 'destroy']);
+  Route::get('reviews/course/{id}', [Review::class, 'getCourseReviews']);
 
   // course controller
   Route::get('courses', [CourseControllerr::class, 'index']);
@@ -127,6 +130,15 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::post('courses/add', action: [CourseControllerr::class, 'Store']);
   Route::put('courses/update/{id}', action: [CourseControllerr::class, 'update']);
   Route::get('courses/delete/{id}', action: [CourseControllerr::class, 'destroy']);
+  // show student enroll in which courses 
+  Route::get('/courses/{courseId}/students', action: [CourseControllerr::class, 'getStudentsByCourse']);
+
+
+  //enrollment 
+  
+  Route::post('enroll', action: [EnrollmentController::class, 'enroll']);
+  
+ 
   // category 
   Route::get(uri: 'categories', action: [CategoryControllerr::class, 'index']);
 
@@ -144,6 +156,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::put('lessons/update/{id}', action: [Lesson::class, 'update']);
   Route::get('lessons/delete/{id}', action: [Lesson::class, 'destroy']);
 
+
+  Route::get('/courses/{courseId}/lessons', [CourseControllerr::class, 'getCourseWithLessons']);
+  
+  //getLessonsBySectionId
+
   // Quizes 
   Route::get('quizes', action: [QuizControllerr::class, 'index']);
   Route::post('quizes/add', action: [QuizControllerr::class, 'Store']);
@@ -153,6 +170,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::post('instructors/add', action: [InstructorController::class, 'Store']);
   Route::put('instructors/update/{id}', action: [InstructorController::class, 'update']);
   Route::get('instructors/delete/{id}', action: [InstructorController::class, 'destroy']);
+
+  // students 
+  Route::get('students', action: [StudentController::class, 'index']);
+
 });
 
 

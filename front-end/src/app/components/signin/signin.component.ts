@@ -46,7 +46,7 @@ export class SigninComponent implements OnInit {
         (error) => {
           console.error('login error', error);
            this.error = error.error.msg || 'An error occurred during login'; // Set error message
-          alert("error in Login",this.error);
+          alert("error in Login");
         }
       );
     } else {

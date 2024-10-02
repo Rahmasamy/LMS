@@ -73,6 +73,38 @@ class UserController extends Controller
         return response()->json(['message' => 'User not found'], 404);
     }
 }
+public function getUserWithStudent($userId)
+{
+    $user = User::with(['student' => function($query) {
+        $query->where('role_id', 3); 
+    }])->find($userId);
+
+    if (!$user) {
+        return response()->json(['message' => 'User not found'], 404);
+    }
+
+    if (!$user->student) {
+        return response()->json(['message' => 'No student data available for this user'], 404);
+    }
+
+    return response()->json($user, 200);
+}
+public function getUserWithInstructor($userId)
+{
+    $user = User::with(['instructor' => function($query) {
+        $query->where('role_id', 2);
+    }])->find($userId);
+
+    if (!$user) {
+        return response()->json(['message' => 'User not found'], 404);
+    }
+
+    if (!$user->instructor) {
+        return response()->json(['message' => 'No instructor data available for this user'], 404);
+    }
+
+    return response()->json($user, 200);
+}
    
 
 }

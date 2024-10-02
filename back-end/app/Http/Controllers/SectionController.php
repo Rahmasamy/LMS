@@ -73,11 +73,11 @@ class SectionController extends Controller
         return $this->apiResponce(null, "No course with that Id", 404);
 
     }
-    public function sections(Request $request, $id)
+    public function lessons(Request $request, $id)
     {
         $this->authAdminInst($request);
         $section = Section::find($id);
 
-        return response()->json($section->sections);
+        return response()->json($section->Lessons);
     }
 }
