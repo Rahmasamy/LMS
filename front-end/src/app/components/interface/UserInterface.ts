@@ -9,12 +9,12 @@ export interface Instructor {
 
 export interface User {
   id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  email_verified_at: string | null; // Can be null if not verified
-  phone_number: string;
-  image_path: string; // URL to the user's profile image
-  created_at: string; // ISO 8601 format
-  updated_at: string; // ISO 8601 format
+  first_name: string | null;
+  last_name: string |null;
+  email: string | null;
+  email_verified_at: string | null;
+  phone_number: string |null;
+  image_path: string |null;
+  created_at: string |null;
+  updated_at: string | null;
 }

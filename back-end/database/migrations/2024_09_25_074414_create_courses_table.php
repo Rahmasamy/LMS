@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         if (Schema::hasTable('courses')) {
-            DB::table('courses')->truncate(); // This will delete all records and reset the auto-increment counter
+            DB::table(table: 'courses')->truncate();
         }
 
         Schema::create('courses', callback: function (Blueprint $table) {

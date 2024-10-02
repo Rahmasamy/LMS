@@ -11,13 +11,13 @@
               <div class="abt-instructor-img">
                 <a href="instructor-profile.html"
                   ><img
-                    src="assets/img/user/user1.jpg"
+                    [src]="User?.image_path"
                     alt="img"
                     class="img-fluid"
                 /></a>
               </div>
               <div class="instructor-detail me-3">
-                <h5><a href="instructor-profile.html">Nicole Brown</a></h5>
+                <h5><a href="instructor-profile.html">{{User?.first_name}} {{User?.last_name}}</a></h5>
                 <p>UX/UI Designer</p>
               </div>
               <div class="rating mb-0">
@@ -29,7 +29,7 @@
                   ></i>
                 </div>
                 <span class="d-inline-block average-rating"
-                  ><span>{{ course.rating }}</span> (15)</span
+                  ><span>{{ course.rating }}</span> </span
                 >
               </div>
             </div>
@@ -68,48 +68,24 @@
               <h5 class="subs-title">Overview</h5>
               <h6>Course Description</h6>
               <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged.
+              {{course.description}}
               </p>
               <p>
-                It was popularised in the 1960s with the release of Letraset
-                sheets containing Lorem Ipsum passages, and more recently with
-                desktop publishing software like Aldus PageMaker including
-                versions of Lorem Ipsum.
+                {{course.description}}
               </p>
               <h6>What you'll learn</h6>
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <ul>
-                    <li>Become a UX designer.</li>
-                    <li>You will be able to add UX designer to your CV</li>
-                    <li>Become a UI designer.</li>
-                    <li>Build &amp; test a full website design.</li>
-                    <li>Build &amp; test a full mobile app.</li>
+                    <li *ngFor="let benefit of courseBenefits">{{ benefit.trim() }}</li>
                   </ul>
                 </div>
-                <div class="col-md-6">
-                  <ul>
-                    <li>Learn to design websites &amp; mobile phone apps.</li>
-                    <li>You'll learn how to choose colors.</li>
-                    <li>Prototype your designs with interactions.</li>
-                    <li>Export production ready assets.</li>
-                    <li>All the techniques used by UX professionals</li>
-                  </ul>
-                </div>
+
               </div>
               <h6>Requirements</h6>
               <ul class="mb-0">
-                <li>
-                  You will need a copy of Adobe XD 2019 or above. A free trial
-                  can be downloaded from Adobe.
-                </li>
-                <li>No previous design experience is needed.</li>
-                <li class="mb-0">No previous Adobe XD skills are needed.</li>
+
+                <li *ngFor="let req of reguiremnets">{{ req.trim() }}</li>
               </ul>
             </div>
           </div>
@@ -121,12 +97,12 @@
                   <h5 class="subs-title">Course Content</h5>
                 </div>
                 <div class="col-sm-6 text-sm-end">
-                  <h6>92 Lectures 10:56:11</h6>
+                  <h6>92 Lectures {{course.durations}}</h6>
                 </div>
               </div>
 
               <div
-                *ngFor="let section of Sections; let i = index"
+                *ngFor="let section of courseLessons?.sections; let i = index"
                 class="course-card"
               >
                 <h6 class="cou-title">
@@ -135,7 +111,7 @@
                     data-bs-toggle="collapse"
                     href="#collapseOne{{ i }}"
                     aria-expanded="false"
-                    >{{ section.title }}</a
+                    >{{ section?.title }}</a
                   >
                 </h6>
                 <div
@@ -150,8 +126,23 @@
                           src="assets/img/icon/play.svg"
                           alt="Img"
                           class="me-2"
-                        />{{ section.description }}
+                        />{{ section?.description }}
                       </p>
+                      <div class="lessons">
+                        <ul class="lesson-list">
+                          <li *ngFor="let lesson of section.lessons" class="lesson-item">
+                            <div class="lesson-header">
+                              <i class="fas fa-play-circle lesson-icon"></i>
+                              <strong class="lesson-title">{{ lesson?.title }}</strong>
+                            </div>
+                            <p class="lesson-description">{{ lesson?.descrption }}</p>
+                            <a [href]="lesson?.video_path" class="lesson-link" target="_blank">Watch Video</a>
+                          </li>
+                          <li *ngIf="section.lessons.length === 0" class="no-lessons">
+                            <i class="fas fa-exclamation-circle"></i> No lessons available in this section.
+                          </li>
+                        </ul>
+                      </div>
                       <div>
                         <a href="javascript:void(0);">Preview</a>
                         <span>02:53</span>
@@ -177,7 +168,7 @@
                     /></a>
                   </div>
                   <div class="instructor-detail">
-                    <h5><a href="instructor-profile.html">Nicole Brown</a></h5>
+                    <h5><a href="instructor-profile.html">{{User?.first_name}} {{User?.last_name}}</a></h5>
                     <p>UX/UI Designer</p>
                   </div>
                 </div>
@@ -203,7 +194,7 @@
                 </div>
                 <div class="cou-info">
                   <img src="assets/img/icon/icon-02.svg" alt="Img" />
-                  <p>9hr 30min</p>
+                  <p>{{course.durations}}</p>
                 </div>
                 <div class="cou-info">
                   <img src="assets/img/icon/people.svg" alt="Img" />
@@ -233,7 +224,7 @@
           </div>
 
           <div class="card review-sec">
-            <div class="card-body">
+            <div class="card-body"  *ngFor="let rev of reviews">
               <h5 class="subs-title">Reviews</h5>
               <div class="instructor-wrap">
                 <div class="about-instructor">
@@ -246,27 +237,14 @@
                     /></a>
                   </div>
                   <div class="instructor-detail">
-                    <h5><a href="instructor-profile.html">Nicole Brown</a></h5>
+                    <h5><a href="instructor-profile.html"></a></h5>
                     <p>UX/UI Designer</p>
                   </div>
                 </div>
-                <div class="rating">
-                  <i class="fas fa-star filled"></i>
-                  <i class="fas fa-star filled"></i>
-                  <i class="fas fa-star filled"></i>
-                  <i class="fas fa-star filled"></i>
-                  <i class="fas fa-star"></i>
-                  <span class="d-inline-block average-rating"
-                    >4.5 Instructor Rating</span
-                  >
-                </div>
+
               </div>
               <p class="rev-info">
-                “ This is the second Photoshop course I have completed with
-                Cristian. Worth every penny and recommend it highly. To get the
-                most out of this course, its best to to take the Beginner to
-                Advanced course first. The sound and video quality is of a good
-                standard. Thank you Cristian. “
+              “{{ rev?.review }}. “
               </p>
               <a href="javascript:void(0);" class="btn btn-reply"
                 ><i class="feather-corner-up-left"></i> Reply</a
@@ -369,11 +347,12 @@
                         >
                       </div>
                     </div>
-                    <a
-                      routerLink="/courses/course-details/{{ course.id }}/{{course.plan}}"
+                    <button
+                      (click)="enroll(course.id, course.student_id, course.plan)"
                       class="btn btn-enroll w-100"
-                      >Enroll Now</a
-                    >
+                      >Enroll Now </button >
+                     
+                      <!-- routerLink="/courses/course-details/{{ course.id }}/{{course.plan}}" -->
                   </div>
                 </div>
               </div>
@@ -391,7 +370,7 @@
                       class="me-2"
                       alt="Img"
                     />
-                    11 hours on-demand video
+                    {{course.durations}} hours on-demand video
                   </li>
                   <li>
                     <img
@@ -453,7 +432,7 @@
                       class="me-2"
                       alt="Img"
                     />
-                    Duration: <span>20 hours</span>
+                    Duration: <span>{{course.durations}}</span>
                   </li>
                   <li>
                     <img

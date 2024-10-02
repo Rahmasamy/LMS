@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StudentRequest;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\User;
+
 class StudentController extends Controller
 {
     use apiResponseTrait,checkApi,AuthStudentInstAdmin;
@@ -55,5 +57,6 @@ class StudentController extends Controller
       
     }
     
+  
  
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-
+use App\Models\Course;
 use App\Models\Review as ModelsReview;
 use Illuminate\Http\Request;
 
@@ -47,7 +47,7 @@ class Review extends Controller
             $review->update($validatedData);
             return $this->checkRequest($review, 200);
         }
-        return $this->checkRequest(null, 'not_found review', 400);
+        return $this->checkRequest('not_found review', 400);
     }
 
     public function destroy(Request $request, $id)
@@ -61,5 +61,11 @@ class Review extends Controller
         return $this->apiResponce(null, "No review with that Id", 404);
 
     }
+    public function getCourseReviews($courseId)
+{
+    $course=Course::find($courseId);
+      
+    return response()->json($course-> Reviews);
+}
 
 }

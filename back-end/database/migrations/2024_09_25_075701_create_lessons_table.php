@@ -14,7 +14,7 @@ return new class extends Migration {
     public function up(): void
     {
         if (Schema::hasTable('lessons')) {
-            DB::table('lessons')->truncate(); // This will delete all records and reset the auto-increment counter
+            DB::table('lessons')->truncate(); 
         }
 
         Schema::create('lessons', function (Blueprint $table) {
@@ -23,6 +23,8 @@ return new class extends Migration {
             $table->text('descrption');
             $table->string('video_path', 45);
             $table->foreignId('section_id')->nullable()->constrained('sections')->cascadeOnDelete();
+            // $table->foreignId(column: 'section_id')->nullable()->constrained(table: 'sections')->cascadeOnDelete();
+            $table->foreignId('course_id')->nullable()->constrained('courses')->cascadeOnDelete();
             $table->timestamps();
         });
     }
