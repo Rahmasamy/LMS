@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
-    protected $fillable = ["student_id","id", 'title', 'description', 'category_id', 'start_date', 'end_date', 'status', 'instructor_id', 'benefits', 'requirements', 'plan'];
+    protected $fillable = ["student_id", "id", 'title', 'description', 'category_id', 'start_date', 'end_date', 'status', 'instructor_id', 'benefits', 'requirements', 'plan', 'durations', 'level'];
     // will change as foregin key when we will create admin,super admin table 
     public function students()
     {
         return $this->belongsToMany(Student::class, 'enrollments'); // use 'enrollments' as the pivot table
     }
     public function sections()
-{
-    return $this->hasMany(Section::class,);
-}
+    {
+        return $this->hasMany(Section::class, );
+    }
     public function Reviews()
     {
         return $this->hasMany(Review::class);
@@ -42,7 +42,8 @@ class Course extends Model
     {
         return $this->belongsTo(Instructor::class);
     }
-    public function getLessons(){
+    public function getLessons()
+    {
         return $this->hasMany(Quiz::class, 'course_id');
     }
 

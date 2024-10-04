@@ -98,7 +98,7 @@
             </a>
           </div>
         </a>
-        <a class="nav-link instructor" >
+        <a class="nav-link instructor">
           Pages
 
           <div class="list-instructors d-none">
@@ -114,8 +114,16 @@
     </div>
     <div class="nav-right">
       <div class="change-color">U</div>
-      <a routerLink="signin" class="Signin">Signin</a>
-      <a routerLink="signup" class="Signup">Signup</a>
+      <!-- Check if token is null and show Signin/Signup links -->
+      <a *ngIf="!token" routerLink="signin" class="Signin">Signin</a>
+      <a *ngIf="!token" routerLink="signup" class="Signup">Signup</a>
+
+      <!-- If token exists, show logout button -->
+      <button *ngIf="token" (click)="logout()" class="btn Signin p-2">
+        Logout
+      </button>
+
+      <!-- <a routerLink="signup" class="Signup">Signup</a> -->
     </div>
   </div>
 </nav>

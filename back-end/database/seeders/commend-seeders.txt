@@ -1,0 +1,8 @@
+php artisan mi:f 
+php artisan db:seed --class=rolesSeeder
+php artisan db:seed --class=UserSeeder 
+php artisan db:seed --class=CategorySeeder
+php artisan db:seed --class=CourseSeeder
+php artisan db:seed --class=sectionSeeder
+php artisan db:seed --class=LessonSeeder  
+php artisan serve   

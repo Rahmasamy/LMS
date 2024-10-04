@@ -23,6 +23,8 @@ import { CourseDetailsComponent } from './components/pages/course-details/course
 import { ErrorsComponent } from './components/pages/errors/errors.component';
 import { CourseAfterEnrollmentComponent } from './components/pages/course-after-enrollment/course-after-enrollment.component';
 import { PaymentCourseComponent } from './components/pages/payment-course/payment-course.component';
+import { InstructorRouteAdminComponent } from './components/component-Instructors/instructor-route-admin/instructor-route-admin.component';
+import { InstructorAdminComponent } from './components/component-Instructors/instructor-admin/instructor-admin.component';
 
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -47,16 +49,31 @@ export const routes: Routes = [
       { path: 'instructor-reviews', component: InstructorReviewsComponent },
       { path: 'instructor-quiz', component: InstructorQuizComponent },
       { path: 'instructor-course', component: InstrutorCoursesComponent },
-      { path: 'instructor-announcement', component: InstrutorAnnouncementComponent },
+      {
+        path: 'instructor-announcement',
+        component: InstrutorAnnouncementComponent,
+      },
     ],
+  },
+
+  {
+    path: 'add-course',
+    component: InstructorRouteAdminComponent,
+    children: [{ path: '', component: InstructorAdminComponent }],
   },
   { path: 'student', component: StudentComponent },
   { path: 'notification', component: NotificationsComponent },
   { path: 'wishlist', component: WichlistComponent },
   { path: 'courses', component: CourseComponent },
   { path: 'courses/course-details/:id', component: CourseDetailsComponent },
-  { path: 'courses/course-details/:id/free', component: CourseAfterEnrollmentComponent },
-  { path: 'courses/course-details/:id/payment', component: PaymentCourseComponent },
+  {
+    path: 'courses/course-details/:id/free',
+    component: CourseAfterEnrollmentComponent,
+  },
+  {
+    path: 'courses/course-details/:id/payment',
+    component: PaymentCourseComponent,
+  },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   { path: '**', component: ErrorsComponent },
