@@ -14,47 +14,53 @@ export class CourseServiceService {
 
   constructor(private http: HttpClient) {}
   displayCourses(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/all-courses?per_page=10`);
+    // return this.http.get(`${this.apiUrl}/all-courses?per_page=10`);
+
+    return this.http.get(`${this.apiUrl}/all-courses?per_page=20`);
   }
 
-  instructorOfCourse(id: string|any) {
+  instructorOfCourse(id: string | any) {
     return this.http.get(`${this.apiUrl}/instructor/course/${id}`);
   }
 
   showSingleCourse(id: string | any) {
-    console.log(id ,"Servisse")
+    console.log(id, 'Servisse');
     const headers = {
       authorization: 'Bearer ' + localStorage.getItem('authToken'),
     };
     return this.http.get(`${this.apiUrl}/courses/show/${id}`, { headers });
   }
 
-
-
   showSectionsCourse(id: string | any) {
-    console.log(id ,"sections")
+    console.log(id, 'sections');
     const headers = {
       authorization: 'Bearer ' + localStorage.getItem('authToken'),
     };
     return this.http.get(`${this.apiUrl}/course/sections/${id}`, { headers });
   }
-  getCourseReviews(courseId: string|null): Observable<any> {
+  getCourseReviews(courseId: string | null): Observable<any> {
     const headers = {
       authorization: 'Bearer ' + localStorage.getItem('authToken'),
     };
     const url = `${this.apiUrl}/reviews/course/${courseId}`;
-    return this.http.get(url,{headers});
+    return this.http.get(url, { headers });
   }
-  getCourseWithLessons(courseId: string|null): Observable<any> {
+  getCourseWithLessons(courseId: string | null): Observable<any> {
     const headers = {
       authorization: 'Bearer ' + localStorage.getItem('authToken'),
     };
 
-  //  console.log(`${this.apiUrl}/courses/${courseId}/lessons`);
-    return this.http.get(`${this.apiUrl}/courses/${courseId}/lessons`,{headers});
+    //  console.log(`${this.apiUrl}/courses/${courseId}/lessons`);
+    return this.http.get(`${this.apiUrl}/courses/${courseId}/lessons`, {
+      headers,
+    });
   }
 
-  enroll(studentId: number, courseId: number, paymentStatus: string): Observable<any> {
+  enroll(
+    studentId: number,
+    courseId: number,
+    paymentStatus: string
+  ): Observable<any> {
     const enrollmentData = {
       student_id: studentId,
       course_id: courseId,
@@ -69,4 +75,11 @@ export class CourseServiceService {
     });
   }
 
+  addCourse(data: {}) {
+    const headers = {
+      authorization: 'Bearer ' + localStorage.getItem('authToken'),
+    };
+    console.log(data);
+    return this.http.post(`${this.apiUrl}/courses/add`, data, { headers });
+  }
 }

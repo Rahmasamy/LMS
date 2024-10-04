@@ -36,6 +36,7 @@ export class FeaturedCoursesComponent {
     console.log(this.data);
     this.courseService.displayCourses().subscribe(
       (response) => {
+        console.log(response)
         this.courses ? (this.data = true) : (this.data = false);
         this.courses = response.data.data;
       },

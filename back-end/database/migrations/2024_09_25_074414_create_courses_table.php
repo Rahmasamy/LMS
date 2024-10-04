@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->string('start_date', 25)->nullable();
             $table->string('end_date', 25)->nullable();
             $table->string('status', 1);
+            $table->string('level', 50)->nullable();
             $table->unsignedBigInteger('category_id')->default(1);
             $table->unsignedBigInteger('instructor_id');
             $table->text('benefits');
