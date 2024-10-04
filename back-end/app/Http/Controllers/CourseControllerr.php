@@ -56,6 +56,9 @@ class CourseControllerr extends Controller
        $course=Course::create($validatedData);
        return $this->checkRequest($course,201); 
     }
+
+
+    
     public function update(CourseRequest $request,$id){
         $this->authAdminInst($request);
         $validatedData = $request->validated();
