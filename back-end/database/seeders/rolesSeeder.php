@@ -58,6 +58,7 @@ class rolesSeeder extends Seeder
             'create Sections',
             'edit Sections',
             'view Sections',
+                                      
         ]);
 
         $student->givePermissionTo(['view Assignment', 'view Quiz', 'view Lessons', 'view Sections']);
