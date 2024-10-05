@@ -1,0 +1,116 @@
+.settings-widget {
+  border: 1px solid #e9ecef;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  background: #fff;
+}
+.settings-menu {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+}
+.profile-heading {
+  padding: 24px 24px 19px;
+  border-bottom: 1px solid #e9ecef;
+}
+.profile-heading h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.checkout-form {
+  padding: 20px;
+}
+.announcement-head {
+  background: #f4f6f9;
+  border-radius: 5px;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.announcement-head .announcement-titlte h5 {
+  font-size: 18px;
+}
+.settings-widget.card-details p {
+  color: #685f78;
+}
+
+.announcement-head .announcement-titlte p {
+  margin-bottom: 0;
+}
+.add-announcement-btn .btn-primary {
+  background: #ff4667;
+  border: 1px solid #ff4667;
+}
+.checkout-form .input-block {
+  margin-bottom: 20px;
+}
+
+.checkout-form label {
+  color: #685f78;
+  font-weight: 600;
+  font-size: 16px;
+}
+label.form-label {
+  font-size: 14px;
+  color: #002058;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+.country-select {
+  color: #c4c4c4;
+  font-size: 14px;
+}
+.checkout-form .form-control, .checkout-form .form-select {
+  border-radius: 5px;
+  min-height: 44px;
+}
+.select2-hidden-accessible {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+.custom-table {
+  border: 1px solid #f4f6f9;
+  border-radius: 5px;
+}
+.custom-table table th {
+  background: #f4f6f9;
+  font-weight: 500;
+  color: #685f78;
+  padding: 15px 10px;
+  border-color: #f4f6f9;
+}
+.table-nowrap tr th, .table-nowrap tr td {
+  white-space: nowrap;
+}
+.table-nowrap tr th, .table-nowrap tr td {
+  white-space: nowrap;
+}
+
+.custom-table table td {
+  border-color: #f4f6f9;
+}
+.custom-table table td {
+  color: #685f78;
+  padding: 15px 10px;
+}
+.table th, .table td {
+  vertical-align: middle;
+  line-height: 1.462;
+  white-space: nowrap;
+}
+.tab-title {
+  color: #685f78;
+  text-decoration: none;
+}

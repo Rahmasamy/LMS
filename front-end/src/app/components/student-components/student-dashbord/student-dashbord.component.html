@@ -1,0 +1,140 @@
+<!-- <div class="col-xl-9 col-lg-9"> -->
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 d-flex">
+      <div class="card dash-info flex-fill">
+        <div class="card-body">
+          <h5>Enrolled Courses</h5>
+          <h2>{{ EnrolledCourses.length}}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 d-flex">
+      <div class="card dash-info flex-fill">
+        <div class="card-body">
+          <h5>Reviews</h5>
+          <h2>{{reviews.length}}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 d-flex">
+      <div class="card dash-info flex-fill">
+        <div class="card-body">
+          <h5>Total Courses</h5>
+          <h2>11</h2>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="instructor-course-table">
+    <div class="dashboard-title">
+      <h4>Recently Created Courses</h4>
+    </div>
+    <div class="table-responsive custom-table">
+      <table class="table table-nowrap mb-0">
+        <thead>
+          <tr>
+            <th>Courses</th>
+            <th>Enrolled</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let course of courses">
+            <td>
+              <div class="table-course-detail">
+                <a href="course-details.html" class="course-table-img">
+                  <span
+                    ><img
+                      [src]="course.image_path"
+                      alt="Img"
+                  /></span>
+                 {{course.title}}
+                </a>
+              </div>
+            </td>
+            <td>{{course.status}}</td>
+            <td>Published</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="dashboard-title">
+    <h4>Recently Enrolled Courses</h4>
+  </div>
+  <div class="row">
+    <div class="col-xxl-4 col-md-6 d-flex" *ngFor="let course of EnrolledCourses">
+      <div class="course-box flex-fill">
+        <div class="product">
+          <div class="product-img">
+            <a href="course-details.html">
+              <img
+                class="img-fluid"
+                alt="Img"
+                [src]="course.image_path"
+              />
+            </a>
+            <div class="price">
+              <h3>$80 <span>$99.00</span></h3>
+            </div>
+          </div>
+          <div class="product-content">
+            <div class="course-group d-flex">
+              <div class="course-group-img d-flex">
+                <!-- <a href="instructor-profile.html"
+                  ><img
+                    src="assets/img/user/user2.jpg"
+                    alt="Img"
+                    class="img-fluid"
+                /></a> -->
+                <div class="course-name">
+                  <h4><a href="instructor-profile.html">{{course.description}}</a></h4>
+
+                </div>
+              </div>
+              <div
+                class="course-share d-flex align-items-center justify-content-center"
+              >
+                <a href="#"><i class="fa-regular fa-heart"></i></a>
+              </div>
+            </div>
+            <h3 class="title instructor-text">
+              <a href="course-details.html"
+                >{{course.title}}</a
+              >
+            </h3>
+            <div class="course-info d-flex align-items-center">
+              <div class="rating-img d-flex align-items-center">
+                <img src="assets/img/icon/icon-01.svg" alt="Img" />
+                <p>12+ Lesson</p>
+              </div>
+              <div class="course-view d-flex align-items-center">
+                <img src="assets/img/icon/icon-02.svg" alt="Img" />
+                <p>{{course.durations}}</p>
+              </div>
+            </div>
+            <div class="rating m-0">
+              <div class="course-rating">
+                <i
+                  *ngFor="let star of [0, 1, 2, 3, 4]; let i = index"
+                  [class.filled]="i < getRating(course.rating)"
+                  class="fas fa-star"
+                ></i>
+              </div>
+              <span class="d-inline-block average-rating"
+                ><span>{{ course.rating }}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</div>
+

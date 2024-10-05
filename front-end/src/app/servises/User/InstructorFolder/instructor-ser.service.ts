@@ -13,6 +13,14 @@ export class InstructorSerService {
     return this.http.get(`${this.apiUrl}/user/${id}`);
 
 }
+getInstructorData(id: number) {
+  const headers = {
+    authorization: 'Bearer ' + localStorage.getItem('authToken'),
+  };
+
+ 
+  return this.http.get(`${this.apiUrl}/instructors/show/${id}`, { headers });
+}
 instructorOfCourse(){
 
   return this.http.get(`${this.apiUrl}/instructors`);

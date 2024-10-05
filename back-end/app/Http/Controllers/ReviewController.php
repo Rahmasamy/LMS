@@ -61,5 +61,11 @@ class ReviewController extends Controller
         return $this->apiResponce(null, "No review with that Id", 404);
 
     }
+    public function getReviewsByUserId($userId)
+    {
+        $reviews = ModelsReview::where('student_id', $userId)->with('course')->get();
+
+        return response()->json($reviews);
+    }
 
 }

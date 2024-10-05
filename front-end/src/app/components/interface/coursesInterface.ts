@@ -11,4 +11,6 @@ export interface Course {
   instructor_id: number;
   created_at: string | null;
   updated_at: string | null;
+  durations:string;
+  plan:string
 }

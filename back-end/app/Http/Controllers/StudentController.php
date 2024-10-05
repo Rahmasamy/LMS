@@ -57,6 +57,18 @@ class StudentController extends Controller
       
     }
     
-  
+    public function getRecentEnrollments($studentId)
+    {
+       
+        $student = Student::find($studentId);
+    
+        if (!$student) {
+            return response()->json(['error' => 'Student not found'], 404);
+        }
+    
+        $courses = $student->courses()->orderBy('date_enrolled', 'desc')->limit(5)->get();
+    
+        return response()->json($courses);
+    }
  
 }

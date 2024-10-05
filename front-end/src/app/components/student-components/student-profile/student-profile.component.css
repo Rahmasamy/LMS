@@ -1,0 +1,63 @@
+/* Container for the settings widget */
+.settings-widget {
+  background-color: #ffffff; /* White background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 20px; /* Inner padding */
+  margin-bottom: 20px; /* Space below the widget */
+}
+
+/* Profile heading */
+.profile-heading {
+  margin-bottom: 20px; /* Space below heading */
+}
+
+.profile-heading h3 {
+  font-size: 24px; /* Font size for the heading */
+  font-weight: 600; /* Medium weight */
+  color: #333333; /* Dark color for text */
+}
+
+/* Personal address form styles */
+.checkout-form {
+  border-top: 1px solid #eeeeee; /* Light gray border at the top */
+  padding-top: 20px; /* Padding above the form */
+}
+
+.contact-info {
+  margin-bottom: 15px; /* Space between contact info items */
+}
+
+.contact-info h6 {
+  font-size: 16px; /* Font size for labels */
+  font-weight: 500; /* Medium weight */
+  color: #666666; /* Lighter color for labels */
+  margin-bottom: 5px; /* Space below labels */
+}
+
+.contact-info p {
+  font-size: 14px; /* Font size for content */
+  color: #444444; /* Slightly darker color for text */
+  line-height: 1.5; /* Line height for better readability */
+}
+
+/* Specific styles for bio section */
+.bio {
+  margin-top: 10px; /* Space above bio section */
+  font-style: italic; /* Italic style for the bio text */
+}
+.contact-info h6 {
+  color: rgb(192, 1, 1);
+  font-weight: bold;
+  font-size: large;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .checkout-form .row {
+    flex-direction: column; /* Stack columns on small screens */
+  }
+  .checkout-form .col-sm-6 {
+    width: 100%; /* Full width for smaller screens */
+  }
+}
