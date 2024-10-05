@@ -14,9 +14,15 @@ export class CourseServiceService {
 
   constructor(private http: HttpClient) {}
   displayCourses(): Observable<any> {
-    // return this.http.get(`${this.apiUrl}/all-courses?per_page=10`);
+
 
     return this.http.get(`${this.apiUrl}/all-courses?per_page=20`);
+  }
+  displayRecentCourse(){
+    const headers = {
+      authorization: 'Bearer ' + localStorage.getItem('authToken'),
+    };
+    return this.http.get(`${this.apiUrl}/courses/recent`, { headers })
   }
 
   instructorOfCourse(id: string | any) {
@@ -79,7 +85,13 @@ export class CourseServiceService {
     const headers = {
       authorization: 'Bearer ' + localStorage.getItem('authToken'),
     };
-    console.log(data);
+
     return this.http.post(`${this.apiUrl}/courses/add`, data, { headers });
+  }
+  showWislListCourse(){
+    const headers = {
+      authorization: 'Bearer ' + localStorage.getItem('authToken'),
+    };
+    return this.http.get(`${this.apiUrl}/wishlist`, { headers });
   }
 }

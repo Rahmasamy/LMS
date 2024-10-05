@@ -11,7 +11,9 @@ class Student extends Model
     protected $fillable=[ "phone","bio","user_id","role_id"];
     public function courses()
     {
-        return $this->belongsToMany(Course::class, 'enrollments'); // use 'enrollments' as the pivot table
+        return $this->belongsToMany(Course::class, 'enrollments')
+        ->withPivot('date_enrolled', 'progress', 'grade')
+        ->withTimestamps();
     }
     public function Reviews()
     {

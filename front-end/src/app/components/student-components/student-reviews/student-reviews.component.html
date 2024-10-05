@@ -1,0 +1,79 @@
+<!-- <div class="col-xl-9 col-lg-9"> -->
+  <div class="settings-widget card-details">
+    <div class="settings-menu p-0">
+      <div class="profile-heading">
+        <h3>Reviews</h3>
+      </div>
+      <div class="checkout-form">
+        <div class="wishlist-tab">
+          <ul class="nav" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a
+                href="javascript:void(0);"
+                class="active"
+                data-bs-toggle="tab"
+                data-bs-target="#received-_review"
+                aria-selected="true"
+                role="tab"
+                >Give</a
+              >
+            </li>
+
+          </ul>
+        </div>
+        <div class="tab-content">
+          <div
+            class="tab-pane fade show active"
+            id="received-_review"
+            role="tabpanel"
+          >
+            <div class="review-wrap" *ngFor="let review of reviews">
+              <div class="review-user-info">
+                <div class="reviewer">
+                  <div class="review-img">
+                    <a href="javascript:void(0);"
+                      ><img [src]="User.image_path" alt="img"
+                    /></a>
+                  </div>
+                  <div class="reviewer-info">
+                    <h6><a href="javascript:void(0);">{{User.first_name}} {{User.last_name}}</a></h6>
+                    <p>{{User.email}}</p>
+                  </div>
+                </div>
+
+              </div>
+              <div class="review-content">
+                <p>
+                {{review.review}}.
+                </p>
+              
+              </div>
+            </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dash-pagination">
+    <div class="row align-items-center">
+      <div class="col-6">
+        <p>Page 1 of 2</p>
+      </div>
+      <div class="col-6">
+        <ul class="pagination">
+          <li class="active">
+            <a href="#">1</a>
+          </li>
+          <li>
+            <a href="#">2</a>
+          </li>
+          <li>
+            <a href="#"><i class="bx bx-chevron-right"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
+

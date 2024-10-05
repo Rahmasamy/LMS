@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Enrollment;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Http\Requests\EnrollmentRequest;
@@ -30,4 +31,5 @@ class EnrollmentController extends Controller
             'enrollment' => $enrollment
         ], 201);
     }
+  
 }

@@ -67,5 +67,11 @@ class Review extends Controller
       
     return response()->json($course-> Reviews);
 }
+public function getReviewsByUserId($userId)
+{
+    $reviews = ModelsReview::where('student_id', $userId)->with('course')->get();
+
+    return response()->json($reviews);
+}
 
 }

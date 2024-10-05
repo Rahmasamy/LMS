@@ -25,8 +25,7 @@ export class FeaturedCoursesComponent {
   headingName: string = 'What is New';
   subHeading: string = 'Featured Courses';
   all: string = 'All Categories';
-  paragraph: string =
-    'Lorem ipsum dolor sit amet,consectetur adipiscing elit. Eget aenean accumsan bibendum gravida maecenas augue elementum et neque. Suspendisse imperdiet.';
+  paragraph: string ='Lorem ipsum dolor sit amet,consectetur adipiscing elit. Eget aenean accumsan bibendum gravida maecenas augue elementum et neque. Suspendisse imperdiet.';
   data: Boolean = false;
   courses: Course[] = [];
   Instructor: any[] = [];
@@ -51,7 +50,7 @@ export class FeaturedCoursesComponent {
   getInstructorOfCourse(id: number) {
     this.courseService.instructorOfCourse(id.toString()).subscribe(
       (response: any) => {
-        console.log('hhhhhhhhhhhh');
+      
         this.instructors[id] = response;
         console.log('INSTRUCTOR DATA', this.Instructor);
       },

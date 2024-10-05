@@ -153,4 +153,12 @@ class CourseControllerr extends Controller
 
         return response()->json($course, 200);
     }
+    public function getRecentCourses()
+{
+ 
+    $courses = Course::orderBy('created_at', 'desc')->limit(5)->get();
+
+    return $this->checkRequest($courses, 200);
+
+}
 }

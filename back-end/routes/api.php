@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryControllerr;
 use App\Http\Controllers\CertificateControllerr;
 use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseControllerr;
@@ -72,7 +73,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::get('course/quizes/{id}', [CourseControllerr::class, 'quizes']);
   Route::get('course/assig/{id}', [CourseControllerr::class, 'Assigments']);
   Route::get('course/cert/{id}', [CourseControllerr::class, 'Certificate']);
-
+  Route::get('courses/recent', [CourseControllerr::class, 'getRecentCourses']);
   //category controller 
   Route::get(uri: 'categories', action: [CategoryControllerr::class, 'index']);
   Route::get('categories/courses/{id}', [CategoryControllerr::class, 'getCoursesOfCategory']);
@@ -122,6 +123,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::put('reviews/{id}', [Review::class, 'update']);
   Route::delete('reviews/delete/{id}', [Review::class, 'destroy']);
   Route::get('reviews/course/{id}', [Review::class, 'getCourseReviews']);
+  Route::get('/reviews/user/{userId}', [Review::class, 'getReviewsByUserId']);
 
   // course controller
   Route::get('courses', [CourseControllerr::class, 'index']);
@@ -174,12 +176,18 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 
   Route::post('instructors/add', action: [InstructorController::class, 'Store']);
+  Route::post('instructors/show/{id}', action: [InstructorController::class, 'show']);
   Route::put('instructors/update/{id}', action: [InstructorController::class, 'update']);
   Route::get('instructors/delete/{id}', action: [InstructorController::class, 'destroy']);
 
   // students 
   Route::get('students', action: [StudentController::class, 'index']);
+  Route::get('/students/{studentId}/recent-enrollments', [StudentController::class, 'getRecentEnrollments']);
+  Route::get('student/show/{student-id}', action: [StudentController::class, 'show']);
 
+  //wishlist 
+  Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist']);
+  Route::get('/wishlist', [WishlistController::class, 'viewWishlist']);
 });
 
 

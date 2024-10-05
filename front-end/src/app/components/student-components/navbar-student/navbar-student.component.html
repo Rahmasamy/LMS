@@ -1,0 +1,196 @@
+
+<div class="theiaStickySidebar">
+  <div class="settings-widget dash-profile">
+    <div class="settings-menu">
+      <div class="profile-bg">
+        <div class="profile-img">
+          <a routerLink=""
+            ><img [src]='User.image_path' alt="Img"
+          /></a>
+        </div>
+      </div>
+      <div class="profile-group">
+        <div class="profile-name text-center">
+          <h4><a routerLink="">{{User.first_name}} {{User.last_name}}</a></h4>
+          <p>{{User.email}}</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="settings-widget account-settings">
+    <div class="settings-menu">
+      <h3>Dashboard</h3>
+      <ul>
+        <li class="nav-item active">
+          <a routerLink="student-dashboard" class="nav-link">
+            <i class="bx bxs-tachometer"></i>Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="student-profile" class="nav-link">
+            <i class="bx bxs-user"></i>My Profile
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="student-enrolledcourse" class="nav-link">
+            <i class="bx bxs-graduation"></i>Enrolled Courses
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="student-wishlist" class="nav-link">
+            <i class="bx bxs-heart"></i>Wishlist
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="student-reviews" class="nav-link">
+            <i class="bx bxs-star"></i>Reviews
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="student-quiz" class="nav-link">
+            <i class="bx bxs-shapes"></i>My Quiz Attempts
+          </a>
+        </li>
+        <!-- <li class="nav-item">
+          <a routerLink="instructor-orders.html" class="nav-link">
+            <i class="bx bxs-cart"></i>Order History
+          </a>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a routerLink="student-qustions-answer" class="nav-link">
+            <i class="bx bxs-bookmark-alt"></i>Question &amp; Answer
+          </a>
+        </li> -->
+        <li class="nav-item">
+          <a routerLink="student-referral" class="nav-link">
+            <i class="bx bxs-user-plus"></i>Referrals
+          </a>
+        </li>
+        <!-- <li class="nav-item">
+          <a routerLink="instructor-chat.html" class="nav-link">
+            <i class="bx bxs-chat"></i>Messages
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="instructor-notifications.html" class="nav-link">
+            <i class="bx bxs-bell"></i>Notifications
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="instructor-tickets.html" class="nav-link">
+            <i class="bx bxs-coupon"></i>Support Tickets
+          </a>
+        </li> -->
+      </ul>
+      <h3> Student </h3>
+      <ul>
+        <!-- <li class="nav-item">
+          <a routerLink="student-course" class="nav-link">
+            <i class="bx bxs-rocket"></i>My Courses
+          </a>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a routerLink="student-announcement" class="nav-link">
+            <i class="bx bxs-volume-full"></i>Announcements
+          </a>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a routerLink="student-withdraw.html" class="nav-link">
+            <i class="bx bxs-wallet"></i>Withdrawls
+          </a>
+        </li> -->
+        <li class="nav-item">
+          <a routerLink="student-quiz" class="nav-link">
+            <i class="bx bxs-shapes"></i>Quiz Attempts
+          </a>
+        </li>
+        <!-- <li class="nav-item">
+          <a routerLink="instructor-assignment.html" class="nav-link">
+            <i class="bx bxs-file"></i>Assignments
+          </a>
+        </li> -->
+         <!-- <li class="nav-item">
+          <a routerLink="instructor-earnings.html" class="nav-link">
+            <i class="bx bxs-badge-dollar"></i>Earnings
+          </a>
+        </li> -->
+      </ul>
+      <h3>Account Settings</h3>
+      <ul>
+        <li class="nav-item">
+          <a routerLink="instructor-settings.html" class="nav-link">
+            <i class="bx bxs-cog"></i>Settings
+          </a>
+        </li>
+        <li class="nav-item">
+          <!-- <a routerLink="index.html" class="nav-link">
+            <i class="bx bxs-log-out"></i>Logout
+          </a> -->
+          <button *ngIf="token" (click)="logout()" class="btn Signin p-2">
+            Logout
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    class="resize-sensor"
+    style="
+      position: absolute;
+      inset: 0px;
+      overflow: hidden;
+      z-index: -1;
+      visibility: hidden;
+    "
+  >
+    <div
+      class="resize-sensor-expand"
+      style="
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        z-index: -1;
+        visibility: hidden;
+      "
+    >
+      <div
+        style="
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          transition: all;
+          width: 271px;
+          height: 1300px;
+        "
+      ></div>
+    </div>
+    <div
+      class="resize-sensor-shrink"
+      style="
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        z-index: -1;
+        visibility: hidden;
+      "
+    >
+      <div
+        style="
+          position: absolute;
+          left: 0;
+          top: 0;
+          transition: 0s;
+          width: 200%;
+          height: 200%;
+        "
+      ></div>
+    </div>
+  </div>
+</div>
