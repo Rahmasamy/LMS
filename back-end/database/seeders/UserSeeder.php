@@ -46,7 +46,7 @@ class UserSeeder extends Seeder
             'last_name' => 'Gallo',
             'phone_number' => '0021232412',
             'email' => 'gehadgallo@gmail.com',
-            'password' => bcrypt('123123123'), // Use a secure password
+            'password' => bcrypt(value: '123123123'), // Use a secure password
         ]);
         $admin1->assignRole($adminRole);
 
@@ -113,7 +113,7 @@ class UserSeeder extends Seeder
             'last_name' => 'Samy',
             'phone_number' => '0021232412',
             'email' => 'rahmasamy20011@gmail.com',
-            'password' => bcrypt('123123123'),
+            'password' => bcrypt(value: '123123123'),
         ]);
         $student2->assignRole($studentRole);
 

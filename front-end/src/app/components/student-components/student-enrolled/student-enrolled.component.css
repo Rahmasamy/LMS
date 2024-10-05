@@ -1,0 +1,186 @@
+.profile-heading {
+  padding: 24px 24px 19px;
+  border-bottom: 1px solid #e9ecef;
+}
+.settings-widget {
+  border: 1px solid #e9ecef;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  background: #fff;
+}
+.settings-menu {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+}
+.card-info .checkout-form {
+  padding: 24px;
+}
+.wishlist-tab {
+  margin-bottom: 9px;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+.wishlist-tab li {
+  display: inline-block;
+  margin: 0 15px 15px 0;
+}
+.wishlist-tab li a.active, .wishlist-tab li a:hover {
+  background: #ff4667;
+  color: #fff;
+}
+.tab-content>.active {
+  display: block;
+}
+.course-box {
+  margin-bottom: 25px;
+  border-radius: 10px;
+}
+.product {
+  border-radius: 10px;
+  position: relative;
+  padding: 20px;
+  transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -webkit-transition: all .5s ease;
+  background: #fff;
+  backdrop-filter: blur(17px);
+  -webkit-backdrop-filter: blur(17px);
+}
+.product-img {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: 10px 10px 10px 10px;
+}
+input, button, a {
+  transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  -ms-transition: all .4s ease;
+  -webkit-transition: all .4s ease;
+}
+.product-img img {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  transform: translateZ(0);
+  transition: all 2000ms cubic-bezier(.19,1,.22,1) 0ms;
+}
+.card-info .course-box .price {
+  min-width: auto;
+}
+.price {
+  min-width: auto;
+  padding: 4px 11px;
+}
+.card-info .course-box h3 {
+  margin-bottom: 0;
+}
+
+.price h3 {
+  font-size: 16px;
+  color: #f66962;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+.settings-wrap h1, h2, h3, h4, h5, h6 {
+  color: #002058;
+}
+.price h3 span {
+  text-decoration: line-through;
+  font-size: 14px;
+  color: #a5a5a5;
+}
+.price h3 {
+  font-size: 16px;
+  color: #f66962;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+.product-content {
+  padding-top: 18px;
+  display: inline-block;
+  width: 100%;
+}
+.course-group {
+  margin-bottom: 17px;
+}
+a {
+  color: #22100d;
+  text-decoration: none;
+}
+.course-name h4 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+.course-name p {
+  margin-bottom: 0;
+  font-size: 14px;
+  color: #685f78;
+}
+.course-share {
+  margin-left: auto;
+}
+.course-share i {
+  color: #ff5364;
+  font-size: 20px;
+}
+.card-info .course-box h3 {
+  margin-bottom: 0;
+}
+
+.product-content .instructor-text {
+  max-width: 320px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+}
+.product-content h3 {
+  font-size: 18px;
+  color: #000;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.product-content h3 a, .course-name h4 a {
+  color: #002058;
+}
+.course-info {
+  border-bottom: 1px solid #c7c7c7;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+.course-info {
+  margin: 16px 0 18px;
+}
+.course-info .course-view img, .course-info .rating-img img {
+  width: 18px;
+}
+.course-info p {
+  margin-bottom: 0;
+  color: #685f78;
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: 5px;
+}
+.product .rating {
+  margin-left: auto;
+  margin-bottom: 15px;
+  width: auto;
+  font-size: 14px;
+  font-weight: 600;
+  color: #685f78;
+}
+.rating {
+  list-style: none;
+  margin: 0 0 7px;
+  padding: 0;
+  width: 100%;
+}

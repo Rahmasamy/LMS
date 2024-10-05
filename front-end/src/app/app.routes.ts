@@ -25,7 +25,17 @@ import { CourseAfterEnrollmentComponent } from './components/pages/course-after-
 import { PaymentCourseComponent } from './components/pages/payment-course/payment-course.component';
 import { InstructorRouteAdminComponent } from './components/component-Instructors/instructor-route-admin/instructor-route-admin.component';
 import { InstructorAdminComponent } from './components/component-Instructors/instructor-admin/instructor-admin.component';
-
+import { DashbordMainStudentComponent } from './components/student-components/dashbord-main-student/dashbord-main-student.component';
+import { StudentDashbordComponent } from './components/student-components/student-dashbord/student-dashbord.component';
+import { StudentProfileComponent } from './components/student-components/student-profile/student-profile.component';
+import { StudentWishlistComponent } from './components/student-components/student-wishlist/student-wishlist.component';
+import { StudentEnrolledComponent } from './components/student-components/student-enrolled/student-enrolled.component';
+import { StudentQuestionAnswerComponent } from './components/student-components/student-question-answer/student-question-answer.component';
+import { StudentReferralsComponent } from './components/student-components/student-referrals/student-referrals.component';
+import { StudentReviewsComponent } from './components/student-components/student-reviews/student-reviews.component';
+import { StudentQuizComponent } from './components/student-components/student-quiz/student-quiz.component';
+import { StudentCoursesComponent } from './components/student-components/student-courses/student-courses.component';
+import { StudentAnnouncementComponent } from './components/student-components/student-announcement/student-announcement.component';
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'instructor', component: InstractorComponent },
@@ -52,6 +62,34 @@ export const routes: Routes = [
       {
         path: 'instructor-announcement',
         component: InstrutorAnnouncementComponent,
+      },
+    ],
+  },
+
+  { path: 'student', component: StudentComponent },
+  {
+    path: 'student-main-dashboard',
+    component: DashbordMainStudentComponent,
+    children: [
+      { path: '', component: StudentDashbordComponent},
+      { path: 'student-dashboard', component: StudentDashbordComponent },
+      { path: 'student-profile', component: StudentProfileComponent},
+      { path: 'student-wishlist', component: StudentWishlistComponent },
+      {
+        path: 'student-enrolledcourse',
+        component: StudentEnrolledComponent,
+      },
+      {
+        path: 'student-qustions-answer',
+        component: StudentQuestionAnswerComponent,
+      },
+      { path: 'student-referral', component: StudentReferralsComponent },
+      { path: 'student-reviews', component: StudentReviewsComponent },
+      { path: 'student-quiz', component: StudentQuizComponent },
+      { path: 'student-course', component: StudentCoursesComponent },
+      {
+        path: 'student-announcement',
+        component: StudentAnnouncementComponent,
       },
     ],
   },

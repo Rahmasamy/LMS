@@ -12,7 +12,10 @@ class Course extends Model
     // will change as foregin key when we will create admin,super admin table 
     public function students()
     {
-        return $this->belongsToMany(Student::class, 'enrollments'); // use 'enrollments' as the pivot table
+        return $this->belongsToMany(Student::class, 'enrollments')
+        ->withPivot('date_enrolled', 'progress', 'grade')
+        ->withTimestamps();
+        ;
     }
     public function sections()
     {

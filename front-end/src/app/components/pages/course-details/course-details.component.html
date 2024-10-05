@@ -347,11 +347,12 @@
                         >
                       </div>
                     </div>
+                    {{student_id}}
                     <button
-                      (click)="enroll(course.id, course.student_id, course.plan)"
+                      (click)="enroll(course.id,student_id,course.plan)"
                       class="btn btn-enroll w-100"
                       >Enroll Now </button >
-                     
+
                       <!-- routerLink="/courses/course-details/{{ course.id }}/{{course.plan}}" -->
                   </div>
                 </div>

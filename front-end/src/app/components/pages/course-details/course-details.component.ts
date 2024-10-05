@@ -8,6 +8,8 @@ import { LoadingComponent } from '../loading/loading.component';
 import { InstructorSerService } from '../../../servises/User/InstructorFolder/instructor-ser.service';
 import { User } from '../../interface/UserInterface';
 import { Review } from '../../interface/review-interface';
+import { StudentService } from '../../../servises/User/student/student/student.service';
+import { UsernowService } from '../../../servises/userNow/usernow.service';
 
 @Component({
   selector: 'app-course-details',
@@ -28,12 +30,14 @@ export class CourseDetailsComponent {
   reguiremnets: string[] = [];
   reviews: Review[] = [];
   courseLessons: any;
+  student_id:number=0
   EnrollmentMessage:string=''
   constructor(
     private servesCourse: CourseServiceService,
     private route: ActivatedRoute,
     private instructorService: InstructorSerService,
-    private router: Router
+    private router: Router,
+    private userService:UsernowService,private studentService:StudentService
   ) {
 
   }
@@ -49,6 +53,7 @@ export class CourseDetailsComponent {
     this.initData();
     this.getReviews(this.courseId);
     this.getLessonsByCourse(this.courseId);
+    this.getDataOfloggedUser();
 
 
   }
@@ -96,7 +101,7 @@ export class CourseDetailsComponent {
         (response: any) => {
 
           this.userId = response.user_id;
-
+          console.log("????????????????????",this.userId)
           resolve();
         },
         (error: any) => {
@@ -142,8 +147,7 @@ export class CourseDetailsComponent {
        (response: any) => {
 
          this.courseLessons=response
-        //  console.log(response);
-        // console.log("xxxxxxx")
+
          this.EnrollmentMessage=response.message
          console.log(this.EnrollmentMessage);
 
@@ -168,5 +172,31 @@ export class CourseDetailsComponent {
 
       }
     );
+  }
+
+  getDataOfloggedUser(){
+   this.userService.getDataOfloggedUser().subscribe(
+    (response:any)=> {
+
+
+      this.getDataOfStudent(response.id)
+    },
+    (error:any) => {
+      console.error('courses error', error);
+    }
+   )
+  }
+  getDataOfStudent(id:string){
+    this.studentService.getDataOfUser(id).subscribe(
+      (response:any)=> {
+
+        this.student_id=response.student.id;
+        console.log(this.student_id);
+
+      },
+      (error) => {
+        console.error('courses error', error);
+      }
+    )
   }
 }
