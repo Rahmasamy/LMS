@@ -1,0 +1,89 @@
+<div class="container watchvideo">
+  <h1> {{course.title}}</h1>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card content-sec">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <h5 class="subs-title">Course Content</h5>
+            </div>
+            <div class="col-sm-6 text-sm-end">
+              <h6>92 Lectures {{course.durations}}</h6>
+            </div>
+          </div>
+
+          <div
+            *ngFor="let section of courseLessons?.sections; let i = index"
+            class="course-card"
+          >
+            <h6 class="cou-title">
+              <a
+                class="collapsed"
+                data-bs-toggle="collapse"
+                href="#collapseOne{{ i }}"
+                aria-expanded="false"
+                >{{ section?.title }}</a
+              >
+            </h6>
+            <div
+              id="collapseOne{{ i }}"
+              class="card-collapse collapse"
+              style=""
+            >
+              <ul>
+                <li>
+                  <p>
+                    <img
+                      src="assets/img/icon/play.svg"
+                      alt="Img"
+                      class="me-2"
+                    />{{ section?.description }}
+                  </p>
+                  <div class="lessons">
+                    <ul class="lesson-list">
+                      <li *ngFor="let lesson of section.lessons" class="lesson-item">
+                        <div class="lesson-header">
+                          <i class="fas fa-play-circle lesson-icon"></i>
+                          <strong class="lesson-title">{{ lesson?.title }}</strong>
+                        </div>
+                        <p class="lesson-description">{{ lesson?.descrption }}</p>
+                        <a [routerLink]="['/watchnow', course.id, lesson.id]" class="lesson-link" target="_blank">Watch Video</a>
+                      </li>
+                      <li *ngIf="section.lessons.length === 0" class="no-lessons">
+                        <i class="fas fa-exclamation-circle"></i> No lessons available in this section.
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <a href="javascript:void(0);">Preview</a>
+                    <span>02:53</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8 video-container">
+      <h3>{{ lesson.title }}</h3>
+      <h4> {{lesson.description}}</h4>
+      <ng-container *ngIf="lesson.video_path; else noVideo">
+        <iframe
+          width="100%"
+          height="400"
+          [src]="getEmbedUrl(lesson.video_path)"
+          frameborder="0"
+          allowfullscreen>
+        </iframe>
+      </ng-container>
+      <ng-template #noVideo>
+        <p class="no-video-message">No video available for this lesson.</p>
+      </ng-template>
+    </div>
+
+    </div>
+
+</div>

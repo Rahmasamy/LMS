@@ -59,5 +59,18 @@ class QuizControllerr extends Controller
         return $this->apiResponce(null,"No lesson with that Id",404);
       
     }
-    
+    public function getQuizByCourseId($course_id)
+    {
+       
+        $quiz = Quiz::where('course_id', $course_id)
+                    ->with('questions') 
+                    ->first();
+
+        
+        if (!$quiz) {
+            return response()->json(['message' => 'Quiz not found'], 404);
+        }
+
+        return response()->json($quiz, 200);
+    }
 }

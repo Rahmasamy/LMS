@@ -1,0 +1,91 @@
+.quizContainer {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.quizContainer:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #2c3e50; /* Darker color for heading */
+}
+
+.quiz-info {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  color: #34495e; /* Subtle text color */
+}
+
+.questionsContainer {
+  margin-bottom: 20px;
+}
+
+.question-item {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.question-text {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #b11500; /* Blue color for questions */
+}
+
+.options {
+  margin-top: 10px;
+}
+
+.option-label {
+  display: block;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.option-input {
+  margin-right: 10px;
+}
+
+.option-label:hover {
+  background-color: #3498db; /* Light blue background on hover */
+  color: white; /* White text on hover */
+  transform: scale(1.02); /* Slight scaling effect */
+}
+
+.submit-button {
+  background-color: #27ae60; /* Green */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.2em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: #219653; /* Darker green */
+  transform: scale(1.05); /* Slightly larger on hover */
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.5em;
+  color: #888;
+  margin-top: 50px;
+}

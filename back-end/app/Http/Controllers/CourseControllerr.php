@@ -45,7 +45,7 @@ class CourseControllerr extends Controller
 
     public function show(Request $request, $id)
     {
-        $this->authorizeRole($request);
+        // $this->authorizeRole($request);
         $course = Course::find($id);
 
         return $this->checkRequest($course, 200);
@@ -86,7 +86,7 @@ class CourseControllerr extends Controller
     }
     public function sections(Request $request, $id)
     {
-        $this->authAdminInst($request);
+        // $this->authAdminInst($request);
         $section = Course::find($id);
 
         return response()->json($section->sections);

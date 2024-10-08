@@ -136,7 +136,8 @@
                               <strong class="lesson-title">{{ lesson?.title }}</strong>
                             </div>
                             <p class="lesson-description">{{ lesson?.descrption }}</p>
-                            <a [href]="lesson?.video_path" class="lesson-link" target="_blank">Watch Video</a>
+                            <!-- <a routerLink="/watchnow/{{course.id}}}/{{lesson.id}}" class="lesson-link" target="_blank">Watch Video</a> -->
+                            <a [routerLink]="['/watchnow', course.id, lesson.id]" class="lesson-link" target="_blank">Watch Video</a>
                           </li>
                           <li *ngIf="section.lessons.length === 0" class="no-lessons">
                             <i class="fas fa-exclamation-circle"></i> No lessons available in this section.
@@ -150,9 +151,18 @@
                     </li>
                   </ul>
                 </div>
+
+              </div>
+              <div class="quizeContainer">
+                <a [routerLink]="['/quize', course.id]"> {{quize.title}}</a>
+              </div>
+              <div class="quizeContainer">
+                <a [routerLink]="['/quize', course.id]"> Certificate</a>
               </div>
             </div>
-          </div>
+            </div>
+
+
 
           <div class="card instructor-sec">
             <div class="card-body">
@@ -169,7 +179,7 @@
                   </div>
                   <div class="instructor-detail">
                     <h5><a href="instructor-profile.html">{{User?.first_name}} {{User?.last_name}}</a></h5>
-                    <p>UX/UI Designer</p>
+                    <!-- <p>UX/UI Designer</p> -->
                   </div>
                 </div>
                 <div class="rating">
@@ -231,7 +241,7 @@
                   <div class="abt-instructor-img">
                     <a href="instructor-profile.html"
                       ><img
-                        src="assets/img/user/user1.jpg"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/434px-Unknown_person.jpg"
                         alt="img"
                         class="img-fluid"
                     /></a>
@@ -246,18 +256,16 @@
               <p class="rev-info">
               “{{ rev?.review }}. “
               </p>
-              <a href="javascript:void(0);" class="btn btn-reply"
-                ><i class="feather-corner-up-left"></i> Reply</a
-              >
+
             </div>
           </div>
 
           <div class="card comment-sec">
             <div class="card-body">
               <h5 class="subs-title">Post A comment</h5>
-              <form>
+              <form  [formGroup]="reviewForm" (ngSubmit)="postComment()">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                     <div class="input-block">
                       <input
                         type="text"
@@ -268,21 +276,11 @@
                       />
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="input-block">
-                      <input
-                        type="email"
-                        class="form-control"
-                        placeholder="Email"
-                        fdprocessedid="1fr0x"
-                        wfd-id="id1"
-                      />
-                    </div>
-                  </div>
+
                 </div>
                 <div class="input-block">
                   <input
-                    type="email"
+                    type="text"
                     class="form-control"
                     placeholder="Subject"
                     fdprocessedid="7tsqg"
@@ -294,6 +292,7 @@
                     rows="4"
                     class="form-control"
                     placeholder="Your Comments"
+                    formControlName="review"
                   ></textarea>
                 </div>
                 <div class="submit-section">
@@ -301,6 +300,7 @@
                     class="btn submit-btn"
                     type="submit"
                     fdprocessedid="54qnd6"
+
                   >
                     Submit
                   </button>
@@ -308,6 +308,13 @@
               </form>
             </div>
           </div>
+
+
+
+
+
+
+
         </div>
         <div class="col-lg-4">
           <div class="sidebar-sec">
@@ -347,13 +354,15 @@
                         >
                       </div>
                     </div>
-                    {{student_id}}
-                    <button
-                      (click)="enroll(course.id,student_id,course.plan)"
-                      class="btn btn-enroll w-100"
-                      >Enroll Now </button >
 
-                      <!-- routerLink="/courses/course-details/{{ course.id }}/{{course.plan}}" -->
+                   <button
+                     (click)="enroll(course.id, student_id, course.plan)"
+                      class="btn btn-enroll w-100"
+                       [disabled]="isEnrolled">
+                    {{ isEnrolled ? 'Already Enrolled' : 'Enroll Now' }}
+                   </button>
+
+
                   </div>
                 </div>
               </div>
@@ -467,4 +476,6 @@
       </div>
     </div>
   </section>
+
+
 </div>

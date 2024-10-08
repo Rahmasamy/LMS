@@ -36,6 +36,8 @@ import { StudentReviewsComponent } from './components/student-components/student
 import { StudentQuizComponent } from './components/student-components/student-quiz/student-quiz.component';
 import { StudentCoursesComponent } from './components/student-components/student-courses/student-courses.component';
 import { StudentAnnouncementComponent } from './components/student-components/student-announcement/student-announcement.component';
+import { WatchvideoComponent } from './components/student-components/watchvideo/watchvideo.component';
+import { QuizeComponent } from './components/quize/quize.component';
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'instructor', component: InstractorComponent },
@@ -113,6 +115,8 @@ export const routes: Routes = [
     component: PaymentCourseComponent,
   },
   { path: 'signin', component: SigninComponent },
+  { path: 'quize/:courseId', component: QuizeComponent },
+  { path: 'watchnow/:courseId/:lessonId', component: WatchvideoComponent },
   { path: 'signup', component: SignupComponent },
   { path: '**', component: ErrorsComponent },
 ];

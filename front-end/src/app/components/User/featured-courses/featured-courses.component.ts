@@ -35,7 +35,8 @@ export class FeaturedCoursesComponent {
     console.log(this.data);
     this.courseService.displayCourses().subscribe(
       (response) => {
-        console.log(response)
+        console.log("courses data")
+        console.log(response.data.data)
         this.courses ? (this.data = true) : (this.data = false);
         this.courses = response.data.data;
       },
@@ -50,7 +51,7 @@ export class FeaturedCoursesComponent {
   getInstructorOfCourse(id: number) {
     this.courseService.instructorOfCourse(id.toString()).subscribe(
       (response: any) => {
-      
+
         this.instructors[id] = response;
         console.log('INSTRUCTOR DATA', this.Instructor);
       },
@@ -59,4 +60,5 @@ export class FeaturedCoursesComponent {
       }
     );
   }
+ 
 }

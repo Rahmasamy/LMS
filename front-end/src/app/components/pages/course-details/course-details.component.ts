@@ -10,11 +10,15 @@ import { User } from '../../interface/UserInterface';
 import { Review } from '../../interface/review-interface';
 import { StudentService } from '../../../servises/User/student/student/student.service';
 import { UsernowService } from '../../../servises/userNow/usernow.service';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NotificationService } from '../../../services/notification.service';
+import { Enrollment } from '../../interface/enrollmentInterface';
+import { QuizeServiceService } from '../../../servises/quize/quize-service.service';
 
 @Component({
   selector: 'app-course-details',
   standalone: true,
-  imports: [NgFor,NgIf, RouterLink, LoadingComponent],
+  imports: [NgFor,NgIf, RouterLink, LoadingComponent,ReactiveFormsModule],
   templateUrl: './course-details.component.html',
   styleUrl: './course-details.component.css',
 })
@@ -32,14 +36,22 @@ export class CourseDetailsComponent {
   courseLessons: any;
   student_id:number=0
   EnrollmentMessage:string=''
+  reviewForm: FormGroup;
+  quize:any;
+  isEnrolled: boolean = false;
   constructor(
     private servesCourse: CourseServiceService,
     private route: ActivatedRoute,
     private instructorService: InstructorSerService,
     private router: Router,
-    private userService:UsernowService,private studentService:StudentService
+    private userService:UsernowService,private studentService:StudentService,
+    private fb: FormBuilder,
+    private notificationService:NotificationService,
+    private quizeService:QuizeServiceService
   ) {
-
+    this.reviewForm = this.fb.group({
+      review: ['', Validators.required],
+    });
   }
 
   ngOnInit() {
@@ -54,9 +66,14 @@ export class CourseDetailsComponent {
     this.getReviews(this.courseId);
     this.getLessonsByCourse(this.courseId);
     this.getDataOfloggedUser();
+    this.viewQuize(this.courseId)
+
+
 
 
   }
+
+
   async initData() {
     await this.getInstructorOfCourse(this.courseId);
     this.getUserData();  // Called after userId is fetched
@@ -158,22 +175,33 @@ export class CourseDetailsComponent {
      );
    }
 
-
-  enroll(studentId:any, courseId:any, paymentStatus:any) {
-    this.servesCourse.enroll( courseId,studentId, paymentStatus).subscribe(
+  enroll(studentId: any, courseId: any, paymentStatus: any) {
+    this.servesCourse.enroll(courseId, studentId, paymentStatus).subscribe(
       (response) => {
-        console.log('Enrollment successful:', response);
-        console.log('enrollment mess',response.enrollment.payment_status)
-        this.router.navigate([`/courses/course-details/${this.course.id}/${response.enrollment.payment_status}`]);
+        this.isEnrolled = true;
+        console.log("enrolled")
+        console.log(this.isEnrolled);
+        this.notificationService.showSuccess(
+          `You have successfully enrolled in the course. Payment Status: ${response.enrollment.payment_status}`,
+          'Enrollment Successful'
+        ).then((result) => {
+          if (result.isConfirmed) {
+            this.router.navigate([`/courses/course-details/${this.course.id}/${response.enrollment.payment_status}`]);
+          }
 
+        });
       },
       (error) => {
         console.error('Enrollment failed:', error);
 
+        // Use notification service for error alert
+        this.notificationService.showError(
+          'Something went wrong during enrollment. Please try again.',
+          'Enrollment Failed'
+        );
       }
     );
   }
-
   getDataOfloggedUser(){
    this.userService.getDataOfloggedUser().subscribe(
     (response:any)=> {
@@ -186,12 +214,25 @@ export class CourseDetailsComponent {
     }
    )
   }
+  checkEnrollment(studentId: any, courseId: any) {
+    this.servesCourse.getEnrollmentsForStudent(studentId).subscribe(
+      (enrollments:any) => {
+        console.log("enrollments");
+        // console.log(enrollments.enrollments[0] );
+        this.isEnrolled = enrollments.enrollments.some((enrollment: Enrollment) => enrollment.course_id === courseId);
+      },
+      (error) => {
+        console.error('Failed to check enrollment:', error);
+      }
+    );
+  }
   getDataOfStudent(id:string){
     this.studentService.getDataOfUser(id).subscribe(
       (response:any)=> {
 
         this.student_id=response.student.id;
-        console.log(this.student_id);
+
+        this.checkEnrollment(this.student_id, this.course.id);
 
       },
       (error) => {
@@ -199,4 +240,39 @@ export class CourseDetailsComponent {
       }
     )
   }
+  postComment(){
+    const data = {
+      student_id: this.student_id,
+      course_id: this.courseId,
+      review: this.reviewForm.get('review')?.value,
+    };
+    this.servesCourse.postComment(data).subscribe(
+     (response: any) => {
+      console.log('Comment posted successfully:', response);
+      this.getReviews(this.courseId)
+     },
+     (error:any) => {
+      console.error('Error posting comment:', error);
+     }
+    )
+   }
+
+   viewQuize(courseId:string|null){
+    this.quizeService.getQuizeByCourseId(courseId).subscribe(
+      (response: any) => {
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+       console.log('quize content', response);
+       this.quize=response;
+       console.log('quize content', this.quize);
+
+      },
+      (error:any) => {
+       console.error('Error posting comment:', error);
+      }
+     )
+   }
+
+
+
+
 }

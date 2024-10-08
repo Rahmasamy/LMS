@@ -94,4 +94,30 @@ export class CourseServiceService {
     };
     return this.http.get(`${this.apiUrl}/wishlist`, { headers });
   }
+  postComment(data: {}){
+    const headers = {
+      authorization: 'Bearer ' + localStorage.getItem('authToken'),
+    };
+    return this.http.post(`${this.apiUrl}/reviews/add`,data, { headers });
+  }
+  getReviews(course_id:string){
+    const headers = {
+      authorization: 'Bearer ' + localStorage.getItem('authToken'),
+    };
+    return this.http.post(`${this.apiUrl},courses/${course_id}/reviews`,{ headers });
+
+  }
+  getEnrollmentsForStudent(studentId: any) {
+    const headers = {
+      authorization: 'Bearer ' + localStorage.getItem('authToken'),
+    };
+    return this.http.get<any[]>(`${this.apiUrl}/enrollments/${studentId}`,{headers});
+  }
+  getLessonById(id:string){
+    const headers = {
+      authorization: 'Bearer ' + localStorage.getItem('authToken'),
+    };
+    return this.http.get(`${this.apiUrl}/lessons/show/${id}`, { headers });
+
+  }
 }

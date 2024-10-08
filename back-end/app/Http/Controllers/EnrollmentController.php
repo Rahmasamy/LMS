@@ -32,5 +32,22 @@ class EnrollmentController extends Controller
             return response()->json(['message' => 'Enrollment successful', 'enrollment' => $enrollment], 201);
         
     }
+    public function getEnrollmentsByStudentId($student_id)
+    {
+       
+        $enrollments = Enrollment::where('student_id', $student_id)->get();
+
+      
+        if ($enrollments->isEmpty()) {
+            return response()->json([
+                'message' => 'No enrollments found for this student.',
+                'enrollments' => []
+            ], 404);
+        }
+        return response()->json([
+            'message' => 'Enrollments retrieved successfully.',
+            'enrollments' => $enrollments
+        ], 200);
+    }
   
 }

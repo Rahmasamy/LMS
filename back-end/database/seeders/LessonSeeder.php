@@ -26,7 +26,7 @@ class LessonSeeder extends Seeder
                 DB::table('lessons')->insert([
                     'title' => "Lesson {$lessonIndex} for Course {$courseId} Section {$sectionId}",
                     'descrption' => "This is the description for Lesson {$lessonIndex} of Course {$courseId}, Section {$sectionId}.",
-                    'video_path' => "section_{$sectionId}_lesson_{$lessonIndex}.mp4",
+                    'video_path' => "https://www.youtube.com/watch?v=w7ejDZ8SWv8&ab_channel=TraversyMedia",
                     'course_id' => $courseId,  // Correctly linking course_id
                     'section_id' => $sectionId, // Correctly linking section_id
                     'created_at' => now(),

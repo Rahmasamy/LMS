@@ -33,8 +33,14 @@ class Review extends Controller
     public function store(Request $request)
     {
 
-        $validatedData = $request->validated();
+        $validatedData = $request->validate([
+            'course_id' => 'required|integer|exists:courses,id',
+            'student_id' => 'required|integer|exists:students,id',
+            'review' => 'required|string',
+        ]);
+    
         $review = ModelsReview::create($validatedData);
+       
         return $this->checkRequest($review, 200);
 
     }
@@ -72,6 +78,15 @@ public function getReviewsByUserId($userId)
     $reviews = ModelsReview::where('student_id', $userId)->with('course')->get();
 
     return response()->json($reviews);
+}
+public function getReviewsByCourseId($course_id)
+{
+
+    $reviews = ModelsReview::where('course_id', $course_id)->get();
+    if ($reviews->isEmpty()) {
+        return response()->json(['message' => 'No reviews found for this course'], 404);
+    }
+    return response()->json($reviews, 200);
 }
 
 }

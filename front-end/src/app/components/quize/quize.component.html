@@ -1,0 +1,32 @@
+<div class="container quizContainer" *ngIf="quize">
+  <h1 class="quiz-title">{{ quize.title }}</h1>
+  <p class="quiz-info">Total Marks: {{ quize.total_marks }}</p>
+  <p class="quiz-info">Duration: {{ quize.duration }} minutes</p>
+
+  <div class="questionsContainer">
+      <h2 class="questions-title">Questions:</h2>
+      <ul class="questions-list">
+          <li *ngFor="let question of quize.questions" class="question-item">
+              <p class="question-text">{{ question.question }}</p>
+              <div class="options">
+                  <label *ngFor="let option of question.options" class="option-label">
+                      <input
+                          type="radio"
+                          name="quiz-{{ quize.id }}-question-{{ question.id }}"
+                          class="option-input"
+                          [(ngModel)]="userAnswers[question.id]"
+                          [value]="option"
+                      />
+                      {{ option }}
+                  </label>
+              </div>
+          </li>
+      </ul>
+  </div>
+
+  <button (click)="submitQuiz(quize.id)" class="submit-button">Submit Quiz</button>
+</div>
+
+<div *ngIf="!quize" class="loading">
+  <p>Loading quiz data...</p>
+</div>

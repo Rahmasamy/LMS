@@ -5,4 +5,5 @@ php artisan db:seed --class=CategorySeeder
 php artisan db:seed --class=CourseSeeder
 php artisan db:seed --class=sectionSeeder
 php artisan db:seed --class=LessonSeeder  
+php artisan db:seed --class=QuizSeeder
 php artisan serve   

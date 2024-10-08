@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->id();
             $table->string('title', 45);
             $table->text('descrption');
-            $table->string('video_path', 45);
+            $table->string('video_path', 255);
             $table->foreignId('section_id')->nullable()->constrained('sections')->cascadeOnDelete();
             // $table->foreignId(column: 'section_id')->nullable()->constrained(table: 'sections')->cascadeOnDelete();
             $table->foreignId('course_id')->nullable()->constrained('courses')->cascadeOnDelete();

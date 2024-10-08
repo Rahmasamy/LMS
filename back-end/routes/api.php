@@ -16,6 +16,8 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\QuizResultControllerr;
+use App\Models\QuizResult;
 use App\Models\User;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -44,6 +46,8 @@ Route::get('instructors/{id}/courses', [InstructorController::class, 'courses'])
 
 Route::get('instructor/course/{id}', [InstructorController::class, 'InstructorByCourseID']);
 Route::get('/user/{id}', [UserController::class, 'getUser']);
+Route::get('courses/show/{id}', action: [CourseControllerr::class, 'show']);
+// Route::get('courses/show/{id}', action: [CourseControllerr::class, 'show']);
 
 ////////////////////////////////////////////////////////////////
 
@@ -64,7 +68,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
   Route::get('courses', [CourseControllerr::class, 'index']);
  ///instructor/course/
-  Route::get('courses/show/{id}', action: [CourseControllerr::class, 'show']);
+ 
   Route::post('courses/add', action: [CourseControllerr::class, 'Store']);
   Route::put('courses/update/{id}', action: [CourseControllerr::class, 'update']);
   Route::get('courses/delete/{id}', action: [CourseControllerr::class, 'destroy']);
@@ -74,6 +78,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::get('course/assig/{id}', [CourseControllerr::class, 'Assigments']);
   Route::get('course/cert/{id}', [CourseControllerr::class, 'Certificate']);
   Route::get('courses/recent', [CourseControllerr::class, 'getRecentCourses']);
+  Route::get('/enrollments/{student_id}', [EnrollmentController::class, 'getEnrollmentsByStudentId']);
   //category controller 
   Route::get(uri: 'categories', action: [CategoryControllerr::class, 'index']);
   Route::get('categories/courses/{id}', [CategoryControllerr::class, 'getCoursesOfCategory']);
@@ -99,12 +104,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::get('lessons/delete/{id}', action: [Lesson::class, 'destroy']);
 
   // Quizes 
-  Route::get('quizes', action: [QuizControllerr::class, 'index']);
-  Route::get('quizes/show/{id}', action: [QuizControllerr::class, 'show']);
-  Route::post('quizes/add', action: [QuizControllerr::class, 'Store']);
-  Route::put('quizes/update/{id}', action: [QuizControllerr::class, 'update']);
-  Route::get('quizes/delete/{id}', action: [QuizControllerr::class, 'destroy']);
-
+  Route::get('quizzes', action: [QuizControllerr::class, 'index']);
+  Route::get(uri: 'quizzes/show/{id}', action: [QuizControllerr::class, 'show']);
+  Route::post(uri: 'quizzes/add', action: [QuizControllerr::class, 'Store']);
+  Route::put('quizzes/update/{id}', action: [QuizControllerr::class, 'update']);
+  Route::get(uri: 'quizzes/delete/{id}', action: [QuizControllerr::class, 'destroy']);
+  Route::get('/quizzes/course/{course_id}', [QuizControllerr::class, 'getQuizByCourseId']);
+  Route::post('/quizzes/quizzesResults', [QuizResultControllerr::class, 'setResult']);
   // students 
   Route::get('students', [StudentController::class, 'index']);
   Route::get('students/show/{id}', [StudentController::class, 'show']);
@@ -124,11 +130,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::delete('reviews/delete/{id}', [Review::class, 'destroy']);
   Route::get('reviews/course/{id}', [Review::class, 'getCourseReviews']);
   Route::get('/reviews/user/{userId}', [Review::class, 'getReviewsByUserId']);
+  Route::get('courses/{course_id}/reviews', [Review::class, 'getReviewsByCourseId']);
 
   // course controller
   Route::get('courses', [CourseControllerr::class, 'index']);
   Route::get('courses/all', [CourseControllerr::class, 'all']);
-  Route::get('courses/show/{id}', action: [CourseControllerr::class, 'show']);
+ 
   Route::post('courses/add', action: [CourseControllerr::class, 'Store']);
   Route::put('courses/update/{id}', action: [CourseControllerr::class, 'update']);
   Route::get('courses/delete/{id}', action: [CourseControllerr::class, 'destroy']);

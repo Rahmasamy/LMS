@@ -9,7 +9,16 @@ class Quiz extends Model
 {
     use HasFactory;
     protected $table = 'quizes';
-    protected $fillable=["id","course_id","title","total_marks","duration"];
+ 
+    protected $fillable = [
+        'course_id',
+        'title',
+        'total_marks',
+        'duration',
+        'description',
+        'questions_count',
+        'is_active',
+    ];
     public function Course()
     {
         return $this->belongsTo(Course::class, 'course_id');
@@ -17,5 +26,10 @@ class Quiz extends Model
     public function QuizResult()
     {
         return $this->belongsTo(QuizResult::class);
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class, 'quize_id');
     }
 }

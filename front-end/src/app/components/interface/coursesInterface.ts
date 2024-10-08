@@ -14,3 +14,25 @@ export interface Course {
   durations:string;
   plan:string
 }
+export interface Question {
+  id: number;
+  quize_id: number;
+  question: string;
+  correct_answer: string;
+  options: string[];
+  created_at: string;
+  updated_at: string;
+}
+export interface Quiz {
+  id: number;
+  course_id: number;
+  title: string;
+  total_marks: number;
+  duration: string;
+  created_at: string;
+  updated_at: string;
+  description: string | null;
+  questions_count: number;
+  is_active: number;
+  questions: Question[]; 
+}

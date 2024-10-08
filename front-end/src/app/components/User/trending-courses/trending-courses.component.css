@@ -182,7 +182,7 @@
   /* background-color: aqua; */
 
   display: flex;
-  transform: scale(1.7);
+  transform: scale(1.1);
   justify-content: center;
   align-items: center;
   transition: transform 1500ms ease;
@@ -192,4 +192,10 @@
     width: 80%;
     transition: all 1000ms ;
   }
+}
+.icon {
+  width: 100%;
+  text-align: right;
+  color: #f66962;
+  margin-right: 15px;
 }
