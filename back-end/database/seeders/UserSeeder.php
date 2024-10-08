@@ -119,13 +119,13 @@ class UserSeeder extends Seeder
 
          // Add students in the separated table
         $student1Addition = Student::create([
-            'bio' => "Engineering student",
+            'bio' => "Ali",
             'user_id' => $student1->id,  
             'role_id' => 3
         ]);
 
         $student2Addition = Student::create([
-            'bio' => "computer science student",
+            'bio' => "rawan",
             'user_id' => $student2->id, 
             'role_id' => 3
         ]);

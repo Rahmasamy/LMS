@@ -6,31 +6,30 @@ use App\Models\Enrollment;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Http\Requests\EnrollmentRequest;
+use App\Models\Course;
+
 
 class EnrollmentController extends Controller
 {
-    //
-    public function enroll(Request $request)
+    public function enroll(EnrollmentRequest $request)
     {
-        
-            $request->validate([
-                'student_id' => 'required',
-                'course_id' => 'required',
-                'payment_status' => 'required|string',
-            ]);
-    
-          
-            $enrollment = Enrollment::create([
-                'student_id' => $request->student_id,
-                'course_id' => $request->course_id,
-                'payment_status' => $request->payment_status,
-                'date_enrolled' => Carbon::now(), 
-                'progress' => 0,
-                'grade' => null, 
-            ]);
-    
-            return response()->json(['message' => 'Enrollment successful', 'enrollment' => $enrollment], 201);
-        
+        // Data is already validated at this point
+        $validatedData = $request->validated();
+
+        // Create the enrollment
+        $enrollment = Enrollment::create([
+            'student_id' => $validatedData['student_id'],
+            'course_id' => $validatedData['course_id'],
+            'date_enrolled' => Carbon::now(), 
+            'progress' => 0,
+            'grade' => null,
+        ]);
+
+        return response()->json([
+            'message' => 'Enrollment successful',
+            'enrollment' => $enrollment
+        ], 201);
     }
     public function getEnrollmentsByStudentId($student_id)
     {

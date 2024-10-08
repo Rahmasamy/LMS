@@ -3,8 +3,74 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Course;
+use App\Models\Enrollment;
+use App\Models\Student;
 use Session;
 use Stripe;
+
+
+
+class StripePaymentController extends Controller
+{
+
+    public function stripePost(Request $request)
+    {
+
+       try {
+
+            $request->validate([
+                'stripeToken' => 'required',
+                'course_id' => 'required|exists:courses,id',
+                'student_id' => 'required|exists:students,id',
+            ]);
+        
+            $course = Course::findOrFail($request->course_id);
+            $studentId = $request->student_id;
+
+            // Set the Stripe API secret key
+            Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+            // Calculate the amount based on course price
+            $amount = $course->price * 100;
+
+            // Create a charge
+            $charge = Stripe\Charge::create([
+                "amount" => $amount,  
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "Payment for course: " . $course->title
+            ]);
+
+            // If payment is successful, create an enrollment record
+            Enrollment::create([
+                'student_id' => $studentId,
+                'course_id' => $course->id,
+                'date_enrolled' => now(),
+                'progress' => 0, 
+                'grade' => null, 
+            ]);
+
+            // Return success response
+            return response()->json([
+                'success' => true,
+                'message' => 'Payment successful and enrollment completed!',
+                'charge' => $charge
+            ], 200);
+
+        } catch (\Exception $e) {
+            // If error occurs, return an error response
+            return response()->json([
+                'success' => false,
+                'message' => 'Payment failed!',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+    
+}
+
+/*
 class StripePaymentController extends Controller
 {
     public function stripePost(Request $request)
@@ -42,3 +108,4 @@ class StripePaymentController extends Controller
         }
     }
 }
+    */

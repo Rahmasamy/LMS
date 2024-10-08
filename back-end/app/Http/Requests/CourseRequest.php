@@ -35,6 +35,7 @@ class CourseRequest extends FormRequest
             'benefits' => 'required|string|max:255',
             'requirements' => 'required|string|max:255',
             'plan' => 'required|string|max:255',
+            'price' => 'required|integer',
             'durations' => 'required|string',
             'level' => 'required|string',
 
@@ -55,6 +56,9 @@ class CourseRequest extends FormRequest
             'durations.required' => 'You must enter the duration of the course',
             'description.max' => 'The course description must not exceed 255 characters.',
             'level.required' => 'The course level status is required.',
+            'price.required' => 'The course price is required.',
+            'price.integer' => 'The course price is must be an integer.',
+
 
         ];
     }

@@ -27,6 +27,7 @@ return new class extends Migration {
             $table->text('benefits');
             $table->text('requirements');
             $table->string('plan');
+            $table->unsignedBigInteger('price')->default(0);
             $table->string('durations');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('instructor_id')->references('id')->on('instructors')->onDelete('cascade');

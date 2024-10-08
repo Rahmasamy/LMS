@@ -147,6 +147,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
   
   Route::post('enroll', action: [EnrollmentController::class, 'enroll']);
   
+  // Payment integration
+  Route::controller(StripePaymentController::class)->group(function() {
+    Route::get('stripe', 'stripe');
+    Route::post('stripe', 'stripePost');
+  });
+
  
   // category 
   Route::get(uri: 'categories', action: [CategoryControllerr::class, 'index']);
@@ -192,9 +198,3 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 
 
-
-  // Payment integration
-  Route::controller(StripePaymentController::class)->group(function() {
-      Route::get('stripe', 'stripe');
-      Route::post('stripe', 'stripePost');
-  });
