@@ -10,5 +10,5 @@ import { InstructorAdminComponent } from '../instructor-admin/instructor-admin.c
   styleUrl: './instructor-route-admin.component.css'
 })
 export class InstructorRouteAdminComponent {
-
+ 
 }

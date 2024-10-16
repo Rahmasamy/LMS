@@ -18,11 +18,33 @@ getInstructorData(id: number) {
     authorization: 'Bearer ' + localStorage.getItem('authToken'),
   };
 
- 
+
   return this.http.get(`${this.apiUrl}/instructors/show/${id}`, { headers });
 }
 instructorOfCourse(){
 
   return this.http.get(`${this.apiUrl}/instructors`);
+}
+getEnrolledCoursesForInst(instructorId:string){
+  const headers = {
+    authorization: 'Bearer ' + localStorage.getItem('authToken'),
+  };
+  return this.http.get(`${this.apiUrl}/instructor/${instructorId}/enrolled-courses`)
+}
+getInstructorByUserId(id:string){
+  const headers = {
+    authorization: 'Bearer ' + localStorage.getItem('authToken'),
+  };
+
+
+  return this.http.get(`${this.apiUrl}/instructor/user/${id}`, { headers });
+}
+getEnrolledCourseForInstructor(id:string){
+  const headers = {
+    authorization: 'Bearer ' + localStorage.getItem('authToken'),
+  };
+
+
+  return this.http.get(`${this.apiUrl}/instructor/${id}/enrolled-courses`, { headers });
 }
 }

@@ -6,6 +6,7 @@ use App\Http\Requests\StudentRequest;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -69,6 +70,16 @@ class StudentController extends Controller
         $courses = $student->courses()->orderBy('date_enrolled', 'desc')->limit(5)->get();
     
         return response()->json($courses);
+    }
+    public function getStudentByUserId($userId)
+    {
+        $student = DB::table('students')->where('user_id', $userId)->first();
+    
+        if (!$student) {
+            return response()->json(['message' => 'student not found'], 404);
+        }
+    
+        return response()->json( $student, 200);
     }
  
 }

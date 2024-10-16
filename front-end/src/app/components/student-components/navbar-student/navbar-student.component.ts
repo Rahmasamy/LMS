@@ -22,6 +22,7 @@ import { NgIf } from '@angular/common';
 })
 export class NavbarStudentComponent {
   User: any = {} as any;
+  Student: any = {} as any;
   bio:string=''
   isLogin: boolean = false;
   token: string | null = '';
@@ -46,10 +47,12 @@ export class NavbarStudentComponent {
    getDataOfUser(id:string){
      this.studentService.getDataOfUser(id).subscribe(
        (response:any)=> {
+        console.log("?????????????????????????")
+        console.log(response)
+        this.Student=response;
+        console.log(this.User.id);
 
-        this.User=response;
-        console.log(this.User.student.id)
-        this.studentService.getDataOfStudentStudentId(this.User.student.id).subscribe(
+        this.studentService.getDataOfStudentStudentId(this.Student.id).subscribe(
           (response:any)=> {
             console.log("student")
              console.log(response.data.bio)

@@ -54,4 +54,5 @@ public function instructor()
 {
     return $this->hasOne(Instructor::class, 'user_id', 'id');
 }
+
 }

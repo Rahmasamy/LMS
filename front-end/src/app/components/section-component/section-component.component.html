@@ -1,0 +1,184 @@
+
+<div class="container sectionContainer">
+  <div class="card content-sec">
+    <div class="card-body">
+      <div class="row p-10">
+        <div class="col-sm-6">
+          <h5 class="subs-title">Course Content</h5>
+          <h5> {{course.title}}</h5>
+        </div>
+        <div class="col-sm-6 text-sm-end">
+
+          <h6>92 Lectures {{course?.durations}}</h6>
+        </div>
+      </div>
+
+      <!-- Button to add section or course -->
+      <div class="add-course-btn text-sm-end">
+        <button (click)="addSectionOrCourse()" class="btn btn-primary">
+          <i class="fas fa-plus-circle"></i>  Add Section / Course
+        </button>
+      </div>
+       <!-- Add Section Form -->
+       <div *ngIf="showAddSectionForm" class="add-section-form">
+        <h5>Add New Section</h5>
+        <form [formGroup]="sectionForm" (ngSubmit)="submitSection()">
+          <div class="mb-3">
+            <label for="sectionTitle" class="form-label">Title</label>
+            <input type="text" id="sectionTitle" class="form-control" formControlName="title">
+          </div>
+          <div class="mb-3">
+            <label for="sectionDescription" class="form-label">Description</label>
+            <textarea id="sectionDescription" class="form-control" formControlName="description"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-success">Save Section</button>
+        </form>
+      </div>
+
+      <div class="course-card">
+        <h6 class="cou-title">
+          <a
+            class="collapsed"
+            data-bs-toggle="collapse"
+            href="#collapseOne{{ 1 }}"
+            aria-expanded="false"
+            >Introduction</a
+          >
+        </h6>
+        <div id="collapseOne{{ 1 }}" class="card-collapse collapse">
+          <ul>
+            <li>
+              <p>
+                <img src="assets/img/icon/play.svg" alt="Img" class="me-2" />
+                Hello in Our Course.....
+              </p>
+              <div class="lessons">
+                <ul class="lesson-list">
+                  <li class="lesson-item">
+                    <div class="lesson-header">
+                      <i class="fas fa-play-circle lesson-icon"></i>
+                      <strong class="lesson-title">Introduction to our First lesson</strong>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <a href="javascript:void(0);">Preview</a>
+                <span>02:53</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div *ngFor="let section of courseLessons?.sections; let i = index" class="course-card">
+        <h6 class="cou-title">
+          <a
+            class="collapsed"
+            data-bs-toggle="collapse"
+            href="#collapseOne{{ i }}"
+            aria-expanded="false"
+            >{{ section?.title }}</a
+          >
+        </h6>
+        <div id="collapseOne{{ i }}" class="card-collapse collapse">
+          <ul>
+            <li>
+              <p>
+                <img src="assets/img/icon/play.svg" alt="Img" class="me-2" />
+                {{ section?.description }}
+              </p>
+              <div class="add-course-btn text-sm-end">
+                <button (click)="addLesson()" class="btn btn-primary">
+                <i class="fas fa-plus-circle"></i>  Add Lesson / Section
+              </button>
+           </div>
+     <!-- Add Section Form -->
+     <div *ngIf="showAddLessonForm" class="add-section-form">
+      <h5>Add New Section</h5>
+      <form [formGroup]="LessonForm" (ngSubmit)="submitLesson()">
+        <div class="mb-3">
+          <label for="sectionTitle" class="form-label">Title</label>
+          <input type="text" id="sectionTitle" class="form-control" formControlName="title">
+        </div>
+        <div class="mb-3">
+          <label for="sectionDescription" class="form-label">Description</label>
+          <textarea id="sectionDescription" class="form-control" formControlName="descrption"></textarea>
+        </div>
+        <div class="mb-3">
+          <input id="sectionId" type="hidden" formControlName="section_id" [value]="section.id"/>
+        </div>
+
+        <div class="mb-3">
+          <label for="videoPath" class="form-label">Video path</label>
+          <input id="videoPath" class="form-control" formControlName="video_path"/>
+        </div>
+
+        <button type="submit" class="btn btn-success" (click)="setSectionId(section.id)">Save Section</button>
+      </form>
+    </div>
+              <div class="lessons">
+                <!-- Button to add section or course -->
+
+                <ul class="lesson-list">
+                  <li *ngFor="let lesson of section.lessons" class="lesson-item">
+                    <div class="lesson-header">
+                      <i class="fas fa-play-circle lesson-icon"></i>
+                      <strong class="lesson-title">{{ lesson?.title }}</strong>
+                    </div>
+                    <p class="lesson-description">{{ lesson?.description }}</p>
+                    <a [routerLink]="['/watchnow', course.id, lesson.id]" class="lesson-link" target="_blank">Watch Video</a>
+                  </li>
+                  <li *ngIf="section.lessons.length === 0" class="no-lessons">
+                    <i class="fas fa-exclamation-circle"></i> No lessons available in this section.
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <a href="javascript:void(0);">Preview</a>
+                <span>02:53</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="quizeContainer">
+        <ng-container *ngIf="quize; else addLessonSection">
+          <a [routerLink]="['/quize', course.id]">{{ quize.title }}</a>
+        </ng-container>
+        <ng-template #addLessonSection>
+          <div class="add-course-btn text-sm-end">
+            <button (click)="addquiz()" class="btn btn-primary">
+              <i class="fas fa-plus-circle"></i> Add Quiz
+            </button>
+          </div>
+           <!-- Add quize Form -->
+       <div *ngIf="showAddQuizeForm" class="add-section-form">
+        <h5>Add New quiz</h5>
+        <form [formGroup]="quizeForm" (ngSubmit)="QuizeSubmit()">
+          <div class="mb-3">
+            <label for="sectionTitle" class="form-label">Title</label>
+            <input type="text" id="sectionTitle" class="form-control" formControlName="title">
+          </div>
+          <div class="mb-3">
+            <label for="sectionDescription" class="form-label">total marks</label>
+            <input id="sectionDescription" class="form-control" formControlName="total_marks"/>
+          </div>
+          <div class="mb-3">
+            <label for="sectionDescription" class="form-label">duration</label>
+            <input id="sectionDescription" class="form-control" formControlName="duration"/>
+          </div>
+
+          <button type="submit" class="btn btn-success">Add Quize</button>
+        </form>
+      </div>
+        </ng-template>
+      </div>
+      <!-- <div class="quizeContainer">
+        <a [routerLink]="['/quize', course.id]"> Certificate</a>
+      </div> -->
+    </div>
+  </div>
+</div>

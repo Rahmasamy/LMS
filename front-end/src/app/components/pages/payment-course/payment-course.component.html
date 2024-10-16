@@ -9,7 +9,7 @@
               <h4>Billing Address</h4>
             </div>
             <div class="checkout-form">
-              <form action="#">
+              <!-- <form [formGroup]="addressForm" (ngSubmit)="submitAddressForm()">
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="input-block">
@@ -18,179 +18,158 @@
                         type="text"
                         class="form-control"
                         placeholder="Enter your first Name"
-                        fdprocessedid="cxlkbr"
+                        formControlName="firstName"
                       />
+                      <div *ngIf="addressForm.get('firstName')?.invalid && addressForm.get('firstName')?.touched">
+                        <small class="text-danger">First Name is required and should be at least 2 characters.</small>
+                      </div>
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="input-block">
                       <label class="form-control-label">Last Name</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Enter your last Name"
-                        fdprocessedid="t5rrx8"
-                      />
+                      <input type="text" formControlName="lastName" class="form-control" placeholder="Enter your last name" />
+                      <div *ngIf="addressForm.get('lastName')?.invalid && addressForm.get('lastName')?.touched">
+                        <small class="text-danger">Last name is required</small>
+                      </div>
                     </div>
                   </div>
                   <div class="col-lg-12">
                     <div class="input-block">
-                      <label class="form-control-label"
-                        >Phone Number (Optional)</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Phone Number"
-                        fdprocessedid="xzq7n7"
-                      />
+                      <label class="form-control-label">Phone Number (Optional)</label>
+                      <input type="text" formControlName="phoneNumber" class="form-control" placeholder="Phone Number" />
                     </div>
                   </div>
                   <div class="col-lg-12">
                     <div class="input-block">
                       <label class="form-control-label">Address Line 1</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Address"
-                        fdprocessedid="8gelyp"
-                      />
+                      <input type="text" formControlName="addressLine1" class="form-control" placeholder="Address" />
+                      <div *ngIf="addressForm.get('addressLine1')?.invalid && addressForm.get('addressLine1')?.touched">
+                        <small class="text-danger">Address Line 1 is required</small>
+                      </div>
                     </div>
                   </div>
                   <div class="col-lg-12">
                     <div class="input-block">
-                      <label class="form-control-label"
-                        >Address Line 2 (Optional)</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Address"
-                        fdprocessedid="errazm"
-                      />
+                      <label class="form-control-label">Address Line 2 (Optional)</label>
+                      <input type="text" formControlName="addressLine2" class="form-control" placeholder="Address" />
                     </div>
                   </div>
                   <div class="col-lg-4">
                     <div class="input-block">
                       <label class="form-label">State</label>
-                      <select
-                        class="form-select select select2-hidden-accessible"
-                        name="sellist1"
-                        data-select2-id="1"
-                        tabindex="-1"
-                        aria-hidden="true"
-                      >
-                        <option data-select2-id="3">Select State</option>
-                        <option>Brazil</option>
-                        <option>French</option></select
-                      ><span
-                        class="select2 select2-container select2-container--default"
-                        dir="ltr"
-                        data-select2-id="2"
-                        style="width: 100%"
-                        ><span class="selection"
-                          ><span
-                            class="select2-selection select2-selection--single"
-                            role="combobox"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            tabindex="0"
-                            aria-disabled="false"
-                            aria-labelledby="select2-sellist1-s2-container"
-                            ><span
-                              class="select2-selection__rendered"
-                              id="select2-sellist1-s2-container"
-                              role="textbox"
-                              aria-readonly="true"
-                              title="Select State"
-                              >Select State</span
-                            ><span
-                              class="select2-selection__arrow"
-                              role="presentation"
-                              ><b role="presentation"></b></span></span></span
-                        ><span
-                          class="dropdown-wrapper"
-                          aria-hidden="true"
-                        ></span
-                      ></span>
+                      <select class="form-select" formControlName="state">
+                        <option value="" disabled>Select State</option>
+                        <option value="Brazil">Brazil</option>
+                        <option value="French">French</option>
+                      </select>
                     </div>
                   </div>
+
                   <div class="col-lg-4">
                     <div class="input-block">
                       <label class="form-label">Country</label>
-                      <select
-                        class="form-select select select2-hidden-accessible"
-                        name="sellist1"
-                        data-select2-id="4"
-                        tabindex="-1"
-                        aria-hidden="true"
-                      >
-                        <option data-select2-id="6">Select country</option>
-                        <option>India</option>
-                        <option>America</option>
-                        <option>London</option></select
-                      ><span
-                        class="select2 select2-container select2-container--default"
-                        dir="ltr"
-                        data-select2-id="5"
-                        style="width: 100%"
-                        ><span class="selection"
-                          ><span
-                            class="select2-selection select2-selection--single"
-                            role="combobox"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            tabindex="0"
-                            aria-disabled="false"
-                            aria-labelledby="select2-sellist1-90-container"
-                            ><span
-                              class="select2-selection__rendered"
-                              id="select2-sellist1-90-container"
-                              role="textbox"
-                              aria-readonly="true"
-                              title="Select country"
-                              >Select country</span
-                            ><span
-                              class="select2-selection__arrow"
-                              role="presentation"
-                              ><b role="presentation"></b></span></span></span
-                        ><span
-                          class="dropdown-wrapper"
-                          aria-hidden="true"
-                        ></span
-                      ></span>
+                      <select class="form-select" formControlName="country">
+                        <option value="" disabled>Select Country</option>
+                        <option value="India">India</option>
+                        <option value="America">America</option>
+                        <option value="London">London</option>
+                      </select>
                     </div>
                   </div>
                   <div class="col-lg-4">
                     <div class="input-block">
                       <label class="form-control-label">Zip/Postal Code</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        fdprocessedid="hl00n"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-md-12 col-lg-10">
-                    <div class="input-block ship-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        name="remember"
-                      />
-                      Shipping address is the same as my billing address
-                    </div>
-                    <div class="input-block ship-check mb-0">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        name="remember"
-                      />
-                      Save this information for next time
+                      <input type="text" formControlName="zipCode" class="form-control" />
+                      <div *ngIf="addressForm.get('zipCode')?.invalid && addressForm.get('zipCode')?.touched">
+                        <small class="text-danger">Zip/Postal Code is required</small>
+                      </div>
                     </div>
                   </div>
                 </div>
+              </form> -->
+              <form [formGroup]="addressForm" (ngSubmit)="postPayment()">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="input-block">
+                      <label class="form-control-label">First Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your first Name"
+                        formControlName="firstName"
+                      />
+                      <div *ngIf="addressForm.get('firstName')?.invalid && addressForm.get('firstName')?.touched">
+                        <small class="text-danger">First Name is required and should be at least 2 characters.</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="input-block">
+                      <label class="form-control-label">Last Name</label>
+                      <input type="text" formControlName="lastName" class="form-control" placeholder="Enter your last name" />
+                      <div *ngIf="addressForm.get('lastName')?.invalid && addressForm.get('lastName')?.touched">
+                        <small class="text-danger">Last name is required</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="input-block">
+                      <label class="form-control-label">Phone Number (Optional)</label>
+                      <input type="text" formControlName="phoneNumber" class="form-control" placeholder="Phone Number" />
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="input-block">
+                      <label class="form-control-label">Address Line 1</label>
+                      <input type="text" formControlName="addressLine1" class="form-control" placeholder="Address" />
+                      <div *ngIf="addressForm.get('addressLine1')?.invalid && addressForm.get('addressLine1')?.touched">
+                        <small class="text-danger">Address Line 1 is required</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="input-block">
+                      <label class="form-control-label">Address Line 2 (Optional)</label>
+                      <input type="text" formControlName="addressLine2" class="form-control" placeholder="Address" />
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="input-block">
+                      <label class="form-label">State</label>
+                      <select class="form-select" formControlName="state">
+                        <option value="" disabled>Select State</option>
+                        <option value="Brazil">Brazil</option>
+                        <option value="French">French</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4">
+                    <div class="input-block">
+                      <label class="form-label">Country</label>
+                      <select class="form-select" formControlName="country">
+                        <option value="" disabled>Select Country</option>
+                        <option value="India">India</option>
+                        <option value="America">America</option>
+                        <option value="London">London</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="input-block">
+                      <label class="form-control-label">Zip/Postal Code</label>
+                      <input type="text" formControlName="zipCode" class="form-control" />
+                      <div *ngIf="addressForm.get('zipCode')?.invalid && addressForm.get('zipCode')?.touched">
+                        <small class="text-danger">Zip/Postal Code is required</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </form>
+
+
             </div>
           </div>
         </div>
@@ -201,164 +180,100 @@
               <h4>Payment Method</h4>
             </div>
             <div class="checkout-form">
-              <form action="cart.html">
+              <form [formGroup]="paymentForm" (ngSubmit)="postPayment()">
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="wallet-method">
                       <label class="radio-inline custom_radio me-4">
-                        <input type="radio" name="optradio" checked="" />
+                        <input type="radio" formControlName="paymentMethod" value="credit" />
                         <span class="checkmark"></span> Credit or Debit card
                       </label>
                       <label class="radio-inline custom_radio">
-                        <input type="radio" name="optradio" />
+                        <input type="radio" formControlName="paymentMethod" value="paypal" />
                         <span class="checkmark"></span> PayPal
                       </label>
                     </div>
+                  </div>
+                  <div class="col-lg-12">
                     <div class="input-block">
                       <label class="form-control-label">Card Number</label>
                       <input
                         type="text"
                         class="form-control"
                         placeholder="XXXX XXXX XXXX XXXX"
-                        fdprocessedid="11pb9"
+                        formControlName="cardNumber"
                       />
+                      <div *ngIf="paymentForm.get('cardNumber')?.invalid && paymentForm.get('cardNumber')?.touched">
+                        <small class="text-danger">Card Number must be 16 digits.</small>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-lg-4">
+                  <div class="col-lg-6">
                     <div class="input-block">
-                      <label class="form-label">Month</label>
-                      <select
-                        class="form-select select select2-hidden-accessible"
-                        name="sellist1"
-                        data-select2-id="7"
-                        tabindex="-1"
-                        aria-hidden="true"
-                      >
-                        <option data-select2-id="9">Month</option>
-                        <option>Jun</option>
-                        <option>Feb</option>
-                        <option>March</option></select
-                      ><span
-                        class="select2 select2-container select2-container--default"
-                        dir="ltr"
-                        data-select2-id="8"
-                        style="width: 100%"
-                        ><span class="selection"
-                          ><span
-                            class="select2-selection select2-selection--single"
-                            role="combobox"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            tabindex="0"
-                            aria-disabled="false"
-                            aria-labelledby="select2-sellist1-bb-container"
-                            ><span
-                              class="select2-selection__rendered"
-                              id="select2-sellist1-bb-container"
-                              role="textbox"
-                              aria-readonly="true"
-                              title="Month"
-                              >Month</span
-                            ><span
-                              class="select2-selection__arrow"
-                              role="presentation"
-                              ><b role="presentation"></b></span></span></span
-                        ><span
-                          class="dropdown-wrapper"
-                          aria-hidden="true"
-                        ></span
-                      ></span>
-                    </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div class="input-block">
-                      <label class="form-label">Year</label>
-                      <select
-                        class="form-select select select2-hidden-accessible"
-                        name="sellist1"
-                        data-select2-id="10"
-                        tabindex="-1"
-                        aria-hidden="true"
-                      >
-                        <option data-select2-id="12">Year</option>
-                        <option>2024</option>
-                        <option>2021</option>
-                        <option>2020</option></select
-                      ><span
-                        class="select2 select2-container select2-container--default"
-                        dir="ltr"
-                        data-select2-id="11"
-                        style="width: 100%"
-                        ><span class="selection"
-                          ><span
-                            class="select2-selection select2-selection--single"
-                            role="combobox"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            tabindex="0"
-                            aria-disabled="false"
-                            aria-labelledby="select2-sellist1-38-container"
-                            ><span
-                              class="select2-selection__rendered"
-                              id="select2-sellist1-38-container"
-                              role="textbox"
-                              aria-readonly="true"
-                              title="Year"
-                              >Year</span
-                            ><span
-                              class="select2-selection__arrow"
-                              role="presentation"
-                              ><b role="presentation"></b></span></span></span
-                        ><span
-                          class="dropdown-wrapper"
-                          aria-hidden="true"
-                        ></span
-                      ></span>
-                    </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div class="input-block">
-                      <label class="form-control-label">CVV Code </label>
+                      <label class="form-control-label">Expiry Month</label>
                       <input
                         type="text"
                         class="form-control"
-                        placeholder="XXXX"
-                        fdprocessedid="1cqtbc"
+                        placeholder="MM"
+                        formControlName="expiryMonth"
                       />
+                      <div *ngIf="paymentForm.get('expiryMonth')?.invalid && paymentForm.get('expiryMonth')?.touched">
+                        <small class="text-danger">Expiry Month is required.</small>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-lg-12">
+                  <div class="col-lg-6">
+                    <div class="input-block">
+                      <label class="form-control-label">Expiry Year</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="YYYY"
+                        formControlName="expiryYear"
+                      />
+                      <div *ngIf="paymentForm.get('expiryYear')?.invalid && paymentForm.get('expiryYear')?.touched">
+                        <small class="text-danger">Expiry Year is required.</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="input-block">
+                      <label class="form-control-label">CVV</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="CVV"
+                        formControlName="cvv"
+                      />
+                      <div *ngIf="paymentForm.get('cvv')?.invalid && paymentForm.get('cvv')?.touched">
+                        <small class="text-danger">CVV must be 3 digits.</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
                     <div class="input-block">
                       <label class="form-control-label">Name on Card</label>
                       <input
                         type="text"
                         class="form-control"
-                        placeholder="Address"
-                        fdprocessedid="ue0re"
+                        placeholder="Cardholder Name"
+                        formControlName="nameOnCard"
                       />
+                      <div *ngIf="paymentForm.get('nameOnCard')?.invalid && paymentForm.get('nameOnCard')?.touched">
+                        <small class="text-danger">Name on Card is required.</small>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-md-12 col-lg-10">
-                    <div class="input-block ship-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        name="remember"
-                      />
-                      Remember this card
-                    </div>
-                  </div>
-                  <div class="payment-btn">
-                    <button
-                      class="btn btn-primary"
-                      type="submit"
-                      fdprocessedid="ginrxd"
-                    >
-                      Make a Payment
-                    </button>
                   </div>
                 </div>
+
+
               </form>
+              <div class="col-lg-12">
+                <button type="button" class="btn btn-primary" (click)="postPayment()">
+                  Submit Payment
+                </button>
+              </div>
+
             </div>
           </div>
         </div>

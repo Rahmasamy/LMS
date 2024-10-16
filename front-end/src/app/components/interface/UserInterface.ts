@@ -3,8 +3,8 @@ export interface Instructor {
   rating: string;
   role_id: number;
   user_id: number;
-  created_at: string; // ISO 8601 format
-  updated_at: string; // ISO 8601 format
+  created_at: string; 
+  updated_at: string;
 }
 
 export interface User {

@@ -1,0 +1,55 @@
+/* section-form.component.css */
+.big-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cac1f8;
+  border-radius: 50%;
+  height: 80vh;
+}
+
+
+.Category-container{
+  max-width: 600px;
+  margin: auto;
+  padding: 50px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+
+}
+
+h2 {
+  color: #333;
+  font-weight: bold;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.btn {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.btn-success {
+  background-color: rgb(15, 160, 243);
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #1b1b1b;
+}
+
+input {
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}

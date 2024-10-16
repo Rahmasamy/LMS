@@ -48,6 +48,7 @@ export class StudentDashbordComponent {
     return Math.floor(parseFloat(rating));
   }
   getDataOfloggedUser(){
+
    this.userService.getDataOfloggedUser().subscribe(
     (response:any)=> {
       console.log(response)
@@ -59,11 +60,14 @@ export class StudentDashbordComponent {
     }
    )
   }
+ 
   getDataOfStudent(id:string){
+
     this.studentService.getDataOfUser(id).subscribe(
       (response:any)=> {
-
-        this.getEnrollemtCourses(response.student.id)
+        console.log("hhhhhhhhhhhhhhhhhhh")
+        console.log(response)
+        this.getEnrollemtCourses(response.id)
       },
       (error) => {
         console.error('courses error', error);
