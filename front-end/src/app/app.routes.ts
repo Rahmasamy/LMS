@@ -38,12 +38,20 @@ import { StudentCoursesComponent } from './components/student-components/student
 import { StudentAnnouncementComponent } from './components/student-components/student-announcement/student-announcement.component';
 import { WatchvideoComponent } from './components/student-components/watchvideo/watchvideo.component';
 import { QuizeComponent } from './components/quize/quize.component';
+import { CourseSectionsComponent } from './components/course-sections/course-sections.component';
+import { CategoryComponent } from './components/category/category.component';
+import { QuizeAddComponent } from './components/quize-add/quize-add.component';
+import { SectionComponentComponent } from './components/section-component/section-component.component';
+import { AuthorsComponent } from './components/authors/authors.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'instructor', component: InstractorComponent },
+
   {
     path: 'instructor-dashboard',
     component: DashbordMainInstructorComponent,
+
     children: [
       { path: '', component: InstructorDashbordComponent },
       { path: 'instructor-dashboard', component: InstructorDashbordComponent },
@@ -53,6 +61,7 @@ export const routes: Routes = [
         path: 'instructor-enrolledcourse',
         component: InstrucorEnrolledComponent,
       },
+
       {
         path: 'instructor-qustions-answer',
         component: InstrutorQuestionAnswerComponent,
@@ -65,7 +74,15 @@ export const routes: Routes = [
         path: 'instructor-announcement',
         component: InstrutorAnnouncementComponent,
       },
+      {path:'courses-sections',component:CourseSectionsComponent},
+      {path:'courses-category',component:CategoryComponent},
+      {path:'courses-quiz',component:QuizeAddComponent}
     ],
+
+  },
+  {
+    path: 'instructor-dashboard/courses-sections/:courseId/sections',
+    component: SectionComponentComponent,
   },
 
   { path: 'student', component: StudentComponent },
@@ -105,11 +122,15 @@ export const routes: Routes = [
   { path: 'notification', component: NotificationsComponent },
   { path: 'wishlist', component: WichlistComponent },
   { path: 'courses', component: CourseComponent },
+  { path: 'Categories', component: CategoriesComponent },
+  { path: 'authors', component: AuthorsComponent },
+  { path: 'students', component: StudentComponent },
   { path: 'courses/course-details/:id', component: CourseDetailsComponent },
   {
     path: 'courses/course-details/:id/free',
     component: CourseAfterEnrollmentComponent,
   },
+
   {
     path: 'courses/course-details/:id/payment',
     component: PaymentCourseComponent,
@@ -119,4 +140,5 @@ export const routes: Routes = [
   { path: 'watchnow/:courseId/:lessonId', component: WatchvideoComponent },
   { path: 'signup', component: SignupComponent },
   { path: '**', component: ErrorsComponent },
+
 ];

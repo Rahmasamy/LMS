@@ -6,12 +6,13 @@ import { NgFor, NgIf } from '@angular/common';
 import { LoadingComponent } from '../../pages/loading/loading.component';
 
 import { HomePageService } from '../../../servises/homepage/home-page.service';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-top-category',
   standalone: true,
-  imports: [HeaderofcontentComponent, NgFor, NgIf, LoadingComponent],
+  imports: [HeaderofcontentComponent, NgFor, NgIf, LoadingComponent,RouterLink],
   templateUrl: './top-category.component.html',
   styleUrl: './top-category.component.css',
 })
@@ -19,7 +20,7 @@ import { HomePageService } from '../../../servises/homepage/home-page.service';
 export class TopCategoryComponent implements OnInit {
   headingName: string = 'Favourite Course';
   subHeading: string = 'Top Category';
-  all: string = 'All Categories';
+
   paragraph: string =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget aenean accumsan bibendum gravida maecenas augue elementum et neque. Suspendisse imperdiet.';
   categories: Category[] = [];

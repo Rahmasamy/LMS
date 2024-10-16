@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
@@ -47,15 +47,7 @@
                       />
                     </div>
 
-                    <div class="input-block">
-                      <label class="add-course-label">Course status</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Course status"
-                        formControlName="status"
-                      />
-                    </div>
+
 
                     <div class="input-block">
                       <label class="add-course-label"
@@ -68,7 +60,24 @@
                         formControlName="instructor_id"
                       />
                     </div>
-
+                    <div class="input-block">
+                      <label class="add-course-label">Course Image</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Course Image"
+                        formControlName="image_path"
+                      />
+                    </div>
+                    <div class="input-block">
+                      <label class="add-course-label">Course Price</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Course Price"
+                        formControlName="price"
+                      />
+                    </div>
                     <div class="input-block">
                       <label class="add-course-label">Course start_date</label>
                       <input
@@ -78,6 +87,7 @@
                         formControlName="start_date"
                       />
                     </div>
+
 
                     <div class="input-block">
                       <label class="add-course-label">Course end_date</label>
@@ -147,9 +157,9 @@
                         @for (item of allCategory; track $index) {
                         <option>{{ item.category_name }}</option>
                         }
-                        <!-- <option>Category 02</option>
+                         <option>Category 02</option>
                         <option>Category 03</option>
-                        <option>Category 04</option> -->
+                        <option>Category 04</option>
                       </select>
                       <span
                         class="select2 select2-container select2-container--default"
@@ -227,7 +237,7 @@
                     </div>
 
 
-                    <button type="submit">submit</button>
+                    <button type="submit" class="btn btn-secondary">submit</button>
                   </form>
                 </div>
                 <div class="widget-btn">
@@ -236,7 +246,7 @@
                 </div>
               </div>
             </fieldset>
-            <!-- <fieldset class="field-card" id="first">
+            <fieldset class="field-card" id="first">
               <div class="add-course-info">
                 <div class="add-course-inner-header">
                   <h4>Courses Media</h4>
@@ -618,7 +628,314 @@
                   <p>Admin will be Approve soon.</p>
                 </div>
               </div>
-            </fieldset> -->
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="widget-set">
+          <div class="widget-setcount">
+            <ul id="progressbar">
+              <li [class.progress-active]="currentStep === 1">
+                <p><span></span> Basic Information</p>
+              </li>
+              <li [class.progress-active]="currentStep === 2">
+                <p><span></span> Courses Media</p>
+              </li>
+              <li [class.progress-active]="currentStep === 3">
+                <p><span></span> Curriculum</p>
+              </li>
+              <li [class.progress-active]="currentStep === 4">
+                <p><span></span> Settings</p>
+              </li>
+            </ul>
+          </div>
+          <div class="widget-content multistep-form">
+            <!-- Step 1: Basic Information -->
+
+            <form [formGroup]="courseData" (ngSubmit)="addCourse()">
+            <fieldset *ngIf="currentStep === 1" class="p-5">
+
+              <div class="add-course-info" >
+                <h4>Basic Information</h4>
+                <div class="add-course-form">
+
+
+                      <div class="input-block">
+                        <label class="add-course-label">Course Title</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Course Title"
+                          formControlName="title"
+                        />
+                      </div>
+
+                      <div class="input-block">
+                        <label class="add-course-label">Course description</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Course description"
+                          formControlName="description"
+                        />
+                      </div>
+
+
+
+                      <div class="input-block">
+                        <label class="add-course-label"
+                          >Course instructor id</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Course instructor_id"
+                          formControlName="instructor id"
+                        />
+                      </div>
+
+
+                      <div class="input-block">
+                        <label class="add-course-label">Course start_date</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Course start_date"
+                          formControlName="start_date"
+                        />
+                      </div>
+
+
+                      <div class="input-block">
+                        <label class="add-course-label">Course end_date</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Course end_date"
+                          formControlName="end_date"
+                        />
+                      </div>
+
+                    <!-- Other fields go here... -->
+                     <div class="d-flex  w-full align-center justify-content-between">
+                      <button type="button" class="btn btn-black" (click)="goToPreviousStep()">Back</button>
+                      <button type="button" class="btn  btn-black t next_btn" (click)="goToNextStep()">Continue</button>
+                     </div>
+
+
+                </div>
+              </div>
+            </fieldset>
+             <!-- Step 2: Courses Media -->
+             <fieldset *ngIf="currentStep === 2" class="p-5">
+              <div class="add-course-info">
+                <h4>Courses Media</h4>
+                <div class="add-course-form">
+
+                        <div class="input-block">
+                        <label class="add-course-label">Course Image</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Course Image"
+                          formControlName="image_path"
+                        />
+                      </div>
+                      <div class="d-flex  w-full align-center justify-content-between">
+                        <button type="button" class="btn btn-black" (click)="goToPreviousStep()">Back</button>
+                        <button type="button" class="btn  btn-black t next_btn" (click)="goToNextStep()">Continue</button>
+                       </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Step 3: Curriculum -->
+            <fieldset *ngIf="currentStep === 3" class="p-5">
+              <div class="add-course-info">
+                <h4>Curriculum</h4>
+                <div class="add-course-form">
+                  <!-- Add Curriculum Fields Here -->
+                  <div class="input-block">
+                    <label class="add-course-label">Course benefits</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Course benefits"
+                      formControlName="benefits"
+                    />
+                  </div>
+
+                  <div class="input-block">
+                    <label class="add-course-label">Course plan</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Course plan"
+                      formControlName="plan"
+                    />
+                  </div>
+
+                  <div class="input-block">
+                    <label class="add-course-label">Course durations</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Course durations"
+                      formControlName="durations"
+                    />
+                  </div>
+
+                  <div class="input-block">
+                    <label class="add-course-label">Course requirements</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Course requirements"
+                      formControlName="requirements"
+                    />
+                  </div>
+                  <div class="input-block">
+                    <label class="add-course-label">Course level</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Course level"
+                      formControlName="level"
+                    />
+                  </div>
+
+                  <div class="d-flex  w-full align-center justify-content-between">
+                    <button type="button" class="btn btn-black" (click)="goToPreviousStep()">Back</button>
+                    <button type="button" class="btn  btn-black t next_btn" (click)="goToNextStep()">Continue</button>
+                   </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Step 4: Settings -->
+            <fieldset *ngIf="currentStep === 4" class="p-5">
+              <div class="add-course-info">
+                <h4>Settings</h4>
+                <div class="add-course-form">
+                  <!-- Add Settings Fields Here -->
+                  <div class="input-block">
+                    <label class="add-course-label">Courses Category</label>
+
+                    <select
+                      class="form-control select select2-hidden-accessible"
+                    >
+                      <option>select category</option>
+                      <!-- @for (item of allCategory; track $index) {
+                      <option>{{ item.category_name }}</option>
+                      } -->
+                       <option>Category 02</option>
+                      <option>Category 03</option>
+                      <option>Category 04</option>
+                    </select>
+                    <span
+                      class="select2 select2-container select2-container--default"
+                      dir="ltr"
+                      data-select2-id="2"
+                      style="width: 100%"
+                      ><span class="selection"
+                        ><span
+                          class="select2-selection select2-selection--single"
+                          role="combobox"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                          tabindex="0"
+                          aria-disabled="false"
+                          aria-labelledby="select2-xfnp-container"
+                          ><span
+                            class="select2-selection__rendered"
+                            id="select2-xfnp-container"
+                            role="textbox"
+                            aria-readonly="true"
+                            title="Category 01"
+                            >Category 01</span
+                          ><span
+                            class="select2-selection__arrow"
+                            role="presentation"
+                            ><b role="presentation"></b></span></span></span
+                      ><span
+                        class="dropdown-wrapper"
+                        aria-hidden="true"
+                      ></span
+                    ></span>
+                  </div>
+                  <div class="input-block">
+                    <label class="add-course-label">Courses Level</label>
+                    <select
+                      class="form-control select select2-hidden-accessible"
+                      data-select2-id="4"
+                      tabindex="-1"
+                      aria-hidden="true"
+                    >
+                      <option data-select2-id="6">Level 01</option>
+                      <option>Level 02</option>
+                      <option>Level 03</option>
+                      <option>Level 04</option></select
+                    ><span
+                      class="select2 select2-container select2-container--default"
+                      dir="ltr"
+                      data-select2-id="5"
+                      style="width: 100%"
+                      ><span class="selection"
+                        ><span
+                          class="select2-selection select2-selection--single"
+                          role="combobox"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                          tabindex="0"
+                          aria-disabled="false"
+                          aria-labelledby="select2-1cos-container"
+                          ><span
+                            class="select2-selection__rendered"
+                            id="select2-1cos-container"
+                            role="textbox"
+                            aria-readonly="true"
+                            title="Level 01"
+                            >Level 01</span
+                          ><span
+                            class="select2-selection__arrow"
+                            role="presentation"
+                            ><b role="presentation"></b></span></span></span
+                      ><span
+                        class="dropdown-wrapper"
+                        aria-hidden="true"
+                      ></span
+                    ></span>
+                  </div>
+                  <div class="input-block">
+                    <label class="add-course-label">Course Price</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Course Price"
+                      formControlName="price"
+                    />
+                  </div>
+                  <div class="d-flex  w-full align-center justify-content-between">
+                    <button type="button" class="btn btn-black" (click)="goToPreviousStep()">Back</button>
+                    <button type="submit" class="btn btn-secondary">Submit</button>
+                   </div>
+
+
+                </div>
+              </div>
+            </fieldset>
+          </form>
+
+
+
           </div>
         </div>
       </div>

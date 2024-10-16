@@ -1,0 +1,23 @@
+<!-- section-form.component.html -->
+<div class="container mt-5 big-container">
+  <div class="Category-container">
+    <h2 class="text-center mb-4">Create Category</h2>
+    <form [formGroup]="categoryForm" (ngSubmit)="submitForm()">
+      <div class="mb-3">
+        <label for="categoryName" class="form-label">Category Name</label>
+        <input type="text" class="form-control" id="categoryName" formControlName="category_name" placeholder="Enter Category Name" required />
+      </div>
+
+      
+
+      <div class="mb-3">
+        <label for="imagePath" class="form-label">Image Path</label>
+        <input type="text" class="form-control" id="imagePath" formControlName="image_path" placeholder="Enter Image Path" required />
+      </div>
+
+
+      <button type="submit" class="btn btn-success">Create Category</button>
+    </form>
+  </div>
+
+</div>

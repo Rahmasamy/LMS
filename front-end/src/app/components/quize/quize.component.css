@@ -31,6 +31,7 @@ h1 {
 
 .questionsContainer {
   margin-bottom: 20px;
+  width: 80%;
 }
 
 .question-item {

@@ -29,15 +29,15 @@
                   ></i>
                 </div>
                 <span class="d-inline-block average-rating"
-                  ><span>{{ course.rating }}</span> </span
+                  ><span>{{ course?.rating }}</span> </span
                 >
               </div>
             </div>
             <span class="web-badge mb-3">WEB DEVELPMENT</span>
           </div>
-          <h2>{{ course.title }}</h2>
+          <h2>{{ course?.title }}</h2>
           <p>
-            {{ course.description }}
+            {{ course?.description }}
           </p>
           <div
             class="course-info d-flex align-items-center border-bottom-0 m-0 p-0"
@@ -48,7 +48,7 @@
             </div>
             <div class="cou-info">
               <img src="assets/img/icon/timer-icon.svg" alt="Img" />
-              <p>{{ course.start_date }}</p>
+              <p>{{ course?.start_date }}</p>
             </div>
             <div class="cou-info">
               <img src="assets/img/icon/people.svg" alt="Img" />
@@ -61,23 +61,23 @@
   </div>
   <section class="page-content course-sec">
     <div class="container">
-      <div class="row">
+      <div class="row"  *ngIf="course">
         <div class="col-lg-8">
           <div class="card overview-sec">
             <div class="card-body">
               <h5 class="subs-title">Overview</h5>
               <h6>Course Description</h6>
               <p>
-              {{course.description}}
+              {{course?.description}}
               </p>
               <p>
-                {{course.description}}
+                {{course?.description}}
               </p>
               <h6>What you'll learn</h6>
               <div class="row">
                 <div class="col-md-12">
                   <ul>
-                    <li *ngFor="let benefit of courseBenefits">{{ benefit.trim() }}</li>
+                    <li *ngFor="let benefit of courseBenefits">{{ benefit?.trim() }}</li>
                   </ul>
                 </div>
 
@@ -85,7 +85,7 @@
               <h6>Requirements</h6>
               <ul class="mb-0">
 
-                <li *ngFor="let req of reguiremnets">{{ req.trim() }}</li>
+                <li *ngFor="let req of reguiremnets">{{ req?.trim() }}</li>
               </ul>
             </div>
           </div>
@@ -97,7 +97,7 @@
                   <h5 class="subs-title">Course Content</h5>
                 </div>
                 <div class="col-sm-6 text-sm-end">
-                  <h6>92 Lectures {{course.durations}}</h6>
+                  <h6>92 Lectures {{course?.durations}}</h6>
                 </div>
               </div>
 
@@ -154,7 +154,7 @@
 
               </div>
               <div class="quizeContainer">
-                <a [routerLink]="['/quize', course.id]"> {{quize.title}}</a>
+                <a [routerLink]="['/quize', course.id]"> {{quize?.title}}</a>
               </div>
               <div class="quizeContainer">
                 <a [routerLink]="['/quize', course.id]"> Certificate</a>
@@ -331,14 +331,14 @@
                     </div>
                     <img
                       class=""
-                      src="../../../../assets/img/video.jpg"
+                      [src]="course.image_path"
                       alt="Img"
                     />
                   </a>
                   <div class="video-details">
                     <div class="course-fee">
                       <h2>FREE</h2>
-                      <p><span>$99.00</span> 50% off</p>
+                      <p><span>${{course.price}}</span> </p>
                     </div>
                     <div class="row gx-2">
                       <div class="col-md-6">
@@ -355,12 +355,12 @@
                       </div>
                     </div>
 
-                   <button
-                     (click)="enroll(course.id, student_id, course.plan)"
-                      class="btn btn-enroll w-100"
-                       [disabled]="isEnrolled">
+                    <button
+                    (click)="enroll(student_id, course.instructor_id, course.id, course.plan)"
+                    class="btn btn-enroll w-100"
+                    [disabled]="isEnrolled">
                     {{ isEnrolled ? 'Already Enrolled' : 'Enroll Now' }}
-                   </button>
+                  </button>
 
 
                   </div>

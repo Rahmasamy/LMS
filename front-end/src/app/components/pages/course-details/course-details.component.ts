@@ -39,6 +39,7 @@ export class CourseDetailsComponent {
   reviewForm: FormGroup;
   quize:any;
   isEnrolled: boolean = false;
+  coursePrice:string=""
   constructor(
     private servesCourse: CourseServiceService,
     private route: ActivatedRoute,
@@ -72,7 +73,9 @@ export class CourseDetailsComponent {
 
 
   }
-
+  getPrice(coursePrice:string){
+    return coursePrice;
+  }
 
   async initData() {
     await this.getInstructorOfCourse(this.courseId);
@@ -85,9 +88,11 @@ export class CourseDetailsComponent {
     this.servesCourse.showSingleCourse(id).subscribe(
       (response: any) => {
         this.course = response.data;
-        console.log("courses")
-        console.log(this.course);
-        this.course ? (this.data = true) : (this.data = false);
+        console.log("course price")
+        console.log(this.course.price)
+        this.coursePrice=this.getPrice(this.course.price);
+        this.course ? (this.data = true) : (this.data = false);;
+        //
         this.courseBenefits = this.course.benefits.split(',');
         this.reguiremnets= this.course.requirements.split(',');
 
@@ -174,33 +179,50 @@ export class CourseDetailsComponent {
        }
      );
    }
+  enroll(studentId: any,InstructorId:any, courseId: any, paymentStatus: any) {
+    if(Number(this.coursePrice) > 0){
+      console.log("you have to pay for this course first ");
+      this.notificationService.showError(
+        'you have to pay for this course first.',
+        'Enrollment Failed'
+      );
+      setTimeout(()=> {
+        this.router.navigate([`/courses/course-details/${this.courseId}/payment`]);
+      },400)
+    }  else {
+      this.servesCourse.enroll(studentId, InstructorId,courseId, paymentStatus).subscribe(
+        (response) => {
+          this.isEnrolled = true;
+          console.log("enrolled")
+          console.log(this.isEnrolled);
+          console.log("course price")
+          console.log(this.coursePrice);
 
-  enroll(studentId: any, courseId: any, paymentStatus: any) {
-    this.servesCourse.enroll(courseId, studentId, paymentStatus).subscribe(
-      (response) => {
-        this.isEnrolled = true;
-        console.log("enrolled")
-        console.log(this.isEnrolled);
-        this.notificationService.showSuccess(
-          `You have successfully enrolled in the course. Payment Status: ${response.enrollment.payment_status}`,
-          'Enrollment Successful'
-        ).then((result) => {
-          if (result.isConfirmed) {
-            this.router.navigate([`/courses/course-details/${this.course.id}/${response.enrollment.payment_status}`]);
-          }
 
-        });
-      },
-      (error) => {
-        console.error('Enrollment failed:', error);
+            this.notificationService.showSuccess(
+              `You have successfully enrolled in the course. Payment Status: ${response.enrollment.payment_status}`,
+              'Enrollment Successful'
+            ).then((result) => {
+              if (result.isConfirmed) {
+                this.router.navigate([`/courses/course-details/${this.course.id}/${response.enrollment.payment_status}`]);
+              }
 
-        // Use notification service for error alert
-        this.notificationService.showError(
-          'Something went wrong during enrollment. Please try again.',
-          'Enrollment Failed'
-        );
-      }
-    );
+            });
+
+
+        },
+        (error) => {
+          console.error('Enrollment failed:', error);
+
+          // Use notification service for error alert
+          this.notificationService.showError(
+            'Something went wrong during enrollment. Please try again.',
+            'Enrollment Failed'
+          );
+        }
+      );
+    }
+
   }
   getDataOfloggedUser(){
    this.userService.getDataOfloggedUser().subscribe(
@@ -229,8 +251,9 @@ export class CourseDetailsComponent {
   getDataOfStudent(id:string){
     this.studentService.getDataOfUser(id).subscribe(
       (response:any)=> {
-
-        this.student_id=response.student.id;
+        console.log("student response")
+        console.log(response)
+        this.student_id=response.id;
 
         this.checkEnrollment(this.student_id, this.course.id);
 

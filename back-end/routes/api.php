@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryControllerr;
 use App\Http\Controllers\CertificateControllerr;
 use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -45,7 +46,8 @@ Route::get('instructors/{id}/categories', [InstructorController::class, 'categor
 Route::get('instructors/{id}/courses', [InstructorController::class, 'courses']);
 
 Route::get('instructor/course/{id}', [InstructorController::class, 'InstructorByCourseID']);
-Route::get('/user/{id}', [UserController::class, 'getUser']);
+//showInstructorByUserId
+Route::get('/user/{id}', action: [UserController::class, 'getUser']);
 Route::get('courses/show/{id}', action: [CourseControllerr::class, 'show']);
 // Route::get('courses/show/{id}', action: [CourseControllerr::class, 'show']);
 
@@ -57,18 +59,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::get('/user', function (Request $request) {
     return $request->user();
   });
-  // update user 
-
+  // user 
   Route::put('/user/update', [UserController::class, 'update']);
+  Route::get('/user/student', [UserController::class, 'getUserWithStudent']);
+ 
   Route::delete('/user/delete/{id}', [UserController::class, 'deleteUser']);
-  Route::get('/user/{id}/student', [UserController::class, 'getUserWithStudent']);
-  Route::get('/user/{id}/instructor', [UserController::class, 'getUserWithInstructor']);
 
   Route::get('courses/all', [CourseControllerr::class, 'all']);
-
   Route::get('courses', [CourseControllerr::class, 'index']);
- ///instructor/course/
- 
   Route::post('courses/add', action: [CourseControllerr::class, 'Store']);
   Route::put('courses/update/{id}', action: [CourseControllerr::class, 'update']);
   Route::get('courses/delete/{id}', action: [CourseControllerr::class, 'destroy']);
@@ -78,7 +76,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::get('course/assig/{id}', [CourseControllerr::class, 'Assigments']);
   Route::get('course/cert/{id}', [CourseControllerr::class, 'Certificate']);
   Route::get('courses/recent', [CourseControllerr::class, 'getRecentCourses']);
+  Route::get('courses/instructor/{instructorId}', [CourseControllerr::class, 'getCoursesByInstructor']);
   Route::get('/enrollments/{student_id}', [EnrollmentController::class, 'getEnrollmentsByStudentId']);
+
   //category controller 
   Route::get(uri: 'categories', action: [CategoryControllerr::class, 'index']);
   Route::get('categories/courses/{id}', [CategoryControllerr::class, 'getCoursesOfCategory']);
@@ -117,11 +117,17 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::post('students/add', [StudentController::class, 'Store']);
   Route::put('students/update/{id}', [StudentController::class, 'update']);
   Route::get('students/delete/{id}', [StudentController::class, 'destroy']);
-
+  Route::get('students', action: [StudentController::class, 'index']);
+  Route::get('/students/{studentId}/recent-enrollments', [StudentController::class, 'getRecentEnrollments']);
+  Route::get('student/show/{student-id}', action: [StudentController::class, 'show']);
+  Route::get('user/{id}/student', action: [StudentController::class, 'getStudentByUserId']);
+ 
   //section controller
   Route::get('section/lessons', [SectionController::class, 'index']);
   Route::get('section/{id}/lessons', [SectionController::class, 'lessons']);
-
+  Route::post('section/add', [SectionController::class, 'Store']);
+  Route::put('section/update/{id}', [SectionController::class, 'update']);
+  Route::get('section/delete/{id}', [SectionController::class, 'destroy']);
   //Review 
   Route::get('reviews', [Review::class, 'index']);
   Route::get('reviews/show/{id}', [Review::class, 'show']);
@@ -131,7 +137,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::get('reviews/course/{id}', [Review::class, 'getCourseReviews']);
   Route::get('/reviews/user/{userId}', [Review::class, 'getReviewsByUserId']);
   Route::get('courses/{course_id}/reviews', [Review::class, 'getReviewsByCourseId']);
-
+  //getReviewsByInstructorId
+  Route::get('reviews/instructor/{userId}', [Review::class, 'getReviewsByInstructorId']);
   // course controller
   Route::get('courses', [CourseControllerr::class, 'index']);
   Route::get('courses/all', [CourseControllerr::class, 'all']);
@@ -181,20 +188,26 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::post('quizes/add', action: [QuizControllerr::class, 'Store']);
   Route::put('quizes/update/{id}', action: [QuizControllerr::class, 'update']);
 
+Route::get('questions', [QuestionController::class, 'index']);
+Route::post('question/add', action: [QuestionController::class, 'store']);
+Route::get('question/show/{id}', [QuestionController::class, 'show']);
+Route::get('question/quiz/{id}', action: [QuestionController::class, 'getQuestionsByQuizId']);
+Route::put('question/update/{id}', [QuestionController::class, 'update']);
+Route::delete('question/delete/{id}', [QuestionController::class, 'destroy']);
 
+  //instructor 
   Route::post('instructors/add', action: [InstructorController::class, 'Store']);
   Route::post('instructors/show/{id}', action: [InstructorController::class, 'show']);
   Route::put('instructors/update/{id}', action: [InstructorController::class, 'update']);
   Route::get('instructors/delete/{id}', action: [InstructorController::class, 'destroy']);
+  Route::get('/instructor/{id}/enrolled-courses', 'InstructorController@getEnrolledCourseForInstructor');
+  Route::get('instructor/user/{id}', [InstructorController::class, 'showInstructorByUserId']);
+  // Route::get('/user-with-instructor', [InstructorController::class, 'getUserWithInstructor']);
 
-  // students 
-  Route::get('students', action: [StudentController::class, 'index']);
-  Route::get('/students/{studentId}/recent-enrollments', [StudentController::class, 'getRecentEnrollments']);
-  Route::get('student/show/{student-id}', action: [StudentController::class, 'show']);
-
+ 
   //wishlist 
   Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist']);
-  Route::get('/wishlist', [WishlistController::class, 'viewWishlist']);
+  Route::get('/wishlist', action: [WishlistController::class, 'viewWishlist']);
 });
 
 

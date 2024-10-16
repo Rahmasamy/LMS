@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="sections-title p-4">
+    <h2>Add Quiz To course You want!</h2>
+  </div>
+
+  <div class="cards d-flex g-3 flex-fill flex-md-wrap">
+
+    <div class="course-card" *ngFor="let course of courses">
+      <div class="course-header">
+        <h3>{{course.title}}</h3>
+        <p>{{course.description}}</p>
+      </div>
+      <div class="course-body">
+      <img [src]="course.image_path" alt="">
+      </div>
+      <div class="course-footer">
+
+        <a [routerLink]="['/instructor-dashboard/courses-sections', course.id,'sections']" class="enroll-btn">
+          Add Quiz
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</div>

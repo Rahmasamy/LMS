@@ -161,4 +161,15 @@ class CourseControllerr extends Controller
     return $this->checkRequest($courses, 200);
 
 }
+public function getCoursesByInstructor($instructorId)
+{
+    
+    $courses = Course::where('instructor_id', $instructorId)->get();
+
+    if ($courses->isEmpty()) {
+        return response()->json(['message' => 'No courses found for this instructor.'], 404);
+    }
+
+    return response()->json($courses, 200);
+}
 }

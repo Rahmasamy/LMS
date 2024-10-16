@@ -12,7 +12,8 @@ export interface Course {
   created_at: string | null;
   updated_at: string | null;
   durations:string;
-  plan:string
+  plan:string,
+  price:string
 }
 export interface Question {
   id: number;
@@ -34,5 +35,5 @@ export interface Quiz {
   description: string | null;
   questions_count: number;
   is_active: number;
-  questions: Question[]; 
+  questions: Question[];
 }

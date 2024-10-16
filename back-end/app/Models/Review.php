@@ -16,4 +16,7 @@ class Review extends Model
     public function Student(){
         return $this->belongsTo(Student::class);
     }
+    public function Instructor(){
+        return $this->belongsTo(related: Instructor::class);
+    }
 }

@@ -184,3 +184,10 @@ a {
   padding: 0;
   width: 100%;
 }
+.instimg {
+  border-radius: 50%;
+  height: 80px;
+}
+.course-rating i {
+  color: rgb(255, 255, 84);
+}

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Course } from '../../../components/interface/coursesInterface';
 @Injectable({
   providedIn: 'root',
 })
@@ -64,6 +65,7 @@ export class CourseServiceService {
 
   enroll(
     studentId: number,
+    InstructorId:number,
     courseId: number,
     paymentStatus: string
   ): Observable<any> {
@@ -119,5 +121,23 @@ export class CourseServiceService {
     };
     return this.http.get(`${this.apiUrl}/lessons/show/${id}`, { headers });
 
+  }
+  addCourseToWishList(data:{}){
+    const headers = {
+      authorization: 'Bearer ' + localStorage.getItem('authToken'),
+    };
+    return this.http.post(`${this.apiUrl}/wishlist/add`,data, { headers });
+  }
+  postPayment(data:{}){
+    const headers = {
+      authorization: 'Bearer ' + localStorage.getItem('authToken'),
+    };
+    return this.http.post(`${this.apiUrl}/stripe`,data, { headers });
+  }
+  getCoursesByInstructor(instructorId: string): Observable<Course[]> {
+    const headers = {
+      authorization: 'Bearer ' + localStorage.getItem('authToken'),
+    };
+    return this.http.get<Course[]>(`${this.apiUrl}/courses/instructor/${instructorId}`,{headers});
   }
 }

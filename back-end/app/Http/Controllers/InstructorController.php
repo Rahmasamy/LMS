@@ -9,6 +9,8 @@ use App\Models\Course;
 use App\Models\Instructor;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
 
 class InstructorController extends Controller
@@ -92,7 +94,50 @@ class InstructorController extends Controller
         return response()->json($Instructor);
     
     }
+    public function getEnrolledCourseForInstructor($instructorId){
+        $courses = Course::where('instructor_id', $instructorId)
+          ->whereHas(relation: 'enrollments') 
+          ->get();
+        return $this->apiResponce($courses, "ok", 201);
+     
+    }
+    public function showInstructorByUserId($userId)
+    {
+        $instructor = DB::table('instructors')->where('user_id', $userId)->first();
+    
+        if (!$instructor) {
+            return response()->json(['message' => 'Instructor not found'], 404);
+        }
+    
+        return response()->json($instructor, 200);
+    }
+//     public function getUserWithInstructor()
+// {
+
+//     Log::info('Inside getUserWithInstructor function');
+//     $user = auth()->user();
+  
+  
+//     if (!$user) {
+//         return response()->json(['message' => 'No authenticated user found'], 401);
+//     }
+//     $userWithInstructor = User::with(['instructor' => function($query) {
+//         $query->where('role_id', 2);
+//     }])->find($user->id);
+
    
+//     if (!$userWithInstructor) {
+//         return response()->json(['message' => 'User not found'], 404);
+//     }
+
+   
+//     if (!$userWithInstructor->Withinstructor) {
+//         return response()->json(['message' => 'No instructor data available for this user'], 404);
+//     }
+
+//     return response()->json($userWithInstructor, 200);
+// }
+
   
     // public function sections(Request $request,$id){
     //     $this->authAdminInst($request);

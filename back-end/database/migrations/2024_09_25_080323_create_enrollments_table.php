@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('enrollments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('student_id')->constrained('students')->cascadeOnDelete();
+            $table->foreignId('instructor_id')->default(1)->constrained('instructors')->cascadeOnDelete();
             $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
             $table->boolean('payment_status')->default(true); 
             $table->timestamp('date_enrolled')->useCurrent(); // Set to current date by default

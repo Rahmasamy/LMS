@@ -6,6 +6,7 @@ import { CourseServiceService } from '../../../servises/User/Course/course-servi
 import { Course } from '../../interface/coursesInterface';
 import { RouterLink } from '@angular/router';
 import { LoadingComponent } from '../../pages/loading/loading.component';
+import { NotificationService } from '../../../services/notification.service';
 
 @Component({
   selector: 'app-trending-courses',
@@ -24,10 +25,10 @@ import { LoadingComponent } from '../../pages/loading/loading.component';
 export class TrendingCoursesComponent {
   headingName: string = 'What is New';
   subHeading: string = 'TRENDING COURSES';
-  all: string = 'All Courses trinding';
+
   paragraph: string =
     'Lorem ipsum dolor sit amet,consectetur adipiscing elit. Eget aenean accumsan bibendum gravida maecenas augue elementum et neque. Suspendisse imperdiet.';
-  constructor(private courseService: CourseServiceService) {}
+  constructor(private courseService: CourseServiceService,private notificationService:NotificationService) {}
   courses: Course[] = [];
   Instructor: any[] = [];
   instructors: { [key: string]: any } = {};
@@ -58,4 +59,27 @@ export class TrendingCoursesComponent {
       }
     );
   }
+  addTowishList(courseId:number){
+    const data={
+      course_id:courseId
+    }
+    this.courseService.addCourseToWishList(data).subscribe(
+      (response: any) => {
+
+        this.notificationService.showSuccess(
+          `You have successfully add course to wishlist `,
+          'adding to wish list Successful'
+        )
+        console.log('add ti wish list', response);
+
+      },
+      (error) => {
+        this.notificationService.showError(
+          `You have Failed to add the course in wishing list `,
+          'Error adding to wish list'
+        )
+        console.error(' error adding to wishlist', error);
+      }
+    )
+    }
 }

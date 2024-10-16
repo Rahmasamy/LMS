@@ -17,6 +17,13 @@ class Course extends Model
         ->withTimestamps();
         ;
     }
+    public function Instructor()
+    {
+        return $this->belongsTo(Instructor::class);
+    }
+    public function enrollments() {
+        return $this->hasMany(Enrollment::class);
+    }
     public function sections()
     {
         return $this->hasMany(Section::class, );
@@ -41,10 +48,7 @@ class Course extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function Instructor()
-    {
-        return $this->belongsTo(Instructor::class);
-    }
+   
     public function getLessons()
     {
         return $this->hasMany(Quiz::class, 'course_id');

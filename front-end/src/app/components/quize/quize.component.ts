@@ -3,7 +3,7 @@ import { QuizeServiceService } from '../../servises/quize/quize-service.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
 import { Quiz } from '../interface/coursesInterface';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule,FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { StudentService } from '../../servises/User/student/student/student.service';
 import { UsernowService } from '../../servises/userNow/usernow.service';
 import { NotificationService } from '../../services/notification.service';
@@ -11,7 +11,7 @@ import { NotificationService } from '../../services/notification.service';
 @Component({
   selector: 'app-quize',
   standalone: true,
-  imports: [NgFor,NgIf,FormsModule],
+  imports: [NgFor,NgIf,FormsModule,ReactiveFormsModule],
   templateUrl: './quize.component.html',
   styleUrl: './quize.component.css'
 })
@@ -20,14 +20,27 @@ export class QuizeComponent {
   courseId:string|null='';
   student_id:number=0;
   isSubmitted: boolean = false;
+  quizeForm:FormGroup;
+  showQuestionForm:boolean=false
   userAnswers: { [key: number]: string } = {};
   constructor( private quizeService:QuizeServiceService,
      private userService:UsernowService,
      private studentService:StudentService,
       private route: ActivatedRoute,
-      private notificationService:NotificationService
+      private notificationService:NotificationService,
+      private fb: FormBuilder
     ){
-
+      this.quizeForm = this.fb.group({
+        quize_id:['',Validators.required],
+        question: ['', [Validators.required]],
+        correct_answer: ['', Validators.required],
+        options: ['', [Validators.required, this.validateOptions]]
+      });
+  }
+  validateOptions(control: any) {
+    const value = control.value;
+    const options = value.split(',');
+    return options.length >= 2 ? null : { invalidOptions: true };
   }
   ngOnInit() {
 
@@ -68,6 +81,9 @@ export class QuizeComponent {
       (response: any) => {
 
        this.quize=response;
+       console.log("quize",response)
+       this.quizeForm.patchValue({ quize_id:response.id})
+       this. getQuestionsByQuizeId(response.id)
 
 
       },
@@ -127,6 +143,67 @@ export class QuizeComponent {
         );
        }
       )
+
+
+  }
+   getQuestionsByQuizeId(id:string){
+    this.quizeService.getQuestionsByQuizeId(id).subscribe(
+      (response)=>{
+        console.log("question for quize")
+         console.log(response)
+      },
+      (error)=>{
+        console.log(error)
+      }
+    )
+  }
+  addquestion(){
+    this.showQuestionForm=!this.showQuestionForm
+  }
+
+  QuestionSubmit(){
+    console.log(this.quizeForm.value);
+   if(this.quizeForm.valid){
+    let quizeFormV2=this.quizeForm.value;
+    const optionsArray = quizeFormV2.options.split(',').map((opt: string) => opt.trim());
+    console.log("options Array",optionsArray);
+    const questionData = {
+      question: quizeFormV2.question,
+      correct_answer: quizeFormV2.correct_answer,
+      options: optionsArray,
+      quize_id:quizeFormV2.quize_id
+    };
+    console.log(questionData);
+
+    this.quizeService.createQuestion(questionData).subscribe(
+      (response) => {
+          console.log("qustion added successfully:", response);
+          this.notificationService.showSuccess(
+            `You have successfully add the question.`,
+            'Adding question Successfully'
+          )
+          this.showQuestionForm = false;
+          console.log("show quize");
+          // this.getLessonsByCourse(this.courseId);
+          this. viewQuize(this.courseId)
+      },
+      (error) => {
+        this.notificationService.showError(
+          'Form Validation Failed',
+          'Adding question Failed'
+        );
+      }
+  );
+}
+
+   else {
+    this.notificationService.showError(
+      `Form is not valid:', ${this.quizeForm.errors}`,
+      'Adding quize Failed'
+    );
+
+  }
+
 
 
   }

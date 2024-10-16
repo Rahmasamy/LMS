@@ -27,4 +27,7 @@ class Student extends Model
     {
         return $this->belongsTo(Submission::class);
     }
+    public function user(){
+        return $this->hasOne(User::class);
+    }
 }

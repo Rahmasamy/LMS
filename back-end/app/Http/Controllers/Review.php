@@ -79,6 +79,12 @@ public function getReviewsByUserId($userId)
 
     return response()->json($reviews);
 }
+public function getReviewsByInstructorId($userId)
+{
+    $reviews = ModelsReview::where( 'instructor_id', $userId)->with('course')->get();
+
+    return response()->json($reviews);
+}
 public function getReviewsByCourseId($course_id)
 {
 

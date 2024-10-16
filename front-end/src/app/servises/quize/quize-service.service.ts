@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class QuizeServiceService {
 
   private apiUrl = 'http://localhost:8000/api/quizzes';
-
+  private apiQuesTion="http://localhost:8000/api"
   constructor(private http: HttpClient) {
 
    }
@@ -61,4 +61,20 @@ export class QuizeServiceService {
     };
     return this.http.post(`${this.apiUrl}/quizzesResults`,quizResult,{headers})
   }
+// question/add
+createQuestion(data: {}): Observable<any> {
+  const headers = {
+    authorization: 'Bearer ' + localStorage.getItem('authToken'),
+  };
+  return this.http.post(`${this.apiQuesTion}/question/add`, data,{headers});
+}
+getQuestionsByQuizeId(quizId:string): Observable<any> {
+  const headers = {
+    authorization: 'Bearer ' + localStorage.getItem('authToken'),
+  };
+  return this.http.get(`${this.apiQuesTion}/question/quiz/${quizId}`,{headers});
+}
+
+
+
 }
