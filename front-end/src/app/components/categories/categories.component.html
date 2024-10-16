@@ -1,1 +1,45 @@
-<p>categories works!</p>
+<div class="page-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="category-tab">
+          <ul class="nav nav-justified" role="tablist">
+            <li class="nav-item" role="presentation" *ngFor="let category of categories">
+              <a
+                [href]="'#' + category.category_name"
+                class="category-tab nav-link"
+                [ngClass]="{ active: selectedCategory === category.category_name }"
+                data-bs-toggle="tab"
+                aria-selected="true"
+                role="tab"
+                (click)="selectCategory(category.category_name)"
+              >
+                {{ category.category_name }}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="tab-content">
+          <div *ngFor="let category of categories" class="tab-pane fade" [ngClass]="{ 'active show': selectedCategory === category.category_name }" [id]="category.category_name" role="tabpanel">
+            <div class="row">
+              <div class="col-lg-4 col-md-6" *ngFor="let course of courses[category.id]">
+                <div class="category-box">
+                  <div class="category-title">
+                    <div class="category-img">
+                      <img [src]="course.image_path" alt="Course Image" />
+                    </div>
+                    <h5>{{ course.title }}</h5>
+                  </div>
+                  <div class="cat-count">
+                    <span>{{ course.count }}</span> <!-- Replace with appropriate course count -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
