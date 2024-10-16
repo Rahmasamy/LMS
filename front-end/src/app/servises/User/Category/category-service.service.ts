@@ -9,10 +9,16 @@ export class CategoryServiceService {
   constructor(private http: HttpClient) {}
 
   displayCategories(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/all-categories?per_page=10`);
+    const headers = {
+      authorization: 'Bearer ' + localStorage.getItem('authToken'),
+    };
+    return this.http.get(`${this.apiUrl}/all-categories?per_page=10`,{headers});
   }
   displayCoursesOfCategory(id: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/categories/courses/${id}`);
+    const headers = {
+      authorization: 'Bearer ' + localStorage.getItem('authToken'),
+    };
+    return this.http.get(`${this.apiUrl}/categories/courses/${id}`,{headers});
   }
 
   getCategoryByInstructor(): Observable<any> {
