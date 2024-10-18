@@ -5,7 +5,7 @@
 # **🎯 Project Overview**
    - This LMS (Learning Management System) website is a comprehensive platform for both instructors and students. It facilitates course enrollment, course payment, and filtering by categories, and offers personalized dashboards for instructors and students.
 
-# ** 🏗️ Tech Stack **
+#  ** 🏗️ Tech Stack **
   - Frontend: Angular
   - Backend: Laravel (API-base)
 # **✨ Features**
