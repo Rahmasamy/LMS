@@ -5,7 +5,7 @@
 # **🎯 Project Overview**
    - This LMS (Learning Management System) website is a comprehensive platform for both instructors and students. It facilitates course enrollment, course payment, and filtering by categories, and offers personalized dashboards for instructors and students.
 
-#  ** 🏗️ Tech Stack **
+#  **🏗️ Tech Stack**
   - Frontend: Angular
   - Backend: Laravel (API-base)
 # **✨ Features**
@@ -39,7 +39,7 @@
   - Dynamic Forms:
   - Multi-step forms for various input processes (e.g., course creation, enrollment).
     
-# **Laravel (Backend)*8
+# **Laravel (Backend)**
 RESTful APIs for User Authentication, Course Management, Payment Processing, and Quizzes.
 Controllers for managing Courses, Categories, Assignments, Quizzes, Lessons, Sections, and Reviews.
 Secure backend handling for all business logic and data processing.
@@ -73,7 +73,7 @@ Set up .env file and configure your database and mail settings.
   - Angular: For the user interface
   - Laravel: For API and backend logic
 **MySQL:** Database for storing user, course, and enrollment data
-📧 Contact
-For any inquiries or support, please reach out to the project team.
+# **📧 Contact**
+**For any inquiries or support, please reach out to the project team.**
 
-Feel free to adjust any part of the README based on additional features or details!
+**Feel free to adjust any part of the README based on additional features or details!**
