@@ -2,45 +2,7 @@
   <div class="container" style="transform: none">
     <div class="row" style="transform: none">
       <div class="col-lg-9">
-        <div class="showing-list">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center">
-                <div class="view-icons">
-                  <a href="course-grid.html" class="grid-view"
-                    ><i class="feather-grid"></i
-                  ></a>
-                  <a href="course-list.html" class="list-view active"
-                    ><i class="feather-list"></i
-                  ></a>
-                </div>
-                <div class="show-result">
-                  <h4>Showing 1-9 of 50 results</h4>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="show-filter add-course-info">
-                <form action="#">
-                  <div class="row gx-2 align-items-center">
-                    <div class="col-md-6 col-item">
-                      <div class="search-group">
-                        <i class="feather-search"></i>
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Search our courses"
-                          fdprocessedid="5tkhyq"
-                        />
-                      </div>
-                    </div>
-
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+       <h2 class="p-7">Hello In Our Courses ! </h2>
 
         <div class="row">
           <div class="col-lg-12 col-md-12 d-flex" *ngFor="let course of courses">
@@ -48,6 +10,7 @@
               <div class="product">
                 <div class="product-img">
                   <a href="course-details.html">
+
                     <img
                       class="img-fluid"
                       alt="Img"
@@ -66,8 +29,8 @@
                       >
                     </h3>
                     <div class="all-btn all-category d-flex align-items-center">
-                      <a href="checkout.html" class="btn btn-primary"
-                        >BUY NOW</a
+                      <a [routerLink]="['/courses/course-details', course.id]" class="btn btn-primary"
+                        >Enroll Now</a
                       >
                     </div>
                   </div>
@@ -92,7 +55,7 @@
                       ></i>
                     </div>
                 </div>
-                 
+
                 </div>
               </div>
             </div>

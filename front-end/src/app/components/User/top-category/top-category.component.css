@@ -1,57 +1,108 @@
-
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container-top {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  width: 100% !important;
+  flex-direction: column !important;
+}
+.cont {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  flex-direction: column !important;
+}
+/* Section Categories Styling */
 .section-categories {
   width: 100%;
-  padding: 80px;
-
+  padding: 80px 20px;
+  /* background-color: #f8f9fa; */
 }
+
 .section-categories .boxes {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   width: 100%;
   align-items: center;
-  padding: 20px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.section-categories .boxes
+/* Category Boxes */
 .box {
-  width: calc(100% / 4);
+  width: calc(100% / 3.5);
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 25px;
+  padding: 15px;
   border-radius: 8px;
-  gap: 15px;
+  background-color: #fff;
   border: 1px solid #e9ecef;
-  box-shadow: -11.729px -11.729px 32px rgba(255, 255, 255, .15);
-  transition: all 1ms ease-in;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
+
 .box img {
   width: 100%;
-  max-width: 100%;
   height: 150px;
   object-fit: cover;
+  border-radius: 8px 8px 0 0;
 }
+
 .box h3 {
-  font-size: 29px;
-  margin-bottom: 0;
+  font-size: 22px;
   font-weight: 600;
-  color: #0b0b0b;
-  letter-spacing: .9px;
+  color: #343a40;
+  margin: 15px 0 5px;
+  letter-spacing: 0.5px;
+  text-align: center;
 }
-.box p {
-  color: #685f78;
-  padding: 20px;
-}
+
 .box:hover {
-  transition: all 1ms ease-in;
   background-color: #495057;
-  h3,p {
-    color: #fff;
+  transform: translateY(-5px);
+}
+
+.box:hover h3 {
+  color: #ffffff;
+}
+
+/* All Categories Button */
+.all-category {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.all-category .btn {
+  /* background-color: #007bff; */
+  color: #392c7d;
+  padding: 10px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.all-category .btn:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .box {
+    width: calc(100% / 2 - 15px);
   }
-  .all-category {
-   justify-content: center;
+}
+
+@media (max-width: 576px) {
+  .box {
+    width: 100%;
   }
 }

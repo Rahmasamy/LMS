@@ -9,12 +9,12 @@ import {
 
 } from '@angular/forms';
 import { NotificationService } from '../../../services/notification.service';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-instructor-admin',
   standalone: true,
-  imports: [ReactiveFormsModule,NgClass,NgIf],
+  imports: [ReactiveFormsModule,NgClass,NgIf,NgFor],
   templateUrl: './instructor-admin.component.html',
   styleUrl: './instructor-admin.component.css',
 })
@@ -55,6 +55,7 @@ export class InstructorAdminComponent {
     this.servesCategory.getCategoryByInstructor().subscribe(
       (response) => {
         this.allCategory = response.data.data;
+        console.log("All Category")
         console.log(response.data.data);
       },
       (err) => {
@@ -98,5 +99,5 @@ export class InstructorAdminComponent {
       this.currentStep--;
     }
   }
-  
+
 }

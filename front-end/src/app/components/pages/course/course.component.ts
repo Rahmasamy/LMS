@@ -16,6 +16,10 @@ export class CourseComponent {
   courses: Course[] = [];
   Instructor: any[] = [];
   instructors: { [key: string]: any } = {};
+  filteredCourses: any[] = [];
+  searchTerm: string = '';
+  currentPage: number = 1;
+  itemsPerPage: number = 9;
   constructor(private courseService: CourseServiceService,private notificationService:NotificationService) {}
   ngOnInit(): void {
     this.courseService.displayCourses().subscribe(
@@ -23,6 +27,7 @@ export class CourseComponent {
         console.log("courses data")
         console.log(response.data.data)
         this.courses = response.data.data;
+        console.log(this.courses)
       },
       (error) => {
         console.error('courses error', error);
@@ -32,5 +37,6 @@ export class CourseComponent {
   getRating(rating: string): number {
     return Math.floor(parseFloat(rating));
   }
+
 }
 

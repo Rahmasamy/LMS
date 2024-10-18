@@ -6,7 +6,7 @@ import { StudentAdminComponent } from '../student-admin/student-admin.component'
 import { StudentComponent } from '../student/student.component';
 import { StudentReviewsComponent } from '../student-reviews/student-reviews.component';
 import { StudentQuestionAnswerComponent } from '../student-question-answer/student-question-answer.component';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { StudentService } from '../../../servises/User/student/student/student.service';
 import { UsernowService } from '../../../servises/userNow/usernow.service';
 import { RegisterService } from '../../../servises/auth/register.service';
@@ -26,7 +26,11 @@ export class NavbarStudentComponent {
   bio:string=''
   isLogin: boolean = false;
   token: string | null = '';
-  constructor(private userService:UsernowService,private studentService:StudentService,private serviseAuth: RegisterService){}
+  constructor(private userService:UsernowService,
+    private studentService:StudentService,
+    private serviseAuth: RegisterService,
+    private router: Router,
+  ){}
   ngOnInit(): void {
     this.getDataOfloggedUser();
     this.checkLoginStatus();
@@ -87,6 +91,7 @@ export class NavbarStudentComponent {
    logout(): void {
     console.log('Logging out...');
     localStorage.removeItem('authToken');
+    this.router.navigate(['']);
     this.isLogin = false; // Set isLogin to false after logout
   }
 }

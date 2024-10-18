@@ -1,16 +1,21 @@
+/* General Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+/* Navbar Styling */
 .min-parent-nav {
   position: sticky;
   top: 0;
-  background-color: #b4a7f5;
+  background-color: #4a4e69;
   left: 0;
   right: 0;
   z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 .parent-nav {
   display: flex;
   padding: 10px 0;
@@ -18,144 +23,136 @@
   margin: 0 auto;
 }
 
-.parent-nav div {
-  width: calc(100% / 3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/* Logo Area */
 .nav-left {
-  width: 20% !important;
+  width: 20%;
+  text-align: left;
 }
+
+/* Center Links */
 .center-links {
-  width: 50% !important;
+  width: 60%;
 }
-.parent-nav .center-links ul {
+
+.navbar-nav {
   display: flex;
-  align-items: center;
   justify-content: space-around;
-  list-style: none;
-  width: 90%;
-}
-
-.parent-nav .center-links ul a {
-  display: inline-block;
-  padding: 1rem;
-  text-decoration: none;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s linear;
-}
-
-.parent-nav .center-links ul a::after {
-  position: absolute;
-  content: " ";
-  width: 100%;
-  height: 1%;
-  background-color: #000;
-  left: 0;
-  bottom: -10px;
-}
-
-.parent-nav .center-links ul a:hover::after {
-  position: absolute;
-  content: " ";
-  width: 100%;
-  height: 1%;
-  background-color: #000;
-  left: 0;
-  bottom: 10px;
-}
-
-.nav-right {
-  display: flex;
   align-items: center;
-  justify-content: space-around !important;
-}
-a {
-  display: inline-block;
-  padding: 1rem;
-  text-decoration: none;
-}
-.nav-right a {
-  width: 30%;
-  text-align: center;
-  border-radius: 30px;
-}
-.change-color {
-  width: 2em !important;
-  height: 2em !important;
-  border: solid 1px #000;
-  border-radius: 10px;
-  background-color: #000;
-  color: #fff;
-  cursor: pointer;
-}
-.Signin {
-  background-color: #fff;
-  transition: background-color 0.4s linear;
-}
-.Signin:hover {
-  background-color: #f6697b;
-  color: #fff;
-  transition: background-color 0.4s linear;
 }
 
-.Signup {
-  border: 3px solid #b4a7f5;
-}
-.Signup:hover {
-  background-color: #f6697b;
+.nav-link {
+  padding: 10px 15px;
   color: #fff;
-  border: 3px solid #f6697b;
-  transition: background-color 0.4s linear;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
-.instructor {
+
+.nav-link:hover {
+  color: #9a8c98;
+}
+
+/* Dropdowns */
+.nav-dropdown {
   position: relative;
 }
 
-.list-instructors {
+.dropdown-menu {
   position: absolute;
-  width: 200px !important;
-  border: 1px solid #ccc;
   top: 100%;
   left: 0;
-
+  width: 200px;
+  background-color: #f4f4f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: none;
-  background-color: #fff;
-  z-index: 1001;
-  border-radius: 0 0 10px 10px;
-}
-
-.instructor:hover .list-instructors {
-  display: flex !important;
   flex-direction: column;
 }
 
-.list-instructors a {
-  border-bottom: 1px solid #eee;
-  text-align: left;
-  width: 100%;
-}
-.list-instructors a span {
-  display: inline-block;
-  height: 100%;
-  text-align: left;
-  width: 100%;
-
-  color: #000 ;
-}
-.list-instructors a:hover span {
-  padding-left: 10px;
-  color: #f66962;
-
-  transition: padding-left 0.2s linear;
+.nav-dropdown:hover .dropdown-menu {
+  display: flex;
 }
 
-.list-instructors a:last-child {
+.dropdown-menu a {
+  padding: 10px 15px;
+  color: #4a4e69;
+  border-bottom: 1px solid #e2e2e2;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+  background-color: #9a8c98;
+  color: #fff;
+}
+
+.dropdown-menu a:last-child {
   border-bottom: none;
 }
 
-.list-instructors a:hover {
-  background-color: #f0f0f0;
+/* Right Side Elements */
+.nav-right {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.profile-icon {
+  width: 35px;
+  height: 35px;
+  background-color: #22223b;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Auth Buttons */
+.auth-btn {
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.Signin {
+  background-color: #22223b;
+  color: #fff;
+}
+
+.Signin:hover {
+  background-color: #9a8c98;
+}
+
+.Signup {
+  background-color: #f2e9e4;
+  color: #22223b;
+  border: 1px solid #22223b;
+  width: 100px;
+}
+
+.Signup:hover {
+  background-color: #9a8c98;
+  width: 100px;
+  color: #fff;
+}
+
+
+@media screen and (max-width:1020px) {
+  .nav-right {
+    width: 35%;
+  }
+
+}
+
+
+
+@media screen and (max-width:720px) {
+  .nav-right {
+    width: 40;
+  }
+
 }

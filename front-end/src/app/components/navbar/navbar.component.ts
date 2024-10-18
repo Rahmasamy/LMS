@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { RegisterService } from '../../servises/auth/register.service';
 import { NgIf } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +15,7 @@ export class NavbarComponent {
   isLogin: boolean = false;
   token: string | null = '';
   role:string|null=''
-  constructor(private serviseAuth: RegisterService) {
+  constructor(private serviseAuth: RegisterService,private router: Router) {
     this.checkLoginStatus();
   }
   ngOnInit(): void {
@@ -53,6 +54,9 @@ export class NavbarComponent {
 
   logout(): void {
     this.serviseAuth.removeToken();
+    this.router.navigate(['' ]);
+
     this.isLogin = false;
+
   }
 }

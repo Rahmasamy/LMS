@@ -21,7 +21,8 @@ export class QuizeComponent {
   student_id:number=0;
   isSubmitted: boolean = false;
   quizeForm:FormGroup;
-  showQuestionForm:boolean=false
+  showQuestionForm:boolean=false;
+  role:string| null=''
   userAnswers: { [key: number]: string } = {};
   constructor( private quizeService:QuizeServiceService,
      private userService:UsernowService,
@@ -49,13 +50,16 @@ export class QuizeComponent {
     });
     this.viewQuize(this.courseId);
     this.getDataOfloggedUser();
+    this. getRole();
 
   }
   getDataOfStudent(id:string){
     this.studentService.getDataOfUser(id).subscribe(
       (response:any)=> {
 
-        this.student_id=response.student.id;
+        this.student_id=response.id;
+        console.log("student iddddddddddddddddddd")
+        console.log(this.student_id)
         // this.checkEnrollment(this.student_id, this.course.id);
 
       },
@@ -206,5 +210,9 @@ export class QuizeComponent {
 
 
 
+  }
+  getRole():string|null {
+    this.role=localStorage.getItem('role');
+    return this.role;
   }
 }

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg min-parent-nav">
   <div class="container-fluid parent-nav">
     <div class="nav-left">
-      <img src="../../assets/img/logo.svg" width="150px" alt="" />
+      <img src="../../assets/img/logo.svg" width="150px" alt="Logo" />
     </div>
     <button
       class="navbar-toggler"
@@ -16,87 +16,52 @@
     </button>
 
     <div class="collapse navbar-collapse center-links" id="navbarNavAltMarkup">
-      <div
-        class="navbar-nav w-75 d-flex align-items-center justify-content-between"
-      >
+      <div class="navbar-nav w-75 d-flex align-items-center justify-content-between">
         <a class="nav-link active" aria-current="page" routerLink="">Home</a>
 
-          <a class="nav-link instructor"  *ngIf="role === 'instructor'">
-            Instructor
+        <div class="nav-dropdown" *ngIf="role === 'instructor'">
+          <a class="nav-link instructor">Instructor</a>
+          <div class="dropdown-menu">
+            <a routerLink="instructor">Instructor</a>
+            <a routerLink="instructor-dashboard">Dashboard</a>
+            <!-- <a routerLink="instructor-profile">Profile</a>
+            <a routerLink="instructor-wishlist">Wishlist</a>
+            <a routerLink="instructor-enrolledcourse">Enrolled Course</a>
+            <a routerLink="instructor-questions-answer">Questions & Answers</a>
+            <a routerLink="instructor-referral">Referral</a>
+            <a routerLink="instructor-quiz">Quiz</a>
+            <a routerLink="instructor-course">Course</a>
+            <a routerLink="instructor-announcement">Announcement</a> -->
+          </div>
+        </div>
 
-            <div class="list-instructors d-none">
-              <a class="nav-link instructor" routerLink="instructor"
-                ><span>instructor</span></a
-              >
-              <a routerLink="instructor-dashboard"><span>Dashboard</span></a>
-              <a routerLink="instructor-profile"><span>profile</span></a>
-              <a routerLink="instructor-wishlist"><span>wishlist</span></a>
-              <a routerLink="instructor-enrolledcourse"
-                ><span>enrolledcourse</span></a
-              >
-              <a routerLink="instructor-qustions-answer"
-                ><span>qustions-answer</span></a
-              >
-              <a routerLink="instructor-referral"><span>referral</span></a>
-              <a routerLink="instructor-quiz"><span>quiz</span></a>
-              <a routerLink="instructor-course"><span>course</span></a>
-              <a routerLink="instructor-announcement"><span>instructor</span></a>
-            </div>
-          </a>
+        <div class="nav-dropdown" *ngIf="role === 'student'">
+          <a class="nav-link student">Student</a>
+          <div class="dropdown-menu">
+            <a routerLink="student-main-dashboard">Dashboard</a>
+            <!-- <a routerLink="instructor-profile">Profile</a>
+            <a routerLink="instructor-wishlist">Wishlist</a>
+            <a routerLink="instructor-enrolledcourse">Enrolled Course</a>
+            <a routerLink="instructor-questions-answer">Questions & Answers</a>
+            <a routerLink="instructor-referral">Referral</a>
+            <a routerLink="instructor-quiz">Quiz</a>
+            <a routerLink="instructor-course">Course</a>
+            <a routerLink="instructor-announcement">Announcement</a> -->
+          </div>
+        </div>
 
-
-
-          <a class="nav-link instructor" routerLink="student-main-dashboard"
-          *ngIf="role === 'student'" >student
-
-            <div class="list-instructors d-none">
-              <a routerLink="student-main-dashboard"><span>student</span></a>
-
-              <a routerLink="student-main-dashboard"><span>Dashboard</span></a>
-              <a routerLink="instructor-profile"><span>profile</span></a>
-              <a routerLink="instructor-wishlist"><span>wishlist</span></a>
-              <a routerLink="instructor-enrolledcourse"
-                ><span>enrolledcourse</span></a
-              >
-              <a routerLink="instructor-qustions-answer"
-                ><span>qustions-answer</span></a
-              >
-              <a routerLink="instructor-referral"><span>referral</span></a>
-              <a routerLink="instructor-quiz"><span>quiz</span></a>
-              <a routerLink="instructor-course"><span>course</span></a>
-              <a routerLink="instructor-announcement">
-                <span>announcement</span>
-              </a>
-            </div>
-          </a>
-
-        <!-- <div class="list-instructors d-none">
-            <a routerLink="notification"><span>Notification</span></a>
-
-            <a routerLink="wishlist"><span>Wishlist</span></a>
-         <a routerLink="instructor-wishlist"><span>wishlist</span></a>
-            <a routerLink="courses"><span>Course</span></a>
-          </div> -->
-        <a class="nav-link instructor"  routerLink="courses">
-          Courses
-        </a>
-        <a class="nav-link" routerLink="Categories">Categories</a>
-        <a class="nav-link" routerLink="authors">Authors</a>
-        <a class="nav-link" routerLink="student">Students</a>
+        <a class="nav-link" routerLink="courses">Courses</a>
+        <a class="nav-link" routerLink="categories">Categories</a>
       </div>
     </div>
+
     <div class="nav-right">
-      <div class="change-color">U</div>
-
-      <a *ngIf="!token" routerLink="signin" class="Signin">Signin</a>
-      <a *ngIf="!token" routerLink="signup" class="Signup">Signup</a>
 
 
-      <button *ngIf="token" (click)="logout()" class="btn Signin p-2">
-        Logout
-      </button>
+      <a *ngIf="!token" routerLink="signin" class="btn auth-btn Signin">Sign In</a>
+      <a *ngIf="!token" routerLink="signup" class="btn auth-btn Signup">Sign Up</a>
 
-      <!-- <a routerLink="signup" class="Signup">Signup</a> -->
+      <button *ngIf="token" (click)="logout()" class="btn Signin p-2">Logout</button>
     </div>
   </div>
 </nav>
