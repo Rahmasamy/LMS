@@ -4,7 +4,7 @@
 
 # **🎯 Project Overview**
    - This LMS (Learning Management System) website is a comprehensive platform for both instructors and students. It facilitates course enrollment, course payment, and filtering by categories, and offers personalized dashboards for instructors and students.
-<div style="width:100%; display:flex; justifiy-content:center;align-items:center;">
+<div style="width:100%; height:600px; display:flex; justifiy-content:center;align-items:center;">
  <img src="https://knowmax-ai-website.s3.amazonaws.com/wp-content/uploads/2023/04/11100404/LMS-Infinity-Gif.gif" width="600" height="600" style="object-fit:cover;">
 </div>
 
