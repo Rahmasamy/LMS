@@ -58,7 +58,7 @@ npm install `
 
 `ng serve`
 Navigate to `http://localhost:4200 in your browser.`
-# ** Backend (Laravel) **
+# ** Backend (Laravel)**
 # **Install dependencies:**
 
  - `composer install`
