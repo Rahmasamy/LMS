@@ -778,3 +778,75 @@ ul li {
   color: #0056b3;
   text-decoration: underline;
 }
+.section-categories{
+
+  margin: auto !important;
+  width: 100%;
+}
+.container{
+  margin:auto ;
+}
+
+@media screen and (max-width: 786px) {
+  .student-course{
+    display: none;
+  }
+.card-image{
+  display: none;
+
+}
+.carouselExampleControls{
+  display: none;
+
+}
+.cards{
+  display: flex;
+  flex-wrap: wrap;
+}
+.cards .card{
+width: 300px;
+}
+.info-cards {
+  flex-direction: column;
+}
+.info-cards div {
+  width: 80% !important;
+}
+.cards .card{
+  width: 300px !important;
+  margin: auto;
+  }
+  .boxes{
+    padding: 10px !important;
+  }
+  .carousel-item p{
+    font-size: 13px !important;
+  }
+  .boxes-img-container {
+    flex-direction: column;
+  }
+  .img-container {
+    max-width: 100vw;
+  }
+  .boxes-img-container img {
+    width: 350px !important;
+  }
+  .rating i {
+    font-size: 10px !important;
+  }
+}
+@media screen and (max-width: 450px) {
+  .cards .card{
+    width: 300px !important;
+    margin: auto;
+    }
+    .boxes{
+      padding: 10px !important;
+    }
+    .carousel-item p{
+      font-size: 13px !important;
+    }
+.info-cards{
+
+}
+}

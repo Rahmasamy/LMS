@@ -27,6 +27,7 @@ export class CourseComponent {
         console.log("courses data")
         console.log(response.data.data)
         this.courses = response.data.data;
+        console.log(this.courses)
       },
       (error) => {
         console.error('courses error', error);
@@ -36,6 +37,6 @@ export class CourseComponent {
   getRating(rating: string): number {
     return Math.floor(parseFloat(rating));
   }
-  
+
 }
 

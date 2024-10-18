@@ -202,12 +202,7 @@ export class CourseDetailsComponent {
             this.notificationService.showSuccess(
               `You have successfully enrolled in the course. Payment Status: ${response.enrollment.payment_status}`,
               'Enrollment Successful'
-            ).then((result) => {
-              if (result.isConfirmed) {
-                this.router.navigate([`/courses/course-details/${this.course.id}/${response.enrollment.payment_status}`]);
-              }
-
-            });
+            );
 
 
         },

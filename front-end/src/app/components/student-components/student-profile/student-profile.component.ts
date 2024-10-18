@@ -11,7 +11,7 @@ import { NgFor } from '@angular/common';
   styleUrl: './student-profile.component.css'
 })
 export class StudentProfileComponent {
-  User: any = {} as any;
+  User: any = {} ;
   bio:string=''
   constructor(private userService:UsernowService,private studentService:StudentService){}
   ngOnInit(): void {
@@ -20,9 +20,12 @@ export class StudentProfileComponent {
   getDataOfloggedUser(){
     this.userService.getDataOfloggedUser().subscribe(
      (response:any)=> {
-      console.log("user")
-       console.log(response)
+      
+       
+       
        this.User=response;
+       
+       
        this.getDataOfUser(response.id)
      },
      (error:any) => {
@@ -34,12 +37,12 @@ export class StudentProfileComponent {
      this.studentService.getDataOfUser(id).subscribe(
        (response:any)=> {
 
-        this.User=response;
-        console.log(this.User.student.id)
-        this.studentService.getDataOfStudentStudentId(this.User.student.id).subscribe(
+    
+        
+        this.studentService.getDataOfStudentStudentId(this.User.id).subscribe(
           (response:any)=> {
-            console.log("student")
-             console.log(response.data.bio)
+            
+             
              this.bio=response.data.bio;
            },
            (error:any) => {

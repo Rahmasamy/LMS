@@ -55,5 +55,13 @@ export class SignupComponent implements OnInit {
         }
       );
     }
+    else {
+      this.notificationService.showError(
+        `Something went wrong during Registeration. Please try again.`,
+        'Invalid Vaildation,Registeration Failed'
+      );
+
+    }
   }
+
 }

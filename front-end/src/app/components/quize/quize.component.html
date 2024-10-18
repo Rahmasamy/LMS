@@ -8,7 +8,7 @@
 
     <!-- Add Question Button if there are no questions -->
     <div class="add-course-btn text-sm-end">
-      <button (click)="addquestion()" class="btn btn-primary">
+      <button (click)="addquestion()" class="btn btn-primary"  *ngIf="role === 'instructor'">
         <i class="fas fa-plus-circle p-2"></i> Add Question
       </button>
       <div *ngIf="showQuestionForm" class="add-section-form">
@@ -49,7 +49,7 @@
           </label>
         </div>
       </li>
-      <!-- <button (click)="submitQuiz(quize.id)" class="submit-button">Submit Quiz</button> -->
+      <button (click)="submitQuiz(quize.id)" class="submit-button" *ngIf="role === 'student'">Submit Quiz</button>
     </ul>
   </div>
 
